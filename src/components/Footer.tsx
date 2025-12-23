@@ -1,6 +1,25 @@
 import { Facebook, Instagram, Twitter, Mail, MapPin, Phone } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export const Footer = () => {
+  const { t } = useLanguage();
+
+  const quickLinks = [
+    t.footer.links.shopAll,
+    t.footer.links.aboutUs,
+    t.footer.links.healthBenefits,
+    t.footer.links.brewingGuide,
+    t.footer.links.faq,
+  ];
+
+  const serviceLinks = [
+    t.footer.serviceLinks.contactUs,
+    t.footer.serviceLinks.shippingPolicy,
+    t.footer.serviceLinks.returns,
+    t.footer.serviceLinks.trackOrder,
+    t.footer.serviceLinks.privacyPolicy,
+  ];
+
   return (
     <footer id="contact" className="bg-foreground text-background py-16">
       <div className="container mx-auto px-4">
@@ -9,7 +28,7 @@ export const Footer = () => {
           <div className="lg:col-span-1">
             <h2 className="text-3xl font-serif font-semibold mb-4">Serenitea</h2>
             <p className="text-background/70 mb-6 leading-relaxed">
-              Bringing you the finest Tartary Buckwheat tea for moments of pure serenity and wellness.
+              {t.footer.brand}
             </p>
             <div className="flex gap-4">
               <a href="#" className="w-10 h-10 rounded-full bg-background/10 hover:bg-primary flex items-center justify-center transition-colors">
@@ -26,9 +45,9 @@ export const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="font-semibold text-lg mb-4">Quick Links</h3>
+            <h3 className="font-semibold text-lg mb-4">{t.footer.quickLinks}</h3>
             <ul className="space-y-3">
-              {['Shop All', 'About Us', 'Health Benefits', 'Brewing Guide', 'FAQ'].map((link) => (
+              {quickLinks.map((link) => (
                 <li key={link}>
                   <a href="#" className="text-background/70 hover:text-primary transition-colors">
                     {link}
@@ -40,9 +59,9 @@ export const Footer = () => {
 
           {/* Customer Service */}
           <div>
-            <h3 className="font-semibold text-lg mb-4">Customer Service</h3>
+            <h3 className="font-semibold text-lg mb-4">{t.footer.customerService}</h3>
             <ul className="space-y-3">
-              {['Contact Us', 'Shipping Policy', 'Returns & Exchanges', 'Track Order', 'Privacy Policy'].map((link) => (
+              {serviceLinks.map((link) => (
                 <li key={link}>
                   <a href="#" className="text-background/70 hover:text-primary transition-colors">
                     {link}
@@ -54,7 +73,7 @@ export const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h3 className="font-semibold text-lg mb-4">Get in Touch</h3>
+            <h3 className="font-semibold text-lg mb-4">{t.footer.getInTouch}</h3>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <Mail className="w-5 h-5 text-primary mt-0.5" />
@@ -75,12 +94,12 @@ export const Footer = () => {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-background/10 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-background/50 text-sm">
-            © 2024 Serenitea. All rights reserved.
+            {t.footer.copyright}
           </p>
           <div className="flex gap-6 text-sm">
-            <a href="#" className="text-background/50 hover:text-primary transition-colors">Terms of Service</a>
-            <a href="#" className="text-background/50 hover:text-primary transition-colors">Privacy Policy</a>
-            <a href="#" className="text-background/50 hover:text-primary transition-colors">Cookie Policy</a>
+            <a href="#" className="text-background/50 hover:text-primary transition-colors">{t.footer.terms}</a>
+            <a href="#" className="text-background/50 hover:text-primary transition-colors">{t.footer.privacy}</a>
+            <a href="#" className="text-background/50 hover:text-primary transition-colors">{t.footer.cookies}</a>
           </div>
         </div>
       </div>

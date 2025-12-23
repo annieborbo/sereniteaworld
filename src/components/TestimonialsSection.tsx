@@ -1,41 +1,28 @@
 import { Star } from 'lucide-react';
-
-const testimonials = [
-  {
-    id: 1,
-    name: 'Sarah M.',
-    rating: 5,
-    text: "I've been searching for a caffeine-free tea that actually tastes good, and Serenitea is it! The nutty, toasted flavor is absolutely delicious. It's become my evening ritual.",
-    verified: true,
-  },
-  {
-    id: 2,
-    name: 'Michael T.',
-    rating: 5,
-    text: "As someone who's sensitive to caffeine, this tea has been a game-changer. I can enjoy it any time of day without worrying about sleep. Plus, the packaging is beautiful!",
-    verified: true,
-  },
-  {
-    id: 3,
-    name: 'Emily R.',
-    rating: 5,
-    text: "The quality is exceptional. I love knowing that it's 100% natural and gluten-free. The taste is unique and comforting – like a warm hug in a cup.",
-    verified: true,
-  },
-];
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export const TestimonialsSection = () => {
+  const { t } = useLanguage();
+
+  const testimonials = t.testimonials.items.map((item, index) => ({
+    id: index + 1,
+    name: item.name,
+    rating: 5,
+    text: item.text,
+    verified: true,
+  }));
+
   return (
     <section className="py-24 bg-background">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16 animate-fade-up">
-          <span className="text-primary font-medium tracking-widest uppercase text-sm">Testimonials</span>
+          <span className="text-primary font-medium tracking-widest uppercase text-sm">{t.testimonials.subtitle}</span>
           <h2 className="text-4xl md:text-5xl font-serif font-semibold text-foreground mt-3 mb-4">
-            What Our Customers Say
+            {t.testimonials.title}
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto">
-            Join thousands of tea lovers who have discovered the serenity of Tartary Buckwheat tea.
+            {t.testimonials.description}
           </p>
         </div>
 
@@ -73,7 +60,7 @@ export const TestimonialsSection = () => {
                       <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                       </svg>
-                      Verified Buyer
+                      {t.testimonials.verifiedBuyer}
                     </div>
                   )}
                 </div>

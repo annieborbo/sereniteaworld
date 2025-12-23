@@ -1,51 +1,53 @@
 import { Leaf, Heart, Moon, Sparkles, Shield, Coffee } from 'lucide-react';
-
-const benefits = [
-  {
-    icon: Coffee,
-    title: 'Caffeine Free',
-    description: 'Enjoy anytime without worrying about sleep disruption or jitters.',
-  },
-  {
-    icon: Heart,
-    title: 'Heart Healthy',
-    description: 'Rich in rutin, supporting cardiovascular health and circulation.',
-  },
-  {
-    icon: Shield,
-    title: 'Antioxidant Rich',
-    description: 'Packed with flavonoids that help protect your cells from damage.',
-  },
-  {
-    icon: Moon,
-    title: 'Promotes Relaxation',
-    description: 'Natural compounds help calm the mind and reduce stress.',
-  },
-  {
-    icon: Leaf,
-    title: '100% Natural',
-    description: 'No artificial additives, preservatives, or flavoring agents.',
-  },
-  {
-    icon: Sparkles,
-    title: 'Supports Digestion',
-    description: 'Gentle on the stomach and aids in healthy digestion.',
-  },
-];
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export const BenefitsSection = () => {
+  const { t } = useLanguage();
+
+  const benefits = [
+    {
+      icon: Coffee,
+      title: t.benefits.items.caffeineFree.title,
+      description: t.benefits.items.caffeineFree.description,
+    },
+    {
+      icon: Heart,
+      title: t.benefits.items.heartHealthy.title,
+      description: t.benefits.items.heartHealthy.description,
+    },
+    {
+      icon: Shield,
+      title: t.benefits.items.antioxidant.title,
+      description: t.benefits.items.antioxidant.description,
+    },
+    {
+      icon: Moon,
+      title: t.benefits.items.relaxation.title,
+      description: t.benefits.items.relaxation.description,
+    },
+    {
+      icon: Leaf,
+      title: t.benefits.items.natural.title,
+      description: t.benefits.items.natural.description,
+    },
+    {
+      icon: Sparkles,
+      title: t.benefits.items.digestion.title,
+      description: t.benefits.items.digestion.description,
+    },
+  ];
+
   return (
     <section id="benefits" className="py-24 bg-background">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16 animate-fade-up">
-          <span className="text-primary font-medium tracking-widest uppercase text-sm">Why Choose Us</span>
+          <span className="text-primary font-medium tracking-widest uppercase text-sm">{t.benefits.subtitle}</span>
           <h2 className="text-4xl md:text-5xl font-serif font-semibold text-foreground mt-3 mb-4">
-            Health Benefits
+            {t.benefits.title}
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto">
-            Tartary Buckwheat has been treasured for centuries in Asian cultures 
-            for its remarkable health-promoting properties.
+            {t.benefits.description}
           </p>
         </div>
 

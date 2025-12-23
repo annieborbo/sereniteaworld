@@ -1,17 +1,19 @@
 import { useState, useEffect } from 'react';
 import { ShoppingCart, Menu, X, Search, User } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-
-const navLinks = [
-  { name: 'Shop', href: '#shop' },
-  { name: 'About Tea', href: '#about' },
-  { name: 'Benefits', href: '#benefits' },
-  { name: 'Contact', href: '#contact' },
-];
+import { LanguageToggle } from '@/components/LanguageToggle';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { t } = useLanguage();
+
+  const navLinks = [
+    { name: t.header.nav.shop, href: '#shop' },
+    { name: t.header.nav.aboutTea, href: '#about' },
+    { name: t.header.nav.benefits, href: '#benefits' },
+    { name: t.header.nav.contact, href: '#contact' },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,7 +33,7 @@ export const Header = () => {
     >
       {/* Announcement Bar */}
       <div className={`bg-primary text-primary-foreground text-center py-2 text-sm font-medium transition-all duration-300 ${isScrolled ? 'h-0 py-0 overflow-hidden opacity-0' : 'opacity-100'}`}>
-        Free shipping on orders over $50 | Use code SERENITY10 for 10% off
+        {t.header.announcement}
       </div>
 
       <div className="container mx-auto px-4">
@@ -58,6 +60,9 @@ export const Header = () => {
 
           {/* Right Actions */}
           <div className="flex items-center gap-4">
+            <div className="hidden md:flex">
+              <LanguageToggle />
+            </div>
             <button className="hidden md:flex p-2 hover:bg-muted rounded-full transition-colors">
               <Search className="w-5 h-5 text-foreground/70" />
             </button>
@@ -88,10 +93,13 @@ export const Header = () => {
         {/* Mobile Menu */}
         <div
           className={`lg:hidden overflow-hidden transition-all duration-500 ${
-            isMobileMenuOpen ? 'max-h-64 mt-4' : 'max-h-0'
+            isMobileMenuOpen ? 'max-h-80 mt-4' : 'max-h-0'
           }`}
         >
           <nav className="flex flex-col gap-4 py-4 border-t border-border">
+            <div className="flex justify-center pb-2">
+              <LanguageToggle />
+            </div>
             {navLinks.map((link) => (
               <a
                 key={link.name}
