@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Serenitea - Premium Tartary Buckwheat Tea</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    :root {
+      --primary: #8B7355;
+      --primary-light: #A89076;
+      --secondary: #F5F1EB;
+      --accent: #D4A574;
+      --text-dark: #2D2A26;
+      --text-muted: #6B6560;
+      --background: #FDFCFA;
+      --white: #FFFFFF;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text-dark);
+      background: var(--background);
+      line-height: 1.6;
+    }
+    
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, rgba(139, 115, 85, 0.9), rgba(45, 42, 38, 0.8)), url('https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=1920') center/cover;
+      display: flex;
+      align-items: center;
+      color: var(--white);
+      position: relative;
+    }
+    
+    .hero-content {
+      max-width: 600px;
+    }
+    
+    .hero-subtitle {
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 14px;
+      margin-bottom: 20px;
+      color: var(--accent);
+    }
+    
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      margin-bottom: 24px;
+      line-height: 1.2;
+    }
+    
+    .hero p {
+      font-size: 18px;
+      margin-bottom: 32px;
+      opacity: 0.9;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 16px 32px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: none;
+      font-size: 16px;
+    }
+    
+    .btn-primary {
+      background: var(--accent);
+      color: var(--white);
+    }
+    
+    .btn-primary:hover {
+      background: var(--primary);
+      transform: translateY(-2px);
+    }
+    
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--white);
+      color: var(--white);
+      margin-left: 16px;
+    }
+    
+    .btn-outline:hover {
+      background: var(--white);
+      color: var(--text-dark);
+    }
+    
+    .trust-badges {
+      display: flex;
+      gap: 24px;
+      margin-top: 48px;
+    }
+    
+    .badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      opacity: 0.9;
+    }
+    
+    .badge-icon {
+      width: 20px;
+      height: 20px;
+      border: 1px solid currentColor;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+    }
+    
+    /* Section Styles */
+    .section {
+      padding: 100px 0;
+    }
+    
+    .section-header {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 60px;
+    }
+    
+    .section-subtitle {
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 14px;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+    
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 20px;
+      color: var(--text-dark);
+    }
+    
+    .section-desc {
+      color: var(--text-muted);
+      font-size: 16px;
+    }
+    
+    /* Products Section */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
+    }
+    
+    .product-card {
+      background: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+    }
+    
+    .product-image {
+      height: 280px;
+      background: var(--secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    
+    .product-image img {
+      max-height: 200px;
+      object-fit: contain;
+    }
+    
+    .product-badge {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      background: var(--accent);
+      color: var(--white);
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    
+    .product-info {
+      padding: 24px;
+    }
+    
+    .product-name {
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+    
+    .product-desc {
+      color: var(--text-muted);
+      font-size: 14px;
+      margin-bottom: 16px;
+    }
+    
+    .product-price {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--primary);
+    }
+    
+    /* Benefits Section */
+    .benefits-section {
+      background: var(--secondary);
+    }
+    
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 32px;
+    }
+    
+    .benefit-card {
+      background: var(--white);
+      padding: 40px 32px;
+      border-radius: 12px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+    
+    .benefit-card:hover {
+      transform: translateY(-4px);
+    }
+    
+    .benefit-icon {
+      width: 64px;
+      height: 64px;
+      background: var(--secondary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      color: var(--primary);
+      font-size: 28px;
+    }
+    
+    .benefit-title {
+      font-size: 20px;
+      margin-bottom: 12px;
+    }
+    
+    .benefit-desc {
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+    
+    /* About Section */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    
+    @media (max-width: 768px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+    
+    .about-image {
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    
+    .about-image img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+    }
+    
+    .about-content h2 {
+      font-size: 2.5rem;
+      margin-bottom: 24px;
+    }
+    
+    .about-content p {
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+    }
+    
+    .stat {
+      text-align: center;
+    }
+    
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary);
+      font-family: 'Playfair Display', serif;
+    }
+    
+    .stat-label {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+    
+    /* Testimonials */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 32px;
+    }
+    
+    .testimonial-card {
+      background: var(--white);
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+    
+    .stars {
+      color: #F59E0B;
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+    
+    .testimonial-text {
+      font-size: 16px;
+      line-height: 1.8;
+      margin-bottom: 24px;
+      color: var(--text-dark);
+    }
+    
+    .testimonial-author {
+      font-weight: 600;
+    }
+    
+    .verified {
+      font-size: 12px;
+      color: #10B981;
+      margin-left: 8px;
+    }
+    
+    /* FAQ Section */
+    .faq-section {
+      background: var(--secondary);
+    }
+    
+    .faq-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .faq-item {
+      background: var(--white);
+      border-radius: 8px;
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+    
+    .faq-question {
+      padding: 24px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .faq-answer {
+      padding: 0 24px 24px;
+      color: var(--text-muted);
+    }
+    
+    /* Newsletter */
+    .newsletter-section {
+      background: linear-gradient(135deg, var(--primary), var(--text-dark));
+      color: var(--white);
+      text-align: center;
+    }
+    
+    .newsletter-form {
+      display: flex;
+      gap: 16px;
+      max-width: 500px;
+      margin: 32px auto 0;
+    }
+    
+    .newsletter-input {
+      flex: 1;
+      padding: 16px 20px;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+    
+    /* Footer */
+    .footer {
+      background: var(--text-dark);
+      color: var(--white);
+      padding: 80px 0 40px;
+    }
+    
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 60px;
+    }
+    
+    @media (max-width: 768px) {
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+      }
+    }
+    
+    .footer-brand h3 {
+      font-size: 28px;
+      margin-bottom: 16px;
+    }
+    
+    .footer-brand p {
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 24px;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 16px;
+    }
+    
+    .social-link {
+      width: 40px;
+      height: 40px;
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .social-link:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+    
+    .footer-column h4 {
+      font-size: 16px;
+      margin-bottom: 24px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .footer-column ul {
+      list-style: none;
+    }
+    
+    .footer-column li {
+      margin-bottom: 12px;
+    }
+    
+    .footer-column a {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .footer-column a:hover {
+      color: var(--accent);
+    }
+    
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      margin-top: 60px;
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: rgba(255,255,255,0.6);
+      font-size: 14px;
+    }
+    
+    .footer-legal a {
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      margin-left: 24px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <p class="hero-subtitle">Premium Tartary Buckwheat Tea</p>
+        <h1>Discover the Ancient Art of Soba Tea</h1>
+        <p>Experience the rich, nutty flavor and remarkable health benefits of our 100% natural, caffeine-free Tartary Buckwheat Tea. Perfect for your daily wellness ritual.</p>
+        <div>
+          <a href="#products" class="btn btn-primary">Shop Now</a>
+          <a href="#about" class="btn btn-outline">Learn More</a>
+        </div>
+        <div class="trust-badges">
+          <div class="badge">
+            <span class="badge-icon">✓</span>
+            <span>Gluten-Free</span>
+          </div>
+          <div class="badge">
+            <span class="badge-icon">✓</span>
+            <span>100% Vegan</span>
+          </div>
+          <div class="badge">
+            <span class="badge-icon">✓</span>
+            <span>All Natural</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section class="section" id="products">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-subtitle">Our Collection</p>
+        <h2 class="section-title">Featured Products</h2>
+        <p class="section-desc">Discover our carefully curated selection of premium Tartary Buckwheat Tea products.</p>
+      </div>
+      <div class="products-grid">
+        <div class="product-card">
+          <div class="product-image">
+            <span class="product-badge">Bestseller</span>
+            <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400" alt="Classic Tea Box">
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">Classic Tea Box</h3>
+            <p class="product-desc">30 premium tea bags, individually wrapped for freshness</p>
+            <span class="product-price">€24.99</span>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1563822249548-9a72b6353cd1?w=400" alt="Loose Leaf Pouch">
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">Loose Leaf Pouch</h3>
+            <p class="product-desc">200g of pure, loose-leaf buckwheat tea</p>
+            <span class="product-price">€19.99</span>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-image">
+            <span class="product-badge">New</span>
+            <img src="https://images.unsplash.com/photo-1571934811356-5cc061b6821f?w=400" alt="Gift Set">
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">Luxury Gift Set</h3>
+            <p class="product-desc">Complete tea set with ceramic pot and cups</p>
+            <span class="product-price">€49.99</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="section benefits-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-subtitle">Why Choose Serenitea</p>
+        <h2 class="section-title">Health Benefits</h2>
+        <p class="section-desc">Experience the natural wellness benefits of Tartary Buckwheat Tea.</p>
+      </div>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">❤️</div>
+          <h3 class="benefit-title">Heart Health</h3>
+          <p class="benefit-desc">Rich in rutin and quercetin, supporting cardiovascular wellness and healthy circulation.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🌙</div>
+          <h3 class="benefit-title">Better Sleep</h3>
+          <p class="benefit-desc">Naturally caffeine-free, perfect for evening relaxation without disrupting your sleep.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">⚡</div>
+          <h3 class="benefit-title">Antioxidant Rich</h3>
+          <p class="benefit-desc">Packed with powerful antioxidants to help protect your cells from oxidative stress.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🍃</div>
+          <h3 class="benefit-title">Digestive Support</h3>
+          <p class="benefit-desc">Supports healthy digestion with natural fiber and soothing properties.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-image">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800" alt="Tea preparation">
+        </div>
+        <div class="about-content">
+          <p class="section-subtitle">Our Story</p>
+          <h2>A Tradition of Excellence</h2>
+          <p>For centuries, Tartary Buckwheat Tea has been treasured in Asia for its remarkable health benefits and distinctive flavor. At Serenitea, we bring this ancient tradition to the modern world.</p>
+          <p>Our tea is sourced from the pristine highlands where buckwheat thrives naturally, ensuring the highest quality and most potent health benefits in every cup.</p>
+          <div class="stats-grid">
+            <div class="stat">
+              <div class="stat-value">100%</div>
+              <div class="stat-label">Natural</div>
+            </div>
+            <div class="stat">
+              <div class="stat-value">0mg</div>
+              <div class="stat-label">Caffeine</div>
+            </div>
+            <div class="stat">
+              <div class="stat-value">1000+</div>
+              <div class="stat-label">Happy Customers</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="section" style="background: var(--secondary);">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-subtitle">Customer Reviews</p>
+        <h2 class="section-title">What Our Customers Say</h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">"The best buckwheat tea I've ever tasted. The nutty, toasted flavor is absolutely divine. I drink it every evening before bed."</p>
+          <p class="testimonial-author">Sarah M. <span class="verified">✓ Verified Buyer</span></p>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">"Finally found a caffeine-free tea that actually tastes amazing. My whole family loves it, and the health benefits are a wonderful bonus."</p>
+          <p class="testimonial-author">Michael T. <span class="verified">✓ Verified Buyer</span></p>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">"Premium quality and beautifully packaged. I ordered the gift set for my mother and she was absolutely delighted."</p>
+          <p class="testimonial-author">Emma L. <span class="verified">✓ Verified Buyer</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section faq-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-subtitle">Got Questions?</p>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+      </div>
+      <div class="faq-container">
+        <div class="faq-item">
+          <div class="faq-question">What is Tartary Buckwheat Tea?</div>
+          <div class="faq-answer">Tartary Buckwheat Tea, also known as Soba tea, is made from roasted buckwheat groats. Despite the name, it's not related to wheat and is naturally gluten-free. It has a pleasant, nutty flavor and has been enjoyed for centuries in Asia for its health benefits.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Is it really caffeine-free?</div>
+          <div class="faq-answer">Yes! Our Tartary Buckwheat Tea is 100% naturally caffeine-free, making it perfect for enjoying any time of day, including before bedtime.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">How do I brew buckwheat tea?</div>
+          <div class="faq-answer">Use 1-2 teaspoons of loose tea or one tea bag per cup. Pour hot water (90-100°C) over the tea and steep for 3-5 minutes. The tea can be re-steeped 2-3 times.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Is it safe for people with gluten intolerance?</div>
+          <div class="faq-answer">Yes! Despite having "wheat" in its name, buckwheat is not related to wheat and is naturally gluten-free. Our products are also processed in a gluten-free facility.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Section -->
+  <section class="section newsletter-section">
+    <div class="container">
+      <div class="section-header" style="color: white;">
+        <p class="section-subtitle" style="color: var(--accent);">Stay Updated</p>
+        <h2 class="section-title" style="color: white;">Join Our Newsletter</h2>
+        <p style="color: rgba(255,255,255,0.8);">Subscribe for exclusive offers, tea tips, and wellness inspiration.</p>
+      </div>
+      <form class="newsletter-form">
+        <input type="email" class="newsletter-input" placeholder="Enter your email address">
+        <button type="submit" class="btn btn-primary">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>Serenitea</h3>
+          <p>Premium Tartary Buckwheat Tea for your daily wellness ritual. 100% natural, caffeine-free, and delicious.</p>
+          <div class="social-links">
+            <a href="#" class="social-link">f</a>
+            <a href="#" class="social-link">in</a>
+            <a href="#" class="social-link">ig</a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#">Shop</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Benefits</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Customer Service</h4>
+          <ul>
+            <li><a href="#">Shipping Info</a></li>
+            <li><a href="#">Returns</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Track Order</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Contact</h4>
+          <ul>
+            <li>hello@serenitea.world</li>
+            <li>+31 20 123 4567</li>
+            <li>Amsterdam, Netherlands</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2024 Serenitea. All rights reserved.</p>
+        <div class="footer-legal">
+          <a href="#">Terms</a>
+          <a href="#">Privacy</a>
+          <a href="#">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
