@@ -1,6 +1,9 @@
 import teaPouch from '@/assets/tea-pouch.png';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export const AboutSection = () => {
+  const { t } = useLanguage();
+
   return (
     <section id="about" className="py-24 bg-secondary/20 overflow-hidden">
       <div className="container mx-auto px-4">
@@ -25,43 +28,32 @@ export const AboutSection = () => {
 
           {/* Content Side */}
           <div className="space-y-6 animate-slide-in-right">
-            <span className="text-primary font-medium tracking-widest uppercase text-sm">Our Story</span>
+            <span className="text-primary font-medium tracking-widest uppercase text-sm">{t.about.subtitle}</span>
             <h2 className="text-4xl md:text-5xl font-serif font-semibold text-foreground leading-tight">
-              Ancient Wisdom,
+              {t.about.title1}
               <br />
-              <span className="text-primary">Modern Wellness</span>
+              <span className="text-primary">{t.about.title2}</span>
             </h2>
             
             <div className="space-y-4 text-muted-foreground leading-relaxed">
-              <p>
-                Serenitea brings you the treasured tradition of Tartary Buckwheat tea, 
-                known in Asia as "Soba Cha." For centuries, this remarkable grain has been 
-                celebrated for its nutty, toasted flavor and exceptional health benefits.
-              </p>
-              <p>
-                Our tea is made from 100% pure Tartary Buckwheat, carefully roasted to perfection 
-                using time-honored techniques. Each sip delivers a warm, earthy taste with 
-                subtle hints of honey and nuts – a truly unique tea experience.
-              </p>
-              <p>
-                Whether you're seeking a caffeine-free alternative or exploring natural 
-                wellness solutions, Serenitea offers a moment of calm in your busy day.
-              </p>
+              <p>{t.about.p1}</p>
+              <p>{t.about.p2}</p>
+              <p>{t.about.p3}</p>
             </div>
 
             {/* Stats */}
             <div className="grid grid-cols-3 gap-8 pt-8 border-t border-border">
               <div>
                 <div className="text-3xl font-serif font-semibold text-primary">100%</div>
-                <div className="text-sm text-muted-foreground mt-1">Natural</div>
+                <div className="text-sm text-muted-foreground mt-1">{t.about.stats.natural}</div>
               </div>
               <div>
                 <div className="text-3xl font-serif font-semibold text-primary">0mg</div>
-                <div className="text-sm text-muted-foreground mt-1">Caffeine</div>
+                <div className="text-sm text-muted-foreground mt-1">{t.about.stats.caffeine}</div>
               </div>
               <div>
                 <div className="text-3xl font-serif font-semibold text-primary">1000+</div>
-                <div className="text-sm text-muted-foreground mt-1">Happy Customers</div>
+                <div className="text-sm text-muted-foreground mt-1">{t.about.stats.customers}</div>
               </div>
             </div>
           </div>
