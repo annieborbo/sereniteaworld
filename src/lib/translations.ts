@@ -4,7 +4,7 @@ export const translations = {
   en: {
     // Header
     header: {
-      announcement: 'Free shipping on orders over $50 | Use code SERENITY10 for 10% off',
+      announcement: 'Free shipping on orders over €50 | Use code SERENITY10 for 10% off',
       nav: {
         shop: 'Shop',
         aboutTea: 'About Tea',

@@ -42,12 +42,6 @@ export const HeroSection = () => {
               <Button className="btn-hero text-primary-foreground">
                 {t.hero.shopNow}
               </Button>
-              <Button 
-                variant="outline" 
-                className="px-8 py-4 rounded-full font-semibold text-lg border-2 border-foreground/20 hover:bg-foreground/5 transition-all"
-              >
-                {t.hero.learnMore}
-              </Button>
             </div>
 
             {/* Trust Badges */}
@@ -86,21 +80,20 @@ export const HeroSection = () => {
               <img
                 src={teaBox}
                 alt="Serenitea Tartary Buckwheat Tea Box"
-                className="w-80 h-auto animate-float drop-shadow-2xl"
+                className="w-80 h-auto drop-shadow-2xl"
               />
               {/* Secondary product - Pouch */}
               <img
                 src={teaPouch}
                 alt="Serenitea Tartary Buckwheat Tea Pouch"
-                className="absolute -right-20 -bottom-10 w-56 h-auto animate-float delay-300 drop-shadow-xl"
-                style={{ animationDelay: '1.5s' }}
+                className="absolute -right-20 -bottom-10 w-56 h-auto drop-shadow-xl"
               />
             </div>
           </div>
         </div>
 
         {/* Scroll Indicator */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2">
           <a href="#featured" className="flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
             <span className="text-sm tracking-wider uppercase">{t.hero.discover}</span>
             <ChevronDown className="w-5 h-5" />
