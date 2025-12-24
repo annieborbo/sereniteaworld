@@ -1,8 +1,5 @@
 import heroBg from '@/assets/hero-bg.jpg';
-import teaBox from '@/assets/tea-box.png';
-import teaPouch from '@/assets/tea-pouch.png';
 import { Button } from '@/components/ui/button';
-import { ChevronDown } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 export const HeroSection = () => {
@@ -19,7 +16,7 @@ export const HeroSection = () => {
       </div>
 
       <div className="container mx-auto px-4 relative z-10 pt-32">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="max-w-2xl">
           {/* Left Content */}
           <div className="text-left space-y-6 animate-fade-up">
             <span className="inline-block px-4 py-2 bg-secondary/60 backdrop-blur-sm rounded-full text-sm font-medium text-foreground/80 tracking-wider uppercase">
@@ -72,32 +69,6 @@ export const HeroSection = () => {
               </div>
             </div>
           </div>
-
-          {/* Right Content - Product Images */}
-          <div className="relative hidden lg:flex justify-center items-center">
-            <div className="relative">
-              {/* Main product - Box */}
-              <img
-                src={teaBox}
-                alt="Serenitea Tartary Buckwheat Tea Box"
-                className="w-80 h-auto drop-shadow-2xl"
-              />
-              {/* Secondary product - Pouch */}
-              <img
-                src={teaPouch}
-                alt="Serenitea Tartary Buckwheat Tea Pouch"
-                className="absolute -right-20 -bottom-10 w-56 h-auto drop-shadow-xl"
-              />
-            </div>
-          </div>
-        </div>
-
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2">
-          <a href="#featured" className="flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
-            <span className="text-sm tracking-wider uppercase">{t.hero.discover}</span>
-            <ChevronDown className="w-5 h-5" />
-          </a>
         </div>
       </div>
     </section>
