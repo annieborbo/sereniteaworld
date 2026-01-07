@@ -1,5 +1,6 @@
 import { ChevronDown } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import visaLogo from '@/assets/visa-logo.png';
 
 const PaymentIcons = {
   Amex: () => (
@@ -73,10 +74,9 @@ const PaymentIcons = {
     </svg>
   ),
   Visa: () => (
-    <svg viewBox="0 0 38 24" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-      <rect width="38" height="24" rx="3" fill="#fff" stroke="#E5E5E5"/>
-      <path d="M15.7 15.5h-2l1.3-7.8h2l-1.3 7.8zm7.3-7.6c-.4-.2-1-.3-1.8-.3-2 0-3.4 1-3.4 2.5 0 1.1 1 1.7 1.8 2 .8.4 1.1.7 1.1 1 0 .5-.7.8-1.3.8-.9 0-1.3-.1-2-.5l-.3-.1-.3 1.8c.5.2 1.4.4 2.4.4 2.1 0 3.5-1 3.5-2.6 0-.9-.5-1.5-1.7-2.1-.7-.4-1.1-.6-1.1-1 0-.3.4-.7 1.2-.7.7 0 1.2.1 1.6.3l.2.1.3-1.6zm5.2-.2h-1.6c-.5 0-.9.1-1.1.6l-3.1 7.2h2.2l.4-1.2h2.7l.2 1.2h1.9l-1.6-7.8zm-2.4 5c.2-.5.8-2.3.8-2.3l.2-.8.2.7.5 2.3h-1.7zm-12.4 0l-2-5.3c-.2-.4-.4-.6-1-.6H7l0 .2c.7.2 1.5.4 2.2.8.4.2.5.4.6.7l1.5 5.8h2.1l3.2-7.6h-2.1l-2.1 6z" fill="#1A1F71"/>
-    </svg>
+    <div className="w-full h-full bg-white rounded flex items-center justify-center p-1 border border-foreground/10">
+      <img src={visaLogo} alt="Visa" className="h-full w-auto object-contain" />
+    </div>
   ),
 };
 
