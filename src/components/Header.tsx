@@ -10,6 +10,7 @@ export const Header = () => {
 
   const navLinks = [
     { name: t.header.nav.shop, href: '#featured' },
+    { name: t.header.nav.reviews, href: '#testimonials' },
     { name: t.header.nav.aboutTea, href: '#about' },
     { name: t.header.nav.faq, href: '#faq' },
   ];
