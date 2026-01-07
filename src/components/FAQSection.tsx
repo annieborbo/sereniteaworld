@@ -13,12 +13,9 @@ export const FAQSection = () => {
     <section className="py-20 bg-background">
       <div className="container mx-auto px-4 max-w-4xl">
         <div className="text-center mb-12">
-          <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-4">
+          <h2 className="font-serif text-3xl md:text-4xl text-foreground">
             {t.faq.title}
           </h2>
-          <p className="text-muted-foreground text-lg">
-            {t.faq.description}
-          </p>
         </div>
 
         <Accordion type="single" collapsible className="w-full space-y-3">
