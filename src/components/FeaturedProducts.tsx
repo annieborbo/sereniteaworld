@@ -25,15 +25,6 @@ export const FeaturedProducts = () => {
       image: teaPouch,
       badges: [t.products.badges.sale],
     },
-    {
-      id: 3,
-      name: t.products.items.set.name,
-      description: t.products.items.set.description,
-      price: 39.99,
-      originalPrice: 47.98,
-      image: teaBox,
-      badges: [t.products.badges.bundle, t.products.badges.save16],
-    },
   ];
 
   return (
@@ -41,8 +32,7 @@ export const FeaturedProducts = () => {
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16 animate-fade-up">
-          <span className="text-primary font-medium tracking-widest uppercase text-sm">{t.products.subtitle}</span>
-          <h2 className="text-4xl md:text-5xl font-serif font-semibold text-foreground mt-3 mb-4">
+          <h2 className="text-4xl md:text-5xl font-serif font-semibold text-foreground mb-4">
             {t.products.title}
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto">
@@ -51,7 +41,7 @@ export const FeaturedProducts = () => {
         </div>
 
         {/* Products Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {products.map((product, index) => (
             <div
               key={product.id}
