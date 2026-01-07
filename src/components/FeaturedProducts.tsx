@@ -10,19 +10,18 @@ export const FeaturedProducts = () => {
   const products = [
     {
       id: 1,
-      name: t.products.items.box.name,
-      description: t.products.items.box.description,
-      price: 24.99,
-      image: teaBox,
+      name: t.products.items.pouch.name,
+      description: t.products.items.pouch.description,
+      price: 12.99,
+      image: teaPouch,
       badges: [t.products.badges.bestseller],
     },
     {
       id: 2,
-      name: t.products.items.pouch.name,
-      description: t.products.items.pouch.description,
-      price: 18.99,
-      originalPrice: 22.99,
-      image: teaPouch,
+      name: t.products.items.box.name,
+      description: t.products.items.box.description,
+      price: 9.99,
+      image: teaBox,
       badges: [t.products.badges.sale],
     },
   ];
@@ -90,13 +89,8 @@ export const FeaturedProducts = () => {
                 <p className="text-sm text-muted-foreground mb-4">{product.description}</p>
                 <div className="flex items-center gap-3">
                   <span className="text-2xl font-semibold text-foreground">
-                    ${product.price.toFixed(2)}
+                    €{product.price.toFixed(2)}
                   </span>
-                  {product.originalPrice && (
-                    <span className="text-lg text-muted-foreground line-through">
-                      ${product.originalPrice.toFixed(2)}
-                    </span>
-                  )}
                 </div>
               </div>
             </div>
