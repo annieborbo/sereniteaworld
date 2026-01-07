@@ -2,6 +2,7 @@ import { ChevronDown } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import visaLogo from '@/assets/visa-logo.png';
 import applePayLogo from '@/assets/apple-pay-logo.png';
+import idealLogo from '@/assets/ideal-logo.png';
 
 const PaymentIcons = {
   Amex: () => (
@@ -35,11 +36,9 @@ const PaymentIcons = {
     </svg>
   ),
   iDEAL: () => (
-    <svg viewBox="0 0 38 24" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-      <rect width="38" height="24" rx="3" fill="#fff" stroke="#E5E5E5"/>
-      <rect x="8" y="5" width="22" height="14" rx="2" fill="#CC0066"/>
-      <text x="19" y="14" fill="white" fontSize="7" fontFamily="system-ui" fontWeight="700" textAnchor="middle">iDEAL</text>
-    </svg>
+    <div className="w-full h-full bg-white rounded flex items-center justify-center p-1 border border-foreground/10">
+      <img src={idealLogo} alt="iDEAL" className="h-full w-auto object-contain" />
+    </div>
   ),
   Maestro: () => (
     <svg viewBox="0 0 38 24" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
