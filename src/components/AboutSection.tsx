@@ -1,62 +1,40 @@
-import teaPouch from '@/assets/tea-pouch.png';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 export const AboutSection = () => {
-  const { t } = useLanguage();
+  const { language } = useLanguage();
+
+  const content = {
+    en: {
+      title: "What is",
+      titleHighlight: "TARTARY BUCKWHEAT TEA",
+      description: "Buckwheat tea, also known in Asia as \"Soba Cha\", is a nutrient-rich, decaffeinated beverage known for its amazing health benefits. Soba tea is a decaffeinated herbal tea made from roasted buckwheat seeds. Despite its name, it contains no wheat and is gluten-free when made from 100% buckwheat. It has a toasty, nutty, slightly sweet aftertaste and is known for its comforting and warming properties."
+    },
+    nl: {
+      title: "Wat is",
+      titleHighlight: "TARTARY BOEKWEITTHEE",
+      description: "Boekweitthee, ook bekend in Azië als \"Soba Cha\", is een voedingsrijke, cafeïnevrije drank die bekend staat om zijn geweldige gezondheidsvoordelen. Soba-thee is een cafeïnevrije kruidenthee gemaakt van geroosterde boekweitzaden. Ondanks de naam bevat het geen tarwe en is het glutenvrij wanneer gemaakt van 100% boekweit. Het heeft een geroosterde, nootachtige, licht zoete nasmaak en staat bekend om zijn troostende en verwarmende eigenschappen."
+    }
+  };
+
+  const t = content[language];
 
   return (
-    <section id="about" className="py-24 bg-secondary/20 overflow-hidden">
-      <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Image Side */}
-          <div className="relative animate-slide-in-left">
-            <div className="relative">
-              {/* Decorative Elements */}
-              <div className="absolute -top-8 -left-8 w-32 h-32 bg-primary/10 rounded-full blur-3xl" />
-              <div className="absolute -bottom-8 -right-8 w-48 h-48 bg-secondary/40 rounded-full blur-3xl" />
-              
-              {/* Main Image */}
-              <div className="relative bg-gradient-to-br from-secondary/50 to-muted rounded-3xl p-12">
-                <img
-                  src={teaPouch}
-                  alt="Serenitea Tea Pouch"
-                  className="w-full max-w-md mx-auto drop-shadow-2xl"
-                />
-              </div>
-            </div>
-          </div>
-
-          {/* Content Side */}
-          <div className="space-y-6 animate-slide-in-right">
-            <span className="text-primary font-medium tracking-widest uppercase text-sm">{t.about.subtitle}</span>
-            <h2 className="text-4xl md:text-5xl font-serif font-semibold text-foreground leading-tight">
-              {t.about.title1}
-              <br />
-              <span className="text-primary">{t.about.title2}</span>
-            </h2>
-            
-            <div className="space-y-4 text-muted-foreground leading-relaxed">
-              <p>{t.about.p1}</p>
-              <p>{t.about.p2}</p>
-              <p>{t.about.p3}</p>
-            </div>
-
-            {/* Stats */}
-            <div className="grid grid-cols-3 gap-8 pt-8 border-t border-border">
-              <div>
-                <div className="text-3xl font-serif font-semibold text-primary">100%</div>
-                <div className="text-sm text-muted-foreground mt-1">{t.about.stats.natural}</div>
-              </div>
-              <div>
-                <div className="text-3xl font-serif font-semibold text-primary">0mg</div>
-                <div className="text-sm text-muted-foreground mt-1">{t.about.stats.caffeine}</div>
-              </div>
-              <div>
-                <div className="text-3xl font-serif font-semibold text-primary">1000+</div>
-                <div className="text-sm text-muted-foreground mt-1">{t.about.stats.customers}</div>
-              </div>
-            </div>
-          </div>
+    <section id="about" className="py-24 relative overflow-hidden">
+      {/* Background with subtle gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-secondary/30 via-secondary/20 to-background" />
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-secondary/30 rounded-full blur-3xl" />
+      
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="max-w-3xl mx-auto text-center space-y-8">
+          <h2 className="text-4xl md:text-5xl font-serif font-semibold text-foreground leading-tight">
+            {t.title}{" "}
+            <span className="text-primary">{t.titleHighlight}</span>
+          </h2>
+          
+          <p className="text-lg text-muted-foreground leading-relaxed">
+            {t.description}
+          </p>
         </div>
       </div>
     </section>
