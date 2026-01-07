@@ -93,8 +93,7 @@ export const Footer = () => {
   ];
 
   const paymentMethods = [
-    'Amex', 'ApplePay', 'Bancontact', 'GooglePay', 'iDEAL', 
-    'Maestro', 'Mastercard', 'ShopPay', 'UnionPay', 'Visa'
+    'GooglePay', 'ApplePay', 'iDEAL', 'Maestro', 'Mastercard', 'Visa'
   ] as const;
 
   return (
