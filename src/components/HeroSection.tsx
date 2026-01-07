@@ -1,9 +1,14 @@
 import heroBg from '@/assets/hero-bg.jpg';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { trackEvent } from '@/lib/analytics';
 
 export const HeroSection = () => {
   const { t } = useLanguage();
+
+  const handleShopNowClick = () => {
+    trackEvent('cta_click_shop_now');
+  };
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
@@ -32,7 +37,7 @@ export const HeroSection = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <a href="#featured">
+              <a href="#featured" onClick={handleShopNowClick}>
                 <Button className="btn-hero text-primary-foreground">
                   {t.hero.shopNow}
                 </Button>

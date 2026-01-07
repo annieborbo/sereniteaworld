@@ -3,6 +3,7 @@ import teaPouch from '@/assets/tea-pouch.png';
 import { Button } from '@/components/ui/button';
 import { ShoppingCart } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { trackEvent } from '@/lib/analytics';
 
 export const FeaturedProducts = () => {
   const { t } = useLanguage();
@@ -55,7 +56,15 @@ export const FeaturedProducts = () => {
 
                 {/* Quick Add Button */}
                 <div className="absolute inset-x-0 bottom-0 p-4">
-                  <a href={`/waitlist?format=${product.format}`}>
+                  <a 
+                    href={`/waitlist?format=${product.format}`}
+                    onClick={() => {
+                      const eventName = product.format === 'theezakjes' 
+                        ? 'click_buy_theezakjes' 
+                        : 'click_buy_losse_thee';
+                      trackEvent(eventName);
+                    }}
+                  >
                     <Button className="w-full btn-primary rounded-xl py-3 flex items-center justify-center gap-2">
                       <ShoppingCart className="w-4 h-4" />
                       {t.products.addToCart}

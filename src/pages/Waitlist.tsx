@@ -1,21 +1,27 @@
+import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
+import { trackEvent } from '@/lib/analytics';
 
 const Waitlist = () => {
   const { language } = useLanguage();
   const [searchParams] = useSearchParams();
   const [email, setEmail] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
   const { toast } = useToast();
   
   const format = searchParams.get('format');
+
+  useEffect(() => {
+    trackEvent('page_view_waitlist', { format });
+  }, [format]);
 
   const content = {
     en: {
@@ -44,6 +50,9 @@ const Waitlist = () => {
     e.preventDefault();
     setIsLoading(true);
 
+    // Track signup attempt
+    trackEvent('waitlist_signup_complete', { format });
+
     const { error } = await supabase
       .from('waitlist_signups')
       .insert({ 
@@ -62,6 +71,9 @@ const Waitlist = () => {
       return;
     }
 
+    // Track successful signup
+    trackEvent('waitlist_signup_success', { format });
+    setIsSuccess(true);
     toast({ title: t.success });
     setEmail('');
   };
@@ -89,23 +101,29 @@ const Waitlist = () => {
             </p>
             
             {/* Email Form */}
-            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 w-full max-w-md">
-              <Input
-                type="email"
-                placeholder={t.placeholder}
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="flex-1 h-14 px-6 bg-background border-0 rounded-lg text-base"
-                required
-              />
-              <Button 
-                type="submit"
-                disabled={isLoading}
-                className="h-14 px-8 bg-primary/70 hover:bg-primary/80 text-primary-foreground rounded-lg text-base font-medium disabled:opacity-50"
-              >
-                {isLoading ? '...' : t.button}
-              </Button>
-            </form>
+            {!isSuccess ? (
+              <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 w-full max-w-md">
+                <Input
+                  type="email"
+                  placeholder={t.placeholder}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="flex-1 h-14 px-6 bg-background border-0 rounded-lg text-base"
+                  required
+                />
+                <Button 
+                  type="submit"
+                  disabled={isLoading}
+                  className="h-14 px-8 bg-primary/70 hover:bg-primary/80 text-primary-foreground rounded-lg text-base font-medium disabled:opacity-50"
+                >
+                  {isLoading ? '...' : t.button}
+                </Button>
+              </form>
+            ) : (
+              <div className="text-lg text-primary font-medium">
+                {t.success}
+              </div>
+            )}
             
             {/* Microline */}
             <p className="text-sm text-muted-foreground mt-4">
