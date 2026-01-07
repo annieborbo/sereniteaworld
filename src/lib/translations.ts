@@ -88,7 +88,7 @@ export const translations = {
     },
     // About
     about: {
-      subtitle: 'Our Story',
+      subtitle: 'What is Tartary Buckwheat Tea?',
       title1: 'Ancient Wisdom,',
       title2: 'Modern Wellness',
       p1: 'Serenitea brings you the treasured tradition of Tartary Buckwheat tea, known in Asia as "Soba Cha." For centuries, this remarkable grain has been celebrated for its nutty, toasted flavor and exceptional health benefits.',
@@ -292,7 +292,7 @@ export const translations = {
     },
     // About
     about: {
-      subtitle: 'Ons Verhaal',
+      subtitle: 'Wat is Tartaarse Boekweitthee?',
       title1: 'Oude Wijsheid,',
       title2: 'Modern Welzijn',
       p1: 'Serenitea brengt u de gekoesterde traditie van Tartaarse Boekweitthee, in Azië bekend als "Soba Cha." Eeuwenlang wordt deze opmerkelijke graansoort gevierd om zijn nootachtige, geroosterde smaak en uitzonderlijke gezondheidsvoordelen.',
