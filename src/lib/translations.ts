@@ -345,22 +345,22 @@ export const translations = {
     // FAQ
     faq: {
       title: "Veelgestelde Vragen",
-      description: "Alles wat u moet weten over onze kruidenthee",
+      description: "Alles wat u moet weten over onze boekweitthee",
       items: [
         {
           question: "Is het veilig om Serenitea te drinken tijdens zwangerschap of borstvoeding?",
           answer:
-            "Onze kruidenthee is cafeïnevrij en wordt over het algemeen als veilig beschouwd tijdens zwangerschap en borstvoeding, aangezien deze is gemaakt van 100% natuurlijke ingrediënten zonder kunstmatige toevoegingen. We raden echter altijd aan om uw zorgverlener te raadplegen.",
+            "Onze boekweitthee is cafeïnevrij en wordt over het algemeen als veilig beschouwd tijdens zwangerschap en borstvoeding, aangezien deze is gemaakt van 100% natuurlijke ingrediënten zonder kunstmatige toevoegingen. We raden echter altijd aan om uw zorgverlener te raadplegen.",
         },
         {
           question: "Kunnen kinderen Serenitea drinken?",
           answer:
-            "Ja, kinderen kunnen onze cafeïnevrije kruidenthee drinken, aangezien het natuurlijke dranken zijn zonder toegevoegde suikers of kunstmatige ingrediënten.",
+            "Ja, kinderen kunnen onze cafeïnevrije boekweitthee drinken, aangezien het natuurlijke dranken zijn zonder toegevoegde suikers of kunstmatige ingrediënten.",
         },
         {
-          question: "Wat is het beste moment om kruidenthee te drinken – 's ochtends, 's middags of 's avonds?",
+          question: "Wat is het beste moment om boekweitthee te drinken – 's ochtends, 's middags of 's avonds?",
           answer:
-            "Onze kruidenthee kan op elk moment worden gedronken omdat deze cafeïnevrij is, dus u kunt deze zelfs 's avonds drinken zonder uw slaap te verstoren. Perfect als verfrissend drankje in de ochtend of als licht drankje overdag.",
+            "Onze boekweitthee kan op elk moment worden gedronken omdat deze cafeïnevrij is, dus u kunt deze zelfs 's avonds drinken zonder uw slaap te verstoren. Perfect als verfrissend drankje in de ochtend of als licht drankje overdag.",
         },
         {
           question: "Hoeveel thee wordt aanbevolen per dag?",
@@ -370,12 +370,12 @@ export const translations = {
         {
           question: "Kan het op een lege maag worden gedronken?",
           answer:
-            "Ja, onze kruidenthee kan op een lege maag worden gedronken omdat deze zacht is voor het spijsverteringsstelsel. Als u een gevoelige maag heeft, probeer het uit om te zien of u het goed verdraagt.",
+            "Ja, onze boekweitthee kan op een lege maag worden gedronken omdat deze zacht is voor het spijsverteringsstelsel. Als u een gevoelige maag heeft, probeer het uit om te zien of u het goed verdraagt.",
         },
         {
           question: "Kunnen mensen met allergieën (bijv. glutenintolerantie) Serenitea drinken?",
           answer:
-            "Onze kruidenthee is van nature glutenvrij en geschikt voor mensen met glutenintolerantie. Controleer de individuele productingrediënten voor specifieke allergeneninformatie.",
+            "Onze boekweitthee is van nature glutenvrij en geschikt voor mensen met glutenintolerantie. Controleer de individuele productingrediënten voor specifieke allergeneninformatie.",
         },
         {
           question: "Kan Serenitea worden opgenomen in speciale diëten (bijv. keto, veganistisch)?",
@@ -385,7 +385,7 @@ export const translations = {
         {
           question: "Heeft Serenitea bijwerkingen?",
           answer:
-            "Onze kruidenthee is over het algemeen veilig, maar mensen met specifieke plantenallergieën moeten de ingrediënten controleren voor consumptie. Zeer zelden kunnen bepaalde kruiden allergische reacties veroorzaken bij gevoelige personen.",
+            "Onze boekweitthee is over het algemeen veilig, maar mensen met specifieke plantenallergieën moeten de ingrediënten controleren voor consumptie. Zeer zelden kunnen bepaalde kruiden allergische reacties veroorzaken bij gevoelige personen.",
         },
         {
           question: "Hoe lang blijft gezette thee goed?",
