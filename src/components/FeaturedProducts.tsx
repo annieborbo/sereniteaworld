@@ -102,16 +102,6 @@ export const FeaturedProducts = () => {
             </div>
           ))}
         </div>
-
-        {/* View All Button */}
-        <div className="text-center mt-12">
-          <Button 
-            variant="outline" 
-            className="px-8 py-3 rounded-full font-semibold border-2 border-primary/30 hover:bg-primary hover:text-primary-foreground transition-all"
-          >
-            {t.products.viewAll}
-          </Button>
-        </div>
       </div>
     </section>
   );
