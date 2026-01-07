@@ -12,13 +12,13 @@ const Waitlist = () => {
   const content = {
     en: {
       title: "Be the first to know when we launch!",
-      subtitle: "You caught us mid-brew. SereniTea is still roasting its first batch of buckwheat tea. Join the waitlist and you'll be first to know when it lands. No spam. Just tea.",
+      subtitle: "You caught us mid-brew. SereniTea is still roasting its first batch of buckwheat tea. Join the waitlist and you'll be first to know when it lands.",
       placeholder: "Email",
       button: "Join Waitlist",
     },
     nl: {
       title: "Wees de eerste die weet wanneer we lanceren!",
-      subtitle: "Je hebt ons midden in het brouwen betrapt. SereniTea roostert nog haar eerste batch boekweitthee. Schrijf je in voor de wachtlijst en je bent de eerste die het hoort. Geen spam. Alleen thee.",
+      subtitle: "Je hebt ons midden in het brouwen betrapt. SereniTea roostert nog haar eerste batch boekweitthee. Schrijf je in voor de wachtlijst en je bent de eerste die het hoort.",
       placeholder: "E-mail",
       button: "Schrijf je in",
     },
