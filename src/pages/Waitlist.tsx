@@ -4,14 +4,18 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 
 const Waitlist = () => {
   const { language } = useLanguage();
+  const [searchParams] = useSearchParams();
   const [email, setEmail] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
+  
+  const format = searchParams.get('format');
 
   const content = {
     en: {
@@ -42,7 +46,10 @@ const Waitlist = () => {
 
     const { error } = await supabase
       .from('waitlist_signups')
-      .insert({ email: email.trim().toLowerCase() });
+      .insert({ 
+        email: email.trim().toLowerCase(),
+        format: format || null
+      });
 
     setIsLoading(false);
 
