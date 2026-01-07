@@ -72,6 +72,11 @@ const Waitlist = () => {
                 {t.button}
               </Button>
             </form>
+            
+            {/* Microline */}
+            <p className="text-sm text-muted-foreground mt-4">
+              {language === 'en' ? 'No spam. Just tea.' : 'Geen spam. Alleen thee.'}
+            </p>
           </div>
         </div>
       </main>
