@@ -14,6 +14,7 @@ export const FeaturedProducts = () => {
       description: t.products.items.pouch.description,
       price: 12.99,
       image: teaPouch,
+      format: 'losse-thee',
     },
     {
       id: 2,
@@ -21,6 +22,7 @@ export const FeaturedProducts = () => {
       description: t.products.items.box.description,
       price: 9.99,
       image: teaBox,
+      format: 'theezakjes',
     },
   ];
 
@@ -53,7 +55,7 @@ export const FeaturedProducts = () => {
 
                 {/* Quick Add Button */}
                 <div className="absolute inset-x-0 bottom-0 p-4">
-                  <a href="/waitlist">
+                  <a href={`/waitlist?format=${product.format}`}>
                     <Button className="w-full btn-primary rounded-xl py-3 flex items-center justify-center gap-2">
                       <ShoppingCart className="w-4 h-4" />
                       {t.products.addToCart}
