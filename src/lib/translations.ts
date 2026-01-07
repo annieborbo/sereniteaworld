@@ -4,7 +4,7 @@ export const translations = {
   en: {
     // Header
     header: {
-      announcement: "Free shipping on orders over €50 | Use code SERENITY10 for 10% off",
+      announcement: "Free shipping in the Netherlands & Belgium on orders over €50 | Use code SERENITY10 for 10% off",
       nav: {
         shop: "Shop Now",
         reviews: "Customer Reviews",
@@ -221,7 +221,7 @@ export const translations = {
   nl: {
     // Header
     header: {
-      announcement: "Gratis verzending bij bestellingen boven €50 | Gebruik code SERENITY10 voor 10% korting",
+      announcement: "Gratis verzending in Nederland & België bij bestellingen boven €50 | Gebruik code SERENITY10 voor 10% korting",
       nav: {
         shop: "Shop Nu",
         reviews: "Klantbeoordelingen",
