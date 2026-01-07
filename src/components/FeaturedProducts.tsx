@@ -32,9 +32,6 @@ export const FeaturedProducts = () => {
           <h2 className="text-4xl md:text-5xl font-serif font-semibold text-foreground mb-4">
             {t.products.title}
           </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto">
-            {t.products.description}
-          </p>
         </div>
 
         {/* Products Grid */}
