@@ -10,7 +10,7 @@ export const FAQSection = () => {
   const { t } = useLanguage();
 
   return (
-    <section className="py-20 bg-background">
+    <section id="faq" className="py-20 bg-background">
       <div className="container mx-auto px-4 max-w-4xl">
         <div className="text-center mb-12">
           <h2 className="font-serif text-3xl md:text-4xl text-foreground">
