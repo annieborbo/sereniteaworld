@@ -18,12 +18,9 @@ export const TestimonialsSection = () => {
         {/* Section Header */}
         <div className="text-center mb-16 animate-fade-up">
           <span className="text-primary font-medium tracking-widest uppercase text-sm">{t.testimonials.subtitle}</span>
-          <h2 className="text-4xl md:text-5xl font-serif font-semibold text-foreground mt-3 mb-4">
+          <h2 className="text-4xl md:text-5xl font-serif font-semibold text-foreground mt-3">
             {t.testimonials.title}
           </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto">
-            {t.testimonials.description}
-          </p>
         </div>
 
         {/* Testimonials Grid */}
