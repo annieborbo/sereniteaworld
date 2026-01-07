@@ -9,7 +9,7 @@ export const Header = () => {
   const { t } = useLanguage();
 
   const navLinks = [
-    { name: t.header.nav.shop, href: '#shop' },
+    { name: t.header.nav.shop, href: '#featured' },
     { name: t.header.nav.aboutTea, href: '#about' },
     { name: t.header.nav.benefits, href: '#benefits' },
     { name: t.header.nav.contact, href: '#contact' },

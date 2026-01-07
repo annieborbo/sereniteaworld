@@ -14,7 +14,6 @@ export const FeaturedProducts = () => {
       description: t.products.items.pouch.description,
       price: 12.99,
       image: teaPouch,
-      badges: [t.products.badges.bestseller],
     },
     {
       id: 2,
@@ -22,7 +21,6 @@ export const FeaturedProducts = () => {
       description: t.products.items.box.description,
       price: 9.99,
       image: teaBox,
-      badges: [t.products.badges.sale],
     },
   ];
 
@@ -49,22 +47,6 @@ export const FeaturedProducts = () => {
             >
               {/* Image Container */}
               <div className="relative aspect-square bg-gradient-to-br from-secondary/30 to-muted/50 p-8 overflow-hidden">
-                {/* Badges */}
-                <div className="absolute top-4 left-4 flex flex-wrap gap-2 z-10">
-                  {product.badges.map((badge) => (
-                    <span
-                      key={badge}
-                      className={`px-3 py-1 text-xs font-semibold rounded-full ${
-                        badge === t.products.badges.sale || badge.includes('16')
-                          ? 'bg-accent text-accent-foreground'
-                          : 'bg-primary text-primary-foreground'
-                      }`}
-                    >
-                      {badge}
-                    </span>
-                  ))}
-                </div>
-
                 {/* Product Image */}
                 <img
                   src={product.image}
