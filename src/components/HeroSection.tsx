@@ -32,9 +32,11 @@ export const HeroSection = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <Button className="btn-hero text-primary-foreground">
-                {t.hero.shopNow}
-              </Button>
+              <a href="#featured">
+                <Button className="btn-hero text-primary-foreground">
+                  {t.hero.shopNow}
+                </Button>
+              </a>
             </div>
 
           </div>
