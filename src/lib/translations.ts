@@ -6,10 +6,9 @@ export const translations = {
     header: {
       announcement: 'Free shipping on orders over €50 | Use code SERENITY10 for 10% off',
       nav: {
-        shop: 'Shop',
-        aboutTea: 'About Tea',
-        benefits: 'Benefits',
-        contact: 'Contact',
+        shop: 'Shop Now',
+        aboutTea: 'About',
+        faq: 'FAQ',
       },
     },
     // Hero
@@ -210,10 +209,9 @@ export const translations = {
     header: {
       announcement: 'Gratis verzending bij bestellingen boven €50 | Gebruik code SERENITY10 voor 10% korting',
       nav: {
-        shop: 'Winkel',
-        aboutTea: 'Over Thee',
-        benefits: 'Voordelen',
-        contact: 'Contact',
+        shop: 'Shop Nu',
+        aboutTea: 'Over',
+        faq: 'FAQ',
       },
     },
     // Hero

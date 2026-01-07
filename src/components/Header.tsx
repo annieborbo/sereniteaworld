@@ -11,8 +11,7 @@ export const Header = () => {
   const navLinks = [
     { name: t.header.nav.shop, href: '#featured' },
     { name: t.header.nav.aboutTea, href: '#about' },
-    { name: t.header.nav.benefits, href: '#benefits' },
-    { name: t.header.nav.contact, href: '#contact' },
+    { name: t.header.nav.faq, href: '#faq' },
   ];
 
   useEffect(() => {
