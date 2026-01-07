@@ -42,8 +42,7 @@ export const BenefitsSection = () => {
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16 animate-fade-up">
-          <span className="text-primary font-medium tracking-widest uppercase text-sm">{t.benefits.subtitle}</span>
-          <h2 className="text-4xl md:text-5xl font-serif font-semibold text-foreground mt-3 mb-4">
+          <h2 className="text-4xl md:text-5xl font-serif font-semibold text-foreground mb-4">
             {t.benefits.title}
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto">
