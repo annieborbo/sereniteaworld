@@ -1,4 +1,5 @@
 import { useLanguage } from '@/contexts/LanguageContext';
+import { Leaf, CupSoda, Coffee, Wheat, Sparkles, Sprout } from 'lucide-react';
 
 export const AboutSection = () => {
   const { language } = useLanguage();
@@ -6,11 +7,27 @@ export const AboutSection = () => {
   const content = {
     en: {
       title: "What is Tartary Buckwheat Tea",
-      description: "Buckwheat tea, also known in Asia as \"Soba Cha\", is a nutrient-rich, decaffeinated beverage known for its amazing health benefits. Soba tea is a decaffeinated herbal tea made from roasted buckwheat seeds. Despite its name, it contains no wheat and is gluten-free when made from 100% buckwheat. It has a toasty, nutty, slightly sweet aftertaste and is known for its comforting and warming properties."
+      description: "Buckwheat tea, also known in Asia as \"Soba Cha\", is a nutrient-rich, decaffeinated beverage known for its amazing health benefits. Soba tea is a decaffeinated herbal tea made from roasted buckwheat seeds. Despite its name, it contains no wheat and is gluten-free when made from 100% buckwheat. It has a toasty, nutty, slightly sweet aftertaste and is known for its comforting and warming properties.",
+      benefits: [
+        { icon: Leaf, label: "100% Natural" },
+        { icon: CupSoda, label: "Sugar Free" },
+        { icon: Coffee, label: "Caffeine Free" },
+        { icon: Wheat, label: "Gluten Free" },
+        { icon: Sparkles, label: "Antioxidant Rich" },
+        { icon: Sprout, label: "Vegan" },
+      ]
     },
     nl: {
       title: "Wat is Tartary Boekweitthee",
-      description: "Boekweitthee, ook bekend in Azië als \"Soba Cha\", is een voedingsrijke, cafeïnevrije drank die bekend staat om zijn geweldige gezondheidsvoordelen. Soba-thee is een cafeïnevrije kruidenthee gemaakt van geroosterde boekweitzaden. Ondanks de naam bevat het geen tarwe en is het glutenvrij wanneer gemaakt van 100% boekweit. Het heeft een geroosterde, nootachtige, licht zoete nasmaak en staat bekend om zijn troostende en verwarmende eigenschappen."
+      description: "Boekweitthee, ook bekend in Azië als \"Soba Cha\", is een voedingsrijke, cafeïnevrije drank die bekend staat om zijn geweldige gezondheidsvoordelen. Soba-thee is een cafeïnevrije kruidenthee gemaakt van geroosterde boekweitzaden. Ondanks de naam bevat het geen tarwe en is het glutenvrij wanneer gemaakt van 100% boekweit. Het heeft een geroosterde, nootachtige, licht zoete nasmaak en staat bekend om zijn troostende en verwarmende eigenschappen.",
+      benefits: [
+        { icon: Leaf, label: "100% Natuurlijk" },
+        { icon: CupSoda, label: "Suikervrij" },
+        { icon: Coffee, label: "Cafeïnevrij" },
+        { icon: Wheat, label: "Glutenvrij" },
+        { icon: Sparkles, label: "Antioxidantrijk" },
+        { icon: Sprout, label: "Veganistisch" },
+      ]
     }
   };
 
@@ -32,6 +49,20 @@ export const AboutSection = () => {
           <p className="text-lg text-muted-foreground leading-relaxed">
             {t.description}
           </p>
+
+          {/* Benefits Icons */}
+          <div className="grid grid-cols-3 md:grid-cols-6 gap-6 pt-8">
+            {t.benefits.map((benefit, index) => (
+              <div key={index} className="flex flex-col items-center gap-2">
+                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                  <benefit.icon className="w-5 h-5 text-primary" />
+                </div>
+                <span className="text-xs text-muted-foreground text-center font-medium">
+                  {benefit.label}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
