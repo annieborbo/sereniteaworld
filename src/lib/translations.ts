@@ -127,22 +127,22 @@ export const translations = {
     // FAQ
     faq: {
       title: "Frequently Asked Questions",
-      description: "Everything you need to know about our herbal teas",
+      description: "Everything you need to know about our buckwheat teas",
       items: [
         {
           question: "Is it safe to drink Serenitea during pregnancy or breastfeeding?",
           answer:
-            "Our herbal teas are caffeine-free and generally considered safe during pregnancy and breastfeeding since they are made from 100% natural ingredients and contain no artificial additives. However, we always recommend consulting with your healthcare provider.",
+            "Our buckwheat teas are caffeine-free and generally considered safe during pregnancy and breastfeeding since they are made from 100% natural ingredients and contain no artificial additives. However, we always recommend consulting with your healthcare provider.",
         },
         {
           question: "Can children drink Serenitea?",
           answer:
-            "Yes, children can drink our caffeine-free herbal teas as they are natural beverages with no added sugars or artificial ingredients.",
+            "Yes, children can drink our caffeine-free buckwheat teas as they are natural beverages with no added sugars or artificial ingredients.",
         },
         {
-          question: "When is the best time to drink herbal tea – morning, afternoon, or evening?",
+          question: "When is the best time to drink buckwheat tea – morning, afternoon, or evening?",
           answer:
-            "Our herbal teas can be consumed at any time because they are caffeine-free, so you can even drink them in the evening without disturbing your sleep. They're perfect as a refreshing drink in the morning or as a light beverage during the day.",
+            "Our buckwheat teas can be consumed at any time because they are caffeine-free, so you can even drink them in the evening without disturbing your sleep. They're perfect as a refreshing drink in the morning or as a light beverage during the day.",
         },
         {
           question: "How much tea is recommended per day?",
@@ -152,12 +152,12 @@ export const translations = {
         {
           question: "Can it be consumed on an empty stomach?",
           answer:
-            "Yes, our herbal teas can be consumed on an empty stomach as they are gentle on the digestive system. If you have a sensitive stomach, try it out to see if you tolerate it well.",
+            "Yes, our buckwheat teas can be consumed on an empty stomach as they are gentle on the digestive system. If you have a sensitive stomach, try it out to see if you tolerate it well.",
         },
         {
           question: "Can people with allergies (e.g., gluten intolerance) drink Serenitea?",
           answer:
-            "Our herbal teas are naturally gluten-free and suitable for people with gluten intolerance. Please check individual product ingredients for specific allergen information.",
+            "Our buckwheat teas are naturally gluten-free and suitable for people with gluten intolerance. Please check individual product ingredients for specific allergen information.",
         },
         {
           question: "Can Serenitea be included in special diets (e.g., keto, vegan)?",
@@ -167,7 +167,7 @@ export const translations = {
         {
           question: "Does Serenitea have any side effects?",
           answer:
-            "Our herbal teas are generally safe, but people with specific plant allergies should check ingredients before consuming. Very rarely, certain herbs can cause allergic reactions in sensitive individuals.",
+            "Our buckwheat teas are generally safe, but people with specific plant allergies should check ingredients before consuming. Very rarely, certain herbs can cause allergic reactions in sensitive individuals.",
         },
         {
           question: "How long does brewed tea last?",
