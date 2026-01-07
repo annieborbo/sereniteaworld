@@ -36,11 +36,11 @@ export const translations = {
       items: {
         box: {
           name: 'Tartary Buckwheat Tea Box',
-          description: '15 individually wrapped tea bags',
+          description: '15 individually wrapped tea bags. Convenient, mess-free',
         },
         pouch: {
           name: 'Tartary Buckwheat Tea Pouch',
-          description: 'Net Wt 3.5 oz (100g) loose leaf',
+          description: '100g of loose buckwheat seeds. Less packaging waste, more control over brewing',
         },
         set: {
           name: 'Tea Discovery Set',
@@ -240,11 +240,11 @@ export const translations = {
       items: {
         box: {
           name: 'Tartaarse Boekweitthee Doos',
-          description: '15 individueel verpakte theezakjes',
+          description: '15 individueel verpakte theezakjes. Handig, geen rommel',
         },
         pouch: {
           name: 'Tartaarse Boekweitthee Zak',
-          description: 'Netto 100g losse thee',
+          description: '100g losse boekweitzaden. Minder verpakkingsafval, meer controle over het zetten',
         },
         set: {
           name: 'Thee Ontdekkingsset',
