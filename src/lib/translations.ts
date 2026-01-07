@@ -7,6 +7,7 @@ export const translations = {
       announcement: 'Free shipping on orders over €50 | Use code SERENITY10 for 10% off',
       nav: {
         shop: 'Shop Now',
+        reviews: 'Customer Reviews',
         aboutTea: 'About',
         faq: 'FAQ',
       },
@@ -210,6 +211,7 @@ export const translations = {
       announcement: 'Gratis verzending bij bestellingen boven €50 | Gebruik code SERENITY10 voor 10% korting',
       nav: {
         shop: 'Shop Nu',
+        reviews: 'Klantbeoordelingen',
         aboutTea: 'Over',
         faq: 'FAQ',
       },
