@@ -4,10 +4,14 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useState } from 'react';
+import { supabase } from '@/integrations/supabase/client';
+import { useToast } from '@/hooks/use-toast';
 
 const Waitlist = () => {
   const { language } = useLanguage();
   const [email, setEmail] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const { toast } = useToast();
 
   const content = {
     en: {
@@ -15,21 +19,43 @@ const Waitlist = () => {
       subtitle: "You caught us mid-brew. SereniTea is still roasting its first batch of buckwheat tea. Join the waitlist and you'll be first to know when it lands.",
       placeholder: "Email",
       button: "Join Waitlist",
+      success: "You're on the list! We'll notify you when we launch.",
+      error: "Something went wrong. Please try again.",
+      duplicate: "You're already on the waitlist!",
     },
     nl: {
       title: "Wees de eerste die weet wanneer we lanceren!",
       subtitle: "Je hebt ons midden in het brouwen betrapt. SereniTea roostert nog haar eerste batch boekweitthee. Schrijf je in voor de wachtlijst en je bent de eerste die het hoort.",
       placeholder: "E-mail",
       button: "Schrijf je in",
+      success: "Je staat op de lijst! We laten je weten wanneer we lanceren.",
+      error: "Er ging iets mis. Probeer het opnieuw.",
+      duplicate: "Je staat al op de wachtlijst!",
     },
   };
 
   const t = content[language];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle waitlist signup
-    console.log('Waitlist signup:', email);
+    setIsLoading(true);
+
+    const { error } = await supabase
+      .from('waitlist_signups')
+      .insert({ email: email.trim().toLowerCase() });
+
+    setIsLoading(false);
+
+    if (error) {
+      if (error.code === '23505') {
+        toast({ title: t.duplicate });
+      } else {
+        toast({ title: t.error, variant: 'destructive' });
+      }
+      return;
+    }
+
+    toast({ title: t.success });
     setEmail('');
   };
 
@@ -67,9 +93,10 @@ const Waitlist = () => {
               />
               <Button 
                 type="submit"
-                className="h-14 px-8 bg-primary/70 hover:bg-primary/80 text-primary-foreground rounded-lg text-base font-medium"
+                disabled={isLoading}
+                className="h-14 px-8 bg-primary/70 hover:bg-primary/80 text-primary-foreground rounded-lg text-base font-medium disabled:opacity-50"
               >
-                {t.button}
+                {isLoading ? '...' : t.button}
               </Button>
             </form>
             
