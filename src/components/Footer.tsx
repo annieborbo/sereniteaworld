@@ -102,28 +102,16 @@ export const Footer = () => {
       <div className="container mx-auto px-4">
         {/* Top Section: Country/Language & Payment Methods */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-8">
-          {/* Country & Language Dropdowns */}
-          <div className="flex flex-wrap gap-6">
-            {/* Country/Region */}
-            <div className="flex flex-col gap-2">
-              <span className="text-sm text-foreground/70">Country/region</span>
-              <button className="flex items-center gap-2 px-4 py-2.5 border border-foreground/20 rounded-md bg-background text-foreground text-sm min-w-[180px] justify-between">
-                <span>Netherlands | EUR €</span>
-                <ChevronDown className="w-4 h-4 text-foreground/50" />
-              </button>
-            </div>
-            
-            {/* Language */}
-            <div className="flex flex-col gap-2">
-              <span className="text-sm text-foreground/70">Language</span>
-              <button 
-                onClick={() => setLanguage(language === 'en' ? 'nl' : 'en')}
-                className="flex items-center gap-2 px-4 py-2.5 border border-foreground/20 rounded-md bg-background text-foreground text-sm min-w-[120px] justify-between"
-              >
-                <span>{language === 'en' ? 'English' : 'Nederlands'}</span>
-                <ChevronDown className="w-4 h-4 text-foreground/50" />
-              </button>
-            </div>
+          {/* Language Dropdown */}
+          <div className="flex flex-col gap-2">
+            <span className="text-sm text-foreground/70">Language</span>
+            <button 
+              onClick={() => setLanguage(language === 'en' ? 'nl' : 'en')}
+              className="flex items-center gap-2 px-4 py-2.5 border border-foreground/20 rounded-md bg-background text-foreground text-sm min-w-[120px] justify-between"
+            >
+              <span>{language === 'en' ? 'English' : 'Nederlands'}</span>
+              <ChevronDown className="w-4 h-4 text-foreground/50" />
+            </button>
           </div>
 
           {/* Payment Methods */}
