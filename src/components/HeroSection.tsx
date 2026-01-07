@@ -27,6 +27,9 @@ export const HeroSection = () => {
               {t.hero.title3}
             </h1>
             
+            <p className="text-lg md:text-xl text-muted-foreground max-w-lg leading-relaxed">
+              {t.hero.description}
+            </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Button className="btn-hero text-primary-foreground">
