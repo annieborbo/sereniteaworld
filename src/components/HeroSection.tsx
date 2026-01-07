@@ -19,10 +19,6 @@ export const HeroSection = () => {
         <div className="max-w-2xl">
           {/* Left Content */}
           <div className="text-left space-y-6 animate-fade-up">
-            <span className="inline-block px-4 py-2 bg-secondary/60 backdrop-blur-sm rounded-full text-sm font-medium text-foreground/80 tracking-wider uppercase">
-              {t.hero.badge}
-            </span>
-            
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-semibold text-foreground leading-tight">
               {t.hero.title1}
               <br />
