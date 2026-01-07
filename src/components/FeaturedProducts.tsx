@@ -53,10 +53,12 @@ export const FeaturedProducts = () => {
 
                 {/* Quick Add Button */}
                 <div className="absolute inset-x-0 bottom-0 p-4">
-                  <Button className="w-full btn-primary rounded-xl py-3 flex items-center justify-center gap-2">
-                    <ShoppingCart className="w-4 h-4" />
-                    {t.products.addToCart}
-                  </Button>
+                  <a href="/waitlist">
+                    <Button className="w-full btn-primary rounded-xl py-3 flex items-center justify-center gap-2">
+                      <ShoppingCart className="w-4 h-4" />
+                      {t.products.addToCart}
+                    </Button>
+                  </a>
                 </div>
               </div>
 
