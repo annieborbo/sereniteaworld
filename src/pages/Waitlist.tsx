@@ -7,7 +7,7 @@ import { Input } from '@/components/ui/input';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
-import { trackEvent } from '@/lib/analytics';
+import { trackEvent, initPageTracking } from '@/lib/analytics';
 
 const Waitlist = () => {
   const { language } = useLanguage();
@@ -20,6 +20,7 @@ const Waitlist = () => {
   const format = searchParams.get('format');
 
   useEffect(() => {
+    initPageTracking('waitlist');
     trackEvent('page_view_waitlist', { format });
   }, [format]);
 
