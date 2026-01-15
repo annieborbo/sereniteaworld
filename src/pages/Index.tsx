@@ -6,10 +6,11 @@ import { AboutSection } from '@/components/AboutSection';
 import { TestimonialsSection } from '@/components/TestimonialsSection';
 import { FAQSection } from '@/components/FAQSection';
 import { Footer } from '@/components/Footer';
-import { trackEvent } from '@/lib/analytics';
+import { trackEvent, initPageTracking } from '@/lib/analytics';
 
 const Index = () => {
   useEffect(() => {
+    initPageTracking('home');
     trackEvent('page_view_home');
   }, []);
 

@@ -3,6 +3,7 @@ import { supabase } from '@/integrations/supabase/client';
 type AnalyticsEvent = 
   | 'page_view_home'
   | 'page_view_waitlist'
+  | 'page_exit'
   | 'waitlist_signup_complete'
   | 'waitlist_signup_success'
   | 'click_buy_theezakjes'
@@ -22,6 +23,11 @@ interface EventProperties {
   [key: string]: unknown;
 }
 
+// Session tracking
+let sessionStartTime: number | null = null;
+let currentPage: string | null = null;
+let isTrackingInitialized = false;
+
 const getUtmParams = (): UtmParams => {
   if (typeof window === 'undefined') return {};
   
@@ -35,6 +41,65 @@ const getUtmParams = (): UtmParams => {
   };
 };
 
+const getTimeSpentSeconds = (): number => {
+  if (!sessionStartTime) return 0;
+  return Math.round((Date.now() - sessionStartTime) / 1000);
+};
+
+const sendExitEvent = () => {
+  if (!currentPage || !sessionStartTime) return;
+  
+  const timeSpent = getTimeSpentSeconds();
+  const utmParams = getUtmParams();
+  
+  // Use sendBeacon for reliable delivery on page exit
+  const payload = {
+    event_name: 'page_exit',
+    properties: {
+      page: currentPage,
+      time_spent_seconds: timeSpent,
+      ...utmParams,
+      referrer: document.referrer || null,
+    }
+  };
+
+  // Use sendBeacon for page exit - more reliable than fetch
+  const blob = new Blob([JSON.stringify(payload)], { type: 'application/json' });
+  navigator.sendBeacon(
+    `${import.meta.env.VITE_SUPABASE_URL}/rest/v1/analytics_events`,
+    blob
+  );
+};
+
+export const initPageTracking = (pageName: string) => {
+  // Record exit for previous page if exists
+  if (currentPage && sessionStartTime) {
+    sendExitEvent();
+  }
+  
+  // Start new session
+  sessionStartTime = Date.now();
+  currentPage = pageName;
+  
+  // Set up exit handlers only once
+  if (!isTrackingInitialized && typeof window !== 'undefined') {
+    isTrackingInitialized = true;
+    
+    // Track when user leaves page
+    window.addEventListener('beforeunload', sendExitEvent);
+    
+    // Track when tab becomes hidden (mobile/tab switching)
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'hidden') {
+        sendExitEvent();
+      } else if (document.visibilityState === 'visible') {
+        // Reset timer when they come back
+        sessionStartTime = Date.now();
+      }
+    });
+  }
+};
+
 export const trackEvent = async (
   eventName: AnalyticsEvent, 
   properties: EventProperties = {}
@@ -44,6 +109,7 @@ export const trackEvent = async (
     const enrichedProperties = {
       ...properties,
       ...utmParams,
+      time_on_page_seconds: getTimeSpentSeconds(),
       referrer: typeof document !== 'undefined' ? document.referrer : null,
     };
 
