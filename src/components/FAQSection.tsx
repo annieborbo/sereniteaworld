@@ -5,12 +5,14 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useSectionTracking } from '@/hooks/useSectionTracking';
 
 export const FAQSection = () => {
   const { t } = useLanguage();
+  const sectionRef = useSectionTracking('faq');
 
   return (
-    <section id="faq" className="py-20 bg-background">
+    <section ref={sectionRef} id="faq" className="py-20 bg-background">
       <div className="container mx-auto px-4 max-w-4xl">
         <div className="text-center mb-12">
           <h2 className="font-serif text-3xl md:text-4xl text-foreground">

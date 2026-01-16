@@ -2,16 +2,18 @@ import heroBg from '@/assets/hero-bg.jpg';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { trackEvent } from '@/lib/analytics';
+import { useSectionTracking } from '@/hooks/useSectionTracking';
 
 export const HeroSection = () => {
   const { t } = useLanguage();
+  const sectionRef = useSectionTracking('hero');
 
   const handleJoinWaitlistClick = () => {
     trackEvent('cta_click_join_waitlist');
   };
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
+    <section ref={sectionRef} className="relative min-h-screen flex items-center overflow-hidden">
       {/* Background Image */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"

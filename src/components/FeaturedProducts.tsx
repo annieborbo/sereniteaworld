@@ -4,9 +4,11 @@ import { Button } from '@/components/ui/button';
 import { ShoppingCart } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { trackEvent } from '@/lib/analytics';
+import { useSectionTracking } from '@/hooks/useSectionTracking';
 
 export const FeaturedProducts = () => {
   const { t } = useLanguage();
+  const sectionRef = useSectionTracking('featured-products');
 
   const products = [
     {
@@ -28,7 +30,7 @@ export const FeaturedProducts = () => {
   ];
 
   return (
-    <section id="featured" className="py-24 bg-muted/30">
+    <section ref={sectionRef} id="featured" className="py-24 bg-muted/30">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-12 animate-fade-up">

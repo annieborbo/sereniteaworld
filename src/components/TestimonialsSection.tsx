@@ -1,8 +1,10 @@
 import { Star } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useSectionTracking } from '@/hooks/useSectionTracking';
 
 export const TestimonialsSection = () => {
   const { t } = useLanguage();
+  const sectionRef = useSectionTracking('testimonials');
 
   const testimonials = t.testimonials.items.map((item, index) => ({
     id: index + 1,
@@ -13,7 +15,7 @@ export const TestimonialsSection = () => {
   }));
 
   return (
-    <section id="testimonials" className="py-24 bg-background">
+    <section ref={sectionRef} id="testimonials" className="py-24 bg-background">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16 animate-fade-up">

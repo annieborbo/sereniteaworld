@@ -4,6 +4,7 @@ type AnalyticsEvent =
   | 'page_view_home'
   | 'page_view_waitlist'
   | 'page_exit'
+  | 'section_time_tracking'
   | 'cta_click_join_waitlist'
   | 'waitlist_signup_complete'
   | 'waitlist_signup_success'
