@@ -9,6 +9,29 @@ interface SectionTiming {
 // Global state for section timings
 const sectionTimings: Map<string, SectionTiming> = new Map();
 let isExitHandlerRegistered = false;
+let maxScrollDepth = 0;
+let scrollMilestones: Set<number> = new Set();
+
+const calculateScrollDepth = (): number => {
+  const scrollTop = window.scrollY || document.documentElement.scrollTop;
+  const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  if (scrollHeight === 0) return 100;
+  return Math.round((scrollTop / scrollHeight) * 100);
+};
+
+const updateScrollDepth = () => {
+  const currentDepth = calculateScrollDepth();
+  if (currentDepth > maxScrollDepth) {
+    maxScrollDepth = currentDepth;
+  }
+  
+  // Track milestones (25%, 50%, 75%, 100%)
+  [25, 50, 75, 100].forEach(milestone => {
+    if (currentDepth >= milestone && !scrollMilestones.has(milestone)) {
+      scrollMilestones.add(milestone);
+    }
+  });
+};
 
 const sendSectionTimings = () => {
   const timings: Record<string, number> = {};
@@ -22,22 +45,26 @@ const sendSectionTimings = () => {
     timings[sectionId] = Math.round(total / 1000); // Convert to seconds
   });
 
-  if (Object.keys(timings).length === 0) return;
+  // Update scroll depth one final time before sending
+  updateScrollDepth();
 
   const payload = {
     event_name: 'section_time_tracking',
     properties: {
       sections: timings,
+      scroll_depth_max: maxScrollDepth,
+      scroll_milestones_reached: Array.from(scrollMilestones).sort((a, b) => a - b),
       page: window.location.pathname,
       timestamp: new Date().toISOString(),
     }
   };
 
-  // Use sendBeacon with proper headers for Supabase
+  // Only send if there's meaningful data
+  if (Object.keys(timings).length === 0 && maxScrollDepth === 0) return;
+
+  // Use fetch with keepalive for reliable delivery on page exit
   const url = `${import.meta.env.VITE_SUPABASE_URL}/rest/v1/analytics_events`;
-  const blob = new Blob([JSON.stringify(payload)], { type: 'application/json' });
   
-  // sendBeacon doesn't support headers, so we use fetch with keepalive as fallback
   fetch(url, {
     method: 'POST',
     headers: {
@@ -57,6 +84,9 @@ const sendSectionTimings = () => {
 const registerExitHandler = () => {
   if (isExitHandlerRegistered || typeof window === 'undefined') return;
   isExitHandlerRegistered = true;
+
+  // Track scroll depth on scroll
+  window.addEventListener('scroll', updateScrollDepth, { passive: true });
 
   window.addEventListener('beforeunload', sendSectionTimings);
   
