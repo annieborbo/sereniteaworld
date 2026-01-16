@@ -13,6 +13,12 @@ interface SectionTimeEvent {
   };
 }
 
+interface AnalyticsEvent {
+  event_name: string;
+  properties: Record<string, unknown> | null;
+  created_at: string;
+}
+
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
@@ -24,23 +30,61 @@ Deno.serve(async (req) => {
     
     const supabase = createClient(supabaseUrl, serviceRoleKey);
 
-    // Fetch section_time_tracking events
-    const { data: events, error } = await supabase
+    // Fetch all analytics events
+    const { data: allEvents, error: allEventsError } = await supabase
       .from("analytics_events")
-      .select("properties")
-      .eq("event_name", "section_time_tracking")
+      .select("event_name, properties, created_at")
       .order("created_at", { ascending: false })
-      .limit(500);
+      .limit(1000);
 
-    if (error) throw error;
+    if (allEventsError) throw allEventsError;
 
-    // Calculate average time per section
+    // Count events by type
+    const eventCounts: Record<string, number> = {};
+    allEvents?.forEach((event: AnalyticsEvent) => {
+      eventCounts[event.event_name] = (eventCounts[event.event_name] || 0) + 1;
+    });
+
+    // Get events by day for trend chart (last 7 days)
+    const now = new Date();
+    const dailyTrends: Record<string, Record<string, number>> = {};
+    
+    for (let i = 6; i >= 0; i--) {
+      const date = new Date(now);
+      date.setDate(date.getDate() - i);
+      const dateKey = date.toISOString().split('T')[0];
+      dailyTrends[dateKey] = { page_views: 0, cta_clicks: 0, signups: 0 };
+    }
+
+    allEvents?.forEach((event: AnalyticsEvent) => {
+      const dateKey = event.created_at.split('T')[0];
+      if (dailyTrends[dateKey]) {
+        if (event.event_name.startsWith('page_view')) {
+          dailyTrends[dateKey].page_views += 1;
+        } else if (event.event_name.includes('click')) {
+          dailyTrends[dateKey].cta_clicks += 1;
+        } else if (event.event_name.includes('signup')) {
+          dailyTrends[dateKey].signups += 1;
+        }
+      }
+    });
+
+    const trendsArray = Object.entries(dailyTrends).map(([date, counts]) => ({
+      date,
+      ...counts,
+    }));
+
+    // Section time tracking
+    const sectionEvents = allEvents?.filter(
+      (e: AnalyticsEvent) => e.event_name === 'section_time_tracking'
+    ) || [];
+
     const sectionTotals: Record<string, { total: number; count: number }> = {};
     let scrollDepthTotal = 0;
     let scrollDepthCount = 0;
     const milestoneReachCounts: Record<number, number> = { 25: 0, 50: 0, 75: 0, 100: 0 };
 
-    events?.forEach((event: SectionTimeEvent) => {
+    sectionEvents.forEach((event: SectionTimeEvent) => {
       const sections = event.properties?.sections;
       if (sections) {
         Object.entries(sections).forEach(([section, time]) => {
@@ -52,13 +96,11 @@ Deno.serve(async (req) => {
         });
       }
 
-      // Scroll depth stats
       if (typeof event.properties?.scroll_depth_max === 'number') {
         scrollDepthTotal += event.properties.scroll_depth_max;
         scrollDepthCount += 1;
       }
 
-      // Milestone reach counts
       const milestones = event.properties?.scroll_milestones_reached;
       if (Array.isArray(milestones)) {
         milestones.forEach((m) => {
@@ -69,14 +111,12 @@ Deno.serve(async (req) => {
       }
     });
 
-    // Calculate averages
     const sectionAverages = Object.entries(sectionTotals).map(([section, data]) => ({
       section,
       averageTime: Math.round(data.total / data.count),
       totalVisitors: data.count,
     }));
 
-    // Sort by page order
     const sectionOrder = ['hero', 'featured-products', 'testimonials', 'about', 'faq'];
     sectionAverages.sort((a, b) => {
       const aIndex = sectionOrder.indexOf(a.section);
@@ -94,8 +134,16 @@ Deno.serve(async (req) => {
       percentage: scrollDepthCount > 0 ? Math.round((count / scrollDepthCount) * 100) : 0,
     }));
 
+    console.log("Analytics fetched successfully:", {
+      totalEvents: allEvents?.length,
+      eventTypes: Object.keys(eventCounts).length,
+      sectionSessions: sectionEvents.length,
+    });
+
     return new Response(
       JSON.stringify({
+        eventCounts,
+        trends: trendsArray,
         sectionAverages,
         scrollDepth: {
           average: avgScrollDepth,
