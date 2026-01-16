@@ -6,8 +6,8 @@ import { trackEvent } from '@/lib/analytics';
 export const HeroSection = () => {
   const { t } = useLanguage();
 
-  const handleShopNowClick = () => {
-    trackEvent('cta_click_shop_now');
+  const handleJoinWaitlistClick = () => {
+    trackEvent('cta_click_join_waitlist');
   };
 
   return (
@@ -37,9 +37,9 @@ export const HeroSection = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <a href="#featured" onClick={handleShopNowClick}>
+              <a href="/waitlist" onClick={handleJoinWaitlistClick}>
                 <Button className="btn-hero text-primary-foreground">
-                  {t.hero.shopNow}
+                  {t.hero.joinWaitlist}
                 </Button>
               </a>
             </div>
