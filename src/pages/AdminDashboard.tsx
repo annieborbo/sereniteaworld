@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
-import { BarChart, Bar, XAxis, YAxis, PieChart, Pie, Cell, LineChart, Line, ResponsiveContainer } from 'recharts';
-import { ArrowLeft, Eye, MousePointer, UserPlus, TrendingUp } from 'lucide-react';
+import { BarChart, Bar, XAxis, YAxis, PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
+import { ArrowLeft, MousePointer, UserPlus, TrendingUp, Clock, ScrollText } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 
@@ -25,12 +25,29 @@ interface EventCounts {
   waitlist_signup_success: number;
 }
 
+interface SectionAverage {
+  section: string;
+  averageTime: number;
+  totalVisitors: number;
+}
+
+interface ScrollDepthData {
+  average: number;
+  totalSessions: number;
+  milestones: { milestone: number; count: number; percentage: number }[];
+}
+
 const CHART_COLORS = {
   theezakjes: 'hsl(165 25% 55%)',
   losse_thee: 'hsl(350 35% 70%)',
   primary: 'hsl(165 25% 55%)',
   secondary: 'hsl(350 35% 85%)',
   accent: 'hsl(42 45% 55%)',
+  hero: 'hsl(165 30% 50%)',
+  products: 'hsl(42 45% 55%)',
+  testimonials: 'hsl(350 35% 65%)',
+  about: 'hsl(200 40% 55%)',
+  faq: 'hsl(280 30% 60%)',
 };
 
 const chartConfig = {
@@ -38,10 +55,18 @@ const chartConfig = {
   losse_thee: { label: 'Losse Thee', color: CHART_COLORS.losse_thee },
   clicks: { label: 'Clicks', color: CHART_COLORS.primary },
   signups: { label: 'Signups', color: CHART_COLORS.accent },
+  averageTime: { label: 'Avg. Time (s)', color: CHART_COLORS.primary },
+};
+
+const SECTION_LABELS: Record<string, string> = {
+  'hero': 'Hero',
+  'featured-products': 'Products',
+  'testimonials': 'Reviews',
+  'about': 'About',
+  'faq': 'FAQ',
 };
 
 const AdminDashboard = () => {
-  const [events, setEvents] = useState<AnalyticsEvent[]>([]);
   const [loading, setLoading] = useState(true);
   const [counts, setCounts] = useState<EventCounts>({
     page_view_home: 0,
@@ -53,21 +78,41 @@ const AdminDashboard = () => {
     waitlist_signup_complete_losse_thee: 0,
     waitlist_signup_success: 0,
   });
+  const [sectionData, setSectionData] = useState<SectionAverage[]>([]);
+  const [scrollDepth, setScrollDepth] = useState<ScrollDepthData | null>(null);
 
   useEffect(() => {
     fetchAnalytics();
+    fetchSectionAnalytics();
   }, []);
+
+  const fetchSectionAnalytics = async () => {
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/get-section-analytics`,
+        {
+          headers: {
+            'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
+          },
+        }
+      );
+      
+      if (response.ok) {
+        const data = await response.json();
+        setSectionData(data.sectionAverages || []);
+        setScrollDepth(data.scrollDepth || null);
+      }
+    } catch (error) {
+      console.error('Error fetching section analytics:', error);
+    }
+  };
 
   const fetchAnalytics = async () => {
     try {
-      // Note: This requires admin access - RLS blocks public reads
-      // For now, we'll calculate from waitlist_signups which has similar data
       const { data: signups } = await supabase
         .from('waitlist_signups')
         .select('*');
 
-      // Since analytics_events isn't readable, we'll show waitlist data
-      // In production, you'd use a service role or edge function
       const signupCounts = {
         theezakjes: signups?.filter(s => s.format === 'theezakjes').length || 0,
         losse_thee: signups?.filter(s => s.format === 'losse-thee').length || 0,
@@ -86,6 +131,13 @@ const AdminDashboard = () => {
       setLoading(false);
     }
   };
+
+  const sectionChartData = sectionData.map(s => ({
+    name: SECTION_LABELS[s.section] || s.section,
+    averageTime: s.averageTime,
+    visitors: s.totalVisitors,
+    fill: CHART_COLORS[s.section.split('-')[0] as keyof typeof CHART_COLORS] || CHART_COLORS.primary,
+  }));
 
   const formatPreferenceData = [
     { name: 'Theezakjes (Tea Box)', value: counts.waitlist_signup_complete_theezakjes, fill: CHART_COLORS.theezakjes },
@@ -233,6 +285,79 @@ const AdminDashboard = () => {
                 </CardContent>
               </Card>
             </div>
+
+            {/* Engagement Metrics */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              <Card>
+                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                  <CardTitle className="text-sm font-medium">Avg. Scroll Depth</CardTitle>
+                  <ScrollText className="h-4 w-4 text-muted-foreground" />
+                </CardHeader>
+                <CardContent>
+                  <div className="text-2xl font-bold">{scrollDepth?.average || 0}%</div>
+                  <p className="text-xs text-muted-foreground">{scrollDepth?.totalSessions || 0} sessions tracked</p>
+                </CardContent>
+              </Card>
+
+              {scrollDepth?.milestones?.map((m) => (
+                <Card key={m.milestone}>
+                  <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                    <CardTitle className="text-sm font-medium">{m.milestone}% Scroll</CardTitle>
+                    <Clock className="h-4 w-4 text-muted-foreground" />
+                  </CardHeader>
+                  <CardContent>
+                    <div className="text-2xl font-bold">{m.percentage}%</div>
+                    <p className="text-xs text-muted-foreground">{m.count} visitors reached</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+
+            {/* Section Time Chart */}
+            {sectionChartData.length > 0 && (
+              <Card>
+                <CardHeader>
+                  <CardTitle>Average Time per Section</CardTitle>
+                  <CardDescription>How long visitors spend viewing each section (in seconds)</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ChartContainer config={chartConfig} className="h-[300px]">
+                    <BarChart data={sectionChartData} layout="vertical">
+                      <XAxis type="number" unit="s" />
+                      <YAxis type="category" dataKey="name" width={80} />
+                      <ChartTooltip 
+                        content={({ active, payload }) => {
+                          if (active && payload && payload.length) {
+                            const data = payload[0].payload;
+                            return (
+                              <div className="bg-background border border-border rounded-lg p-3 shadow-lg">
+                                <p className="font-semibold">{data.name}</p>
+                                <p className="text-sm text-muted-foreground">
+                                  Avg. time: <span className="font-medium text-foreground">{data.averageTime}s</span>
+                                </p>
+                                <p className="text-sm text-muted-foreground">
+                                  Visitors: <span className="font-medium text-foreground">{data.visitors}</span>
+                                </p>
+                              </div>
+                            );
+                          }
+                          return null;
+                        }} 
+                      />
+                      <Bar 
+                        dataKey="averageTime" 
+                        radius={[0, 4, 4, 0]}
+                        fill={CHART_COLORS.primary}
+                      >
+                        {sectionChartData.map((entry, index) => (
+                          <Cell key={`cell-${index}`} fill={entry.fill} />
+                        ))}
+                      </Bar>
+                    </BarChart>
+                  </ChartContainer>
+                </CardContent>
+              </Card>
+            )}
 
             {/* Summary Table */}
             <Card>
