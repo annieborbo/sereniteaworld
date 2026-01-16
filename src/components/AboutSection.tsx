@@ -1,5 +1,8 @@
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Leaf, CupSoda, Coffee, Wheat, Sparkles, Sprout } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
+import { trackEvent } from '@/lib/analytics';
 
 export const AboutSection = () => {
   const { language } = useLanguage();
@@ -15,7 +18,8 @@ export const AboutSection = () => {
         { icon: Wheat, label: "Gluten Free" },
         { icon: Sparkles, label: "Antioxidant Rich" },
         { icon: Sprout, label: "Vegan" },
-      ]
+      ],
+      joinWaitlist: "Join the Waiting List"
     },
     nl: {
       title: "Wat is Tartary Boekweitthee",
@@ -27,7 +31,8 @@ export const AboutSection = () => {
         { icon: Wheat, label: "Glutenvrij" },
         { icon: Sparkles, label: "Antioxidantrijk" },
         { icon: Sprout, label: "Veganistisch" },
-      ]
+      ],
+      joinWaitlist: "Schrijf je in op de Wachtlijst"
     }
   };
 
@@ -62,6 +67,15 @@ export const AboutSection = () => {
                 </span>
               </div>
             ))}
+          </div>
+
+          {/* Join Waitlist Button */}
+          <div className="pt-8">
+            <Link to="/waitlist" onClick={() => trackEvent('cta_click_join_waitlist')}>
+              <Button className="btn-hero text-primary-foreground">
+                {t.joinWaitlist}
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
