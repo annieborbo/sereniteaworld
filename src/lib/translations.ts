@@ -20,7 +20,7 @@ export const translations = {
       title3: "Tea",
       description:
         "Experience the ancient tradition of Soba tea. Pure, naturally caffeine-free and can be enjoyed any time of day — hot or iced. Available as loose leaf or tea bags.",
-      shopNow: "Shop Now",
+      joinWaitlist: "Join the Waiting List",
       learnMore: "Learn More",
       glutenFree: "Gluten Free",
       vegan: "Vegan",
@@ -237,7 +237,7 @@ export const translations = {
       title3: "Thee",
       description:
         "Onze Tartaarse boekweitthee is van nature cafeïnevrij en kan op elk moment van de dag worden genoten — warm of koud. Verkrijgbaar als losse thee of theezakjes.",
-      shopNow: "Shop Nu",
+      joinWaitlist: "Schrijf je in op de Wachtlijst",
       learnMore: "Meer Leren",
       glutenFree: "Glutenvrij",
       vegan: "Veganistisch",
