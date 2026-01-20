@@ -173,7 +173,7 @@ export const FeaturedProducts = () => {
 
 
         {/* Email Capture Section */}
-        <div className="max-w-xl mx-auto bg-card border border-border rounded-2xl p-8 md:p-10 shadow-lg animate-fade-up">
+        <div id="waitlist" className="max-w-xl mx-auto bg-card border border-border rounded-2xl p-8 md:p-10 shadow-lg animate-fade-up mt-16">
           <div className="text-center space-y-4">
             <h3 className="text-2xl md:text-3xl font-serif font-semibold text-foreground">
               {c.emailCapture.headline}

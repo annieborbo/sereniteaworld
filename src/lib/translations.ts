@@ -6,9 +6,10 @@ export const translations = {
     header: {
       announcement: "Free shipping in the Netherlands & Belgium on orders over €50 | Use code SERENITY10 for 10% off",
       nav: {
-        shop: "Shop Now",
-        reviews: "Customer Reviews",
-        aboutTea: "About",
+        shop: "Shop (Coming Soon)",
+        aboutTea: "What is Serenitea?",
+        whenToDrink: "When to drink",
+        waitlist: "Waitlist",
         faq: "FAQ",
       },
     },
@@ -229,9 +230,10 @@ export const translations = {
     header: {
       announcement: "Gratis verzending in Nederland & België bij bestellingen boven €50 | Gebruik code SERENITY10 voor 10% korting",
       nav: {
-        shop: "Shop Nu",
-        reviews: "Klantbeoordelingen",
-        aboutTea: "Over",
+        shop: "Shop (Binnenkort)",
+        aboutTea: "Wat is Serenitea?",
+        whenToDrink: "Wanneer te drinken",
+        waitlist: "Wachtlijst",
         faq: "FAQ",
       },
     },

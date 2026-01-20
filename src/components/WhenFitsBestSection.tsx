@@ -9,7 +9,7 @@ export const WhenFitsBestSection = () => {
   const icons = [Moon, Heart, Coffee, Wine, Sparkles];
 
   return (
-    <section ref={sectionRef} className="py-24 bg-gradient-to-b from-muted/20 to-background relative overflow-hidden">
+    <section ref={sectionRef} id="when-fits-best" className="py-24 bg-gradient-to-b from-muted/20 to-background relative overflow-hidden">
       {/* Decorative background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-10 left-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
