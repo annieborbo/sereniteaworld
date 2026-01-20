@@ -12,7 +12,7 @@ export const FAQSection = () => {
   const sectionRef = useSectionTracking('faq');
 
   return (
-    <section ref={sectionRef} id="faq" className="py-20 bg-background">
+    <section ref={sectionRef} id="faq" className="py-14 md:py-16 bg-background">
       <div className="container mx-auto px-4 max-w-4xl">
         <div className="text-center mb-12">
           <h2 className="font-serif text-3xl md:text-4xl text-foreground">

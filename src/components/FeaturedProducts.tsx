@@ -1,6 +1,4 @@
 import { useState } from 'react';
-import teaBox from '@/assets/tea-box.png';
-import teaPouch from '@/assets/tea-pouch.png';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -8,84 +6,43 @@ import { trackEvent } from '@/lib/analytics';
 import { useSectionTracking } from '@/hooks/useSectionTracking';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
+import { Check } from 'lucide-react';
+import productsHero from '@/assets/products-hero.jpg';
 
 export const FeaturedProducts = () => {
-  const { t, language } = useLanguage();
+  const { language } = useLanguage();
   const sectionRef = useSectionTracking('featured-products');
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const content = {
     en: {
-      title: "Coming Soon",
-      subtitle: "We're starting with a small first batch. Sign up to be the first to order.",
-      pouch: {
-        name: "Tartary Buckwheat Tea – Loose Tea",
-        description: "For those who like to brew themselves and want control over strength and taste."
-      },
-      box: {
-        name: "Tartary Buckwheat Tea – Tea Bags",
-        description: "Convenient, quick and mess-free."
-      },
-      availableNote: "Available at our official launch",
-      emailCapture: {
-        headline: "We're launching soon",
-        subheadline: "Want to be the first to order?",
-        bullets: [
-          "Early access to the launch",
-          "Exclusive launch discount",
-          "Maximum 1–2 emails per month"
-        ],
-        cta: "Sign up for early access",
-        privacy: "No spam. Unsubscribe anytime."
-      }
+      headline: "We're launching soon",
+      subheadline: "Be the first to experience Serenitea. Sign up for early access and an exclusive launch discount.",
+      bullets: [
+        "Early access to the launch",
+        "Exclusive launch discount",
+        "Maximum 1–2 emails per month"
+      ],
+      cta: "Sign up for early access",
+      privacy: "No spam. Unsubscribe anytime.",
+      placeholder: "Enter your email"
     },
     nl: {
-      title: "Binnenkort verkrijgbaar",
-      subtitle: "We starten met een kleine eerste batch. Schrijf je in om als eerste te bestellen.",
-      pouch: {
-        name: "Tataarse boekweit thee – losse thee",
-        description: "Voor wie graag zelf zet en controle wil over sterkte en smaak."
-      },
-      box: {
-        name: "Tataarse boekweit thee – theezakjes",
-        description: "Handig, snel en zonder rommel."
-      },
-      availableNote: "Beschikbaar bij onze officiële lancering",
-      emailCapture: {
-        headline: "We lanceren binnenkort",
-        subheadline: "Wil je als eerste bestellen?",
-        bullets: [
-          "Vroege toegang tot de lancering",
-          "Exclusieve lanceringskorting",
-          "Maximaal 1–2 e-mails per maand"
-        ],
-        cta: "Meld je aan voor vroege toegang",
-        privacy: "Geen spam. Afmelden kan altijd."
-      }
+      headline: "We lanceren binnenkort",
+      subheadline: "Wees de eerste die Serenitea ervaart. Schrijf je in voor vroege toegang en een exclusieve lanceringskorting.",
+      bullets: [
+        "Vroege toegang tot de lancering",
+        "Exclusieve lanceringskorting",
+        "Maximaal 1–2 e-mails per maand"
+      ],
+      cta: "Meld je aan voor vroege toegang",
+      privacy: "Geen spam. Afmelden kan altijd.",
+      placeholder: "Je e-mailadres"
     }
   };
 
   const c = content[language];
-
-  const products = [
-    {
-      id: 1,
-      name: c.pouch.name,
-      description: c.pouch.description,
-      price: 12.99,
-      image: teaPouch,
-      format: 'losse-thee',
-    },
-    {
-      id: 2,
-      name: c.box.name,
-      description: c.box.description,
-      price: 9.99,
-      image: teaBox,
-      format: 'theezakjes',
-    },
-  ];
 
   const handleEmailSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -123,103 +80,78 @@ export const FeaturedProducts = () => {
   };
 
   return (
-    <section ref={sectionRef} id="featured" className="py-24 bg-muted/30">
+    <section ref={sectionRef} id="featured" className="py-16 md:py-20 bg-muted/30">
       <div className="container mx-auto px-4">
-        {/* Section Header */}
-        <div className="text-center mb-4 animate-fade-up">
-          <h2 className="text-4xl md:text-5xl font-serif font-semibold text-foreground">
-            {c.title}
-          </h2>
-        </div>
-
-        {/* Subheader */}
-        <p className="text-center text-lg text-muted-foreground mb-12 max-w-xl mx-auto animate-fade-up">
-          {c.subtitle}
-        </p>
-
-        {/* Products Grid */}
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          {products.map((product, index) => (
-            <div
-              key={product.id}
-              className="card-product group animate-fade-up"
-              style={{ animationDelay: `${index * 150}ms` }}
-            >
-              {/* Image Container */}
-              <div className="relative aspect-square bg-gradient-to-br from-secondary/30 to-muted/50 p-8 overflow-hidden">
-                {/* Product Image */}
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110"
-                />
-              </div>
-
-              {/* Product Info */}
-              <div className="p-6">
-                <h3 className="text-xl font-serif font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">
-                  {product.name}
-                </h3>
-                <p className="text-sm text-muted-foreground mb-4">{product.description}</p>
-                <div className="flex items-center gap-3">
-                  <span className="text-2xl font-semibold text-foreground">
-                    <span className="text-base font-normal text-muted-foreground mr-1">{language === 'nl' ? 'vanaf' : 'from'}</span>
-                    €{product.price.toFixed(2)}
-                  </span>
-                </div>
-              </div>
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center max-w-6xl mx-auto">
+          
+          {/* Left: Image */}
+          <div className="relative animate-fade-up order-2 lg:order-1">
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-primary/10">
+              <img
+                src={productsHero}
+                alt="Serenitea buckwheat tea"
+                className="w-full h-auto object-cover"
+              />
+              {/* Subtle overlay gradient */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent" />
             </div>
-          ))}
-        </div>
-
-
-        {/* Email Capture Section */}
-        <div id="waitlist" className="max-w-xl mx-auto bg-card border border-border rounded-2xl p-8 md:p-10 shadow-lg animate-fade-up mt-16">
-          <div className="text-center space-y-4">
-            <h3 className="text-2xl md:text-3xl font-serif font-semibold text-foreground">
-              {c.emailCapture.headline}
-            </h3>
-            <p className="text-lg text-muted-foreground">
-              {c.emailCapture.subheadline}
-            </p>
+            
+            {/* Decorative elements */}
+            <div className="absolute -top-4 -right-4 w-24 h-24 bg-primary/10 rounded-full blur-2xl" />
+            <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-secondary/20 rounded-full blur-3xl" />
           </div>
 
-          {/* Bullet Points */}
-          <ul className="mt-6 space-y-3">
-            {c.emailCapture.bullets.map((bullet, index) => (
-              <li key={index} className="flex items-center gap-3 text-muted-foreground">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
-                {bullet}
-              </li>
-            ))}
-          </ul>
+          {/* Right: Content */}
+          <div id="waitlist" className="space-y-6 order-1 lg:order-2 animate-fade-up" style={{ animationDelay: '100ms' }}>
+            <h2 className="text-4xl md:text-5xl font-serif font-semibold text-foreground leading-tight">
+              {c.headline}
+            </h2>
+            
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              {c.subheadline}
+            </p>
 
-          {/* Email Form */}
-          <form onSubmit={handleEmailSubmit} className="mt-8 space-y-4">
-            <Input
-              type="email"
-              placeholder={language === 'nl' ? 'Je e-mailadres' : 'Your email address'}
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="h-12 text-base"
-              required
-            />
-            <Button 
-              type="submit" 
-              className="w-full btn-primary h-12 text-base"
-              disabled={isSubmitting}
-            >
-              {isSubmitting 
-                ? (language === 'nl' ? 'Bezig...' : 'Loading...') 
-                : c.emailCapture.cta
-              }
-            </Button>
-          </form>
+            {/* Bullet Points */}
+            <ul className="space-y-3 pt-2">
+              {c.bullets.map((bullet, index) => (
+                <li key={index} className="flex items-center gap-3 text-foreground/80">
+                  <span className="flex-shrink-0 w-5 h-5 rounded-full bg-primary/15 flex items-center justify-center">
+                    <Check className="w-3 h-3 text-primary" />
+                  </span>
+                  {bullet}
+                </li>
+              ))}
+            </ul>
 
-          {/* Privacy Micro-copy */}
-          <p className="text-center text-sm text-muted-foreground mt-4">
-            {c.emailCapture.privacy}
-          </p>
+            {/* Email Form */}
+            <form onSubmit={handleEmailSubmit} className="pt-4">
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Input
+                  type="email"
+                  placeholder={c.placeholder}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="h-12 text-base flex-1 rounded-full px-5 border-border/60 focus:border-primary"
+                  required
+                />
+                <Button 
+                  type="submit" 
+                  className="btn-primary h-12 px-8 text-base rounded-full whitespace-nowrap"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting 
+                    ? (language === 'nl' ? 'Bezig...' : 'Loading...') 
+                    : c.cta
+                  }
+                </Button>
+              </div>
+            </form>
+
+            {/* Privacy Micro-copy */}
+            <p className="text-sm text-muted-foreground">
+              {c.privacy}
+            </p>
+          </div>
         </div>
       </div>
     </section>
