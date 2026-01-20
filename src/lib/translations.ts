@@ -15,16 +15,19 @@ export const translations = {
     // Hero
     hero: {
       badge: "100% Natural • Caffeine Free",
-      title1: "Tartary",
-      title2: "Buckwheat",
-      title3: "Tea",
+      title1: "A calm moment,",
+      title2: "without",
+      title3: "caffeine.",
       description:
-        "Experience the ancient tradition of Soba tea. Pure, naturally caffeine-free and can be enjoyed any time of day — hot or iced. Available as loose leaf or tea bags.",
-      joinWaitlist: "I want to try this",
+        "Soft, nutty and slightly sweet in taste. A warm drink for any moment of the day, especially when you want to unwind.",
+      joinWaitlist: "Join the waitlist",
+      microCopy: "Get early access + an exclusive launch discount",
       learnMore: "Learn More",
       glutenFree: "Gluten Free",
       vegan: "Vegan",
       natural: "100% Natural",
+      caffeineFree: "Caffeine Free",
+      sugarFree: "Sugar Free",
       discover: "Discover",
     },
     // Featured Products
@@ -92,11 +95,12 @@ export const translations = {
     // About
     about: {
       subtitle: "What is Tartary Buckwheat Tea?",
-      title1: "Ancient Wisdom,",
-      title2: "Modern Wellness",
-      p1: 'Serenitea brings you the treasured tradition of Tartary Buckwheat tea, known in Asia as "Soba Cha." For centuries, this remarkable grain has been celebrated for its nutty, toasted flavor and exceptional health benefits.',
-      p2: "Our tea is made from 100% pure Tartary Buckwheat, carefully roasted to perfection using time-honored techniques. Each sip delivers a warm, earthy taste with subtle hints of honey and nuts – a truly unique tea experience.",
-      p3: "Whether you're seeking a caffeine-free alternative or exploring natural wellness solutions, Serenitea offers a moment of calm in your busy day.",
+      title1: "What is Tartary",
+      title2: "Buckwheat Tea?",
+      p1: "Tartary buckwheat tea is a caffeine-free drink made from roasted buckwheat seeds. Despite the name, it contains no wheat and is naturally gluten-free.",
+      p2: "The taste is soft, nutty and slightly sweet, perfect as an alternative to coffee, tea or an evening glass of wine.",
+      p3: "",
+      joinWaitlist: "Join the waitlist",
       stats: {
         natural: "Natural",
         caffeine: "Caffeine",
@@ -105,22 +109,22 @@ export const translations = {
     },
     // Testimonials
     testimonials: {
-      subtitle: "Testimonials",
-      title: "What Our Customers Say",
-      description: "Join thousands of tea lovers who have discovered the serenity of Tartary Buckwheat tea.",
-      verifiedBuyer: "Verified Buyer",
+      subtitle: "Experiences",
+      title: "What early testers say",
+      description: "",
+      verifiedBuyer: "Early Tester",
       items: [
         {
-          name: "Sarah M.",
-          text: "I've been searching for a caffeine-free tea that actually tastes good, and Serenitea is it! The nutty, toasted flavor is absolutely delicious. It's become my evening ritual.",
+          name: "Lisa V.",
+          text: "I was looking for something without caffeine that actually tastes good. This has become my regular evening moment.",
         },
         {
-          name: "Michael T.",
-          text: "As someone who's sensitive to caffeine, this tea has been a game-changer. I can enjoy it any time of day without worrying about sleep. Plus, the packaging is beautiful!",
+          name: "Mark D.",
+          text: "Soft and nutty, very soothing. Exactly what I was looking for after a busy day.",
         },
         {
-          name: "Emily R.",
-          text: "The quality is exceptional. I love knowing that it's 100% natural and gluten-free. The taste is unique and comforting – like a warm hug in a cup.",
+          name: "Emma K.",
+          text: "Nice to have something warm to drink without it affecting my sleep.",
         },
       ],
     },
@@ -232,16 +236,19 @@ export const translations = {
     // Hero
     hero: {
       badge: "100% Natuurlijk • Cafeïnevrij",
-      title1: "Tartaarse",
-      title2: "Boekweit",
-      title3: "Thee",
+      title1: "Een rustig moment,",
+      title2: "zonder",
+      title3: "cafeïne.",
       description:
-        "Onze Tartaarse boekweitthee is van nature cafeïnevrij en kan op elk moment van de dag worden genoten — warm of koud. Verkrijgbaar als losse thee of theezakjes.",
-      joinWaitlist: "Ik wil dit proberen",
+        "Zacht, nootachtig en licht zoet van smaak. Een warme drank voor elk moment van de dag, vooral wanneer je tot rust wilt komen.",
+      joinWaitlist: "Schrijf je in op de wachtlijst",
+      microCopy: "Ontvang vroege toegang + een exclusieve lanceringskorting",
       learnMore: "Meer Leren",
       glutenFree: "Glutenvrij",
       vegan: "Veganistisch",
       natural: "100% Natuurlijk",
+      caffeineFree: "Cafeïnevrij",
+      sugarFree: "Suikervrij",
       discover: "Ontdek",
     },
     // Featured Products
@@ -308,12 +315,13 @@ export const translations = {
     },
     // About
     about: {
-      subtitle: "Wat is Tartaarse Boekweitthee?",
-      title1: "Oude Wijsheid,",
-      title2: "Modern Welzijn",
-      p1: 'Serenitea brengt u de gekoesterde traditie van Tartaarse Boekweitthee, in Azië bekend als "Soba Cha." Eeuwenlang wordt deze opmerkelijke graansoort gevierd om zijn nootachtige, geroosterde smaak en uitzonderlijke gezondheidsvoordelen.',
-      p2: "Onze thee wordt gemaakt van 100% pure Tartaarse Boekweit, zorgvuldig geroosterd tot perfectie met behulp van eeuwenoude technieken. Elke slok levert een warme, aardse smaak met subtiele hints van honing en noten – een werkelijk unieke thee-ervaring.",
-      p3: "Of u nu op zoek bent naar een cafeïnevrij alternatief of natuurlijke welzijnsoplossingen verkent, Serenitea biedt een moment van rust in uw drukke dag.",
+      subtitle: "Wat is Tataarse Boekweitthee?",
+      title1: "Wat is Tataarse",
+      title2: "Boekweitthee?",
+      p1: "Tataarse boekweit thee is een cafeïnevrije drank gemaakt van geroosterde boekweitzaden. Ondanks de naam bevat het geen tarwe en is het van nature glutenvrij.",
+      p2: "De smaak is zacht, nootachtig en licht zoet, perfect als alternatief voor koffie, thee of een avondglas wijn.",
+      p3: "",
+      joinWaitlist: "Schrijf je in op de wachtlijst",
       stats: {
         natural: "Natuurlijk",
         caffeine: "Cafeïne",
@@ -322,23 +330,22 @@ export const translations = {
     },
     // Testimonials
     testimonials: {
-      subtitle: "Getuigenissen",
-      title: "Wat Onze Klanten Zeggen",
-      description:
-        "Sluit u aan bij duizenden theeliefhebbers die de sereniteit van Tartaarse Boekweitthee hebben ontdekt.",
-      verifiedBuyer: "Geverifieerde Koper",
+      subtitle: "Ervaringen",
+      title: "Wat vroege testers zeggen",
+      description: "",
+      verifiedBuyer: "Vroege Tester",
       items: [
         {
-          name: "Sarah M.",
-          text: "Ik zocht naar een cafeïnevrije thee die echt lekker smaakt, en Serenitea is het! De nootachtige, geroosterde smaak is absoluut heerlijk. Het is mijn avondritueel geworden.",
+          name: "Lisa V.",
+          text: "Ik zocht iets zonder cafeïne dat toch écht lekker smaakt. Dit is mijn vaste avondmoment geworden.",
         },
         {
-          name: "Michael T.",
-          text: "Als iemand die gevoelig is voor cafeïne, is deze thee een echte game-changer. Ik kan er op elk moment van de dag van genieten zonder me zorgen te maken over slaap. Plus, de verpakking is prachtig!",
+          name: "Mark D.",
+          text: "Zacht en nootachtig, heel rustgevend. Precies wat ik zocht na een drukke dag.",
         },
         {
-          name: "Emily R.",
-          text: "De kwaliteit is uitzonderlijk. Ik vind het heerlijk te weten dat het 100% natuurlijk en glutenvrij is. De smaak is uniek en troostend – als een warme knuffel in een kopje.",
+          name: "Emma K.",
+          text: "Fijn om iets warms te drinken zonder dat het invloed heeft op mijn slaap.",
         },
       ],
     },

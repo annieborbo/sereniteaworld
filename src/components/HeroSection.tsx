@@ -46,6 +46,11 @@ export const HeroSection = () => {
               </a>
             </div>
 
+            {/* Micro-copy under CTA */}
+            <p className="text-sm text-muted-foreground/80 -mt-2">
+              {t.hero.microCopy}
+            </p>
+
           </div>
         </div>
       </div>

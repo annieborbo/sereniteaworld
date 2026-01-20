@@ -1,5 +1,5 @@
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Leaf, CupSoda, Coffee, Wheat, Sparkles, Sprout } from 'lucide-react';
+import { Leaf, CupSoda, Coffee, Wheat, Sprout } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { trackEvent } from '@/lib/analytics';
@@ -11,30 +11,30 @@ export const AboutSection = () => {
 
   const content = {
     en: {
-      title: "What is Tartary Buckwheat Tea",
-      description: "Buckwheat tea, also known in Asia as \"Soba Cha\", is a nutrient-rich, decaffeinated beverage known for its amazing health benefits. Soba tea is a decaffeinated herbal tea made from roasted buckwheat seeds. Despite its name, it contains no wheat and is gluten-free when made from 100% buckwheat. It has a toasty, nutty, slightly sweet aftertaste and is known for its comforting and warming properties.",
+      title: "What is Tartary Buckwheat Tea?",
+      description1: "Tartary buckwheat tea is a caffeine-free drink made from roasted buckwheat seeds. Despite the name, it contains no wheat and is naturally gluten-free.",
+      description2: "The taste is soft, nutty and slightly sweet, perfect as an alternative to coffee, tea or an evening glass of wine.",
       benefits: [
         { icon: Leaf, label: "100% Natural" },
-        { icon: CupSoda, label: "Sugar Free" },
         { icon: Coffee, label: "Caffeine Free" },
+        { icon: CupSoda, label: "Sugar Free" },
         { icon: Wheat, label: "Gluten Free" },
-        { icon: Sparkles, label: "Antioxidant Rich" },
         { icon: Sprout, label: "Vegan" },
       ],
-      joinWaitlist: "Join the Waiting List"
+      joinWaitlist: "Join the waitlist"
     },
     nl: {
-      title: "Wat is Tartary Boekweitthee",
-      description: "Boekweitthee, ook bekend in Azië als \"Soba Cha\", is een voedingsrijke, cafeïnevrije drank die bekend staat om zijn geweldige gezondheidsvoordelen. Soba-thee is een cafeïnevrije kruidenthee gemaakt van geroosterde boekweitzaden. Ondanks de naam bevat het geen tarwe en is het glutenvrij wanneer gemaakt van 100% boekweit. Het heeft een geroosterde, nootachtige, licht zoete nasmaak en staat bekend om zijn troostende en verwarmende eigenschappen.",
+      title: "Wat is Tataarse Boekweitthee?",
+      description1: "Tataarse boekweit thee is een cafeïnevrije drank gemaakt van geroosterde boekweitzaden. Ondanks de naam bevat het geen tarwe en is het van nature glutenvrij.",
+      description2: "De smaak is zacht, nootachtig en licht zoet, perfect als alternatief voor koffie, thee of een avondglas wijn.",
       benefits: [
         { icon: Leaf, label: "100% Natuurlijk" },
-        { icon: CupSoda, label: "Suikervrij" },
         { icon: Coffee, label: "Cafeïnevrij" },
+        { icon: CupSoda, label: "Suikervrij" },
         { icon: Wheat, label: "Glutenvrij" },
-        { icon: Sparkles, label: "Antioxidantrijk" },
         { icon: Sprout, label: "Veganistisch" },
       ],
-      joinWaitlist: "Schrijf je in op de Wachtlijst"
+      joinWaitlist: "Schrijf je in op de wachtlijst"
     }
   };
 
@@ -53,12 +53,17 @@ export const AboutSection = () => {
             {t.title}
           </h2>
           
-          <p className="text-lg text-muted-foreground leading-relaxed">
-            {t.description}
-          </p>
+          <div className="space-y-4">
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              {t.description1}
+            </p>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              {t.description2}
+            </p>
+          </div>
 
           {/* Benefits Icons */}
-          <div className="grid grid-cols-3 md:grid-cols-6 gap-6 pt-8">
+          <div className="grid grid-cols-5 gap-6 pt-8">
             {t.benefits.map((benefit, index) => (
               <div key={index} className="flex flex-col items-center gap-2">
                 <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
