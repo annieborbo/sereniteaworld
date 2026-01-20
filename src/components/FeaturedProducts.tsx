@@ -10,7 +10,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
 
 export const FeaturedProducts = () => {
-  const { t, language } = useLanguage();
+  const { language } = useLanguage();
   const sectionRef = useSectionTracking('featured-products');
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -27,18 +27,7 @@ export const FeaturedProducts = () => {
         name: "Tartary Buckwheat Tea – Tea Bags",
         description: "Convenient, quick and mess-free."
       },
-      availableNote: "Available at our official launch",
-      emailCapture: {
-        headline: "We're launching soon",
-        subheadline: "Want to be the first to order?",
-        bullets: [
-          "Early access to the launch",
-          "Exclusive launch discount",
-          "Maximum 1–2 emails per month"
-        ],
-        cta: "Sign up for early access",
-        privacy: "No spam. Unsubscribe anytime."
-      }
+      availableNote: "Available at our official launch"
     },
     nl: {
       title: "Binnenkort verkrijgbaar",
@@ -51,18 +40,7 @@ export const FeaturedProducts = () => {
         name: "Tataarse boekweit thee – theezakjes",
         description: "Handig, snel en zonder rommel."
       },
-      availableNote: "Beschikbaar bij onze officiële lancering",
-      emailCapture: {
-        headline: "We lanceren binnenkort",
-        subheadline: "Wil je als eerste bestellen?",
-        bullets: [
-          "Vroege toegang tot de lancering",
-          "Exclusieve lanceringskorting",
-          "Maximaal 1–2 e-mails per maand"
-        ],
-        cta: "Meld je aan voor vroege toegang",
-        privacy: "Geen spam. Afmelden kan altijd."
-      }
+      availableNote: "Beschikbaar bij onze officiële lancering"
     }
   };
 
@@ -172,54 +150,88 @@ export const FeaturedProducts = () => {
           ))}
         </div>
 
-
-        {/* Email Capture Section */}
-        <div id="waitlist" className="max-w-xl mx-auto bg-card border border-border rounded-2xl p-8 md:p-10 shadow-lg animate-fade-up mt-16">
-          <div className="text-center space-y-4">
-            <h3 className="text-2xl md:text-3xl font-serif font-semibold text-foreground">
-              {c.emailCapture.headline}
-            </h3>
-            <p className="text-lg text-muted-foreground">
-              {c.emailCapture.subheadline}
-            </p>
+        {/* Email Capture Section - Calm Invitation */}
+        <div 
+          id="waitlist" 
+          className="relative mt-24 py-20 -mx-4 px-4 overflow-hidden"
+          style={{
+            background: 'linear-gradient(180deg, hsl(40 33% 97% / 0) 0%, hsl(30 28% 92%) 15%, hsl(25 25% 88%) 50%, hsl(30 28% 92%) 85%, hsl(40 33% 97% / 0) 100%)'
+          }}
+        >
+          {/* Atmospheric glow */}
+          <div className="absolute inset-0 pointer-events-none overflow-hidden">
+            <div 
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full blur-3xl"
+              style={{ background: 'hsl(42 45% 80% / 0.3)' }}
+            />
+            <div 
+              className="absolute top-1/3 right-1/4 w-64 h-64 rounded-full blur-3xl"
+              style={{ background: 'hsl(350 35% 88% / 0.25)' }}
+            />
           </div>
 
-          {/* Bullet Points */}
-          <ul className="mt-6 space-y-3">
-            {c.emailCapture.bullets.map((bullet, index) => (
-              <li key={index} className="flex items-center gap-3 text-muted-foreground">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
-                {bullet}
-              </li>
-            ))}
-          </ul>
-
-          {/* Email Form */}
-          <form onSubmit={handleEmailSubmit} className="mt-8 space-y-4">
-            <Input
-              type="email"
-              placeholder={language === 'nl' ? 'Je e-mailadres' : 'Your email address'}
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="h-12 text-base"
-              required
+          {/* Card */}
+          <div 
+            className="relative z-10 max-w-lg mx-auto rounded-3xl p-10 md:p-12 animate-fade-up backdrop-blur-sm"
+            style={{
+              background: 'linear-gradient(145deg, hsl(0 0% 100% / 0.95) 0%, hsl(40 35% 98% / 0.9) 100%)',
+              boxShadow: '0 25px 80px -20px hsl(30 30% 45% / 0.2), 0 10px 30px -10px hsl(30 25% 50% / 0.12), inset 0 1px 0 hsl(0 0% 100% / 0.8)',
+              border: '1px solid hsl(40 30% 90% / 0.5)'
+            }}
+          >
+            {/* Subtle inner vignette */}
+            <div 
+              className="absolute inset-0 rounded-3xl pointer-events-none"
+              style={{
+                background: 'radial-gradient(ellipse at center, transparent 50%, hsl(40 30% 92% / 0.3) 100%)'
+              }}
             />
-            <Button 
-              type="submit" 
-              className="w-full btn-primary h-12 text-base"
-              disabled={isSubmitting}
-            >
-              {isSubmitting 
-                ? (language === 'nl' ? 'Bezig...' : 'Loading...') 
-                : c.emailCapture.cta
-              }
-            </Button>
-          </form>
 
-          {/* Privacy Micro-copy */}
-          <p className="text-center text-sm text-muted-foreground mt-4">
-            {c.emailCapture.privacy}
-          </p>
+            <div className="relative z-10 text-center">
+              {/* Headline */}
+              <h3 className="text-3xl md:text-4xl font-serif font-medium text-foreground mb-4 leading-snug">
+                {language === 'nl' ? 'Binnenkort is het zover' : 'It\'s almost time'}
+              </h3>
+              
+              {/* Subline */}
+              <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+                {language === 'nl' 
+                  ? 'Onze eerste batch is bijna klaar. Laat je e-mail achter en wees erbij.' 
+                  : 'Our first batch is almost ready. Leave your email and be there.'}
+              </p>
+
+              {/* Email Form */}
+              <form onSubmit={handleEmailSubmit} className="space-y-4">
+                <Input
+                  type="email"
+                  placeholder={language === 'nl' ? 'Je e-mailadres' : 'Your email address'}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="h-14 text-base rounded-2xl bg-background/80 border-border/50 focus:border-primary/40 focus:ring-primary/20 text-center placeholder:text-muted-foreground/60"
+                  required
+                />
+                <Button 
+                  type="submit" 
+                  className="w-full h-14 text-base rounded-2xl font-medium transition-all duration-500 hover:scale-[1.01]"
+                  style={{
+                    background: 'linear-gradient(135deg, hsl(165 22% 55%) 0%, hsl(165 25% 48%) 100%)',
+                    boxShadow: '0 8px 24px -6px hsl(165 25% 45% / 0.35)'
+                  }}
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting 
+                    ? (language === 'nl' ? 'Bezig...' : 'Signing up...') 
+                    : (language === 'nl' ? 'Houd me op de hoogte' : 'Keep me posted')
+                  }
+                </Button>
+              </form>
+
+              {/* Privacy note */}
+              <p className="text-sm text-muted-foreground/70 mt-6 font-light">
+                {language === 'nl' ? 'Geen spam. Alleen updates die ertoe doen.' : 'No spam. Only updates that matter.'}
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
