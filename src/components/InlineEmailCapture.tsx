@@ -26,10 +26,14 @@ export const InlineEmailCapture = ({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
+  // Proper email validation regex
+  const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!email || !email.includes('@')) {
+    const trimmedEmail = email.trim().toLowerCase();
+    if (!trimmedEmail || !EMAIL_REGEX.test(trimmedEmail)) {
       toast.error(language === 'nl' ? 'Voer een geldig e-mailadres in' : 'Please enter a valid email address');
       return;
     }
@@ -40,7 +44,7 @@ export const InlineEmailCapture = ({
     try {
       const { error } = await supabase
         .from('waitlist_signups')
-        .insert([{ email, format: source }]);
+        .insert([{ email: trimmedEmail, format: source }]);
 
       if (error) {
         if (error.code === '23505') {

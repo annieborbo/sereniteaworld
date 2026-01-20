@@ -47,8 +47,18 @@ const Waitlist = () => {
 
   const t = content[language];
 
+  // Proper email validation regex
+  const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    const trimmedEmail = email.trim().toLowerCase();
+    if (!trimmedEmail || !EMAIL_REGEX.test(trimmedEmail)) {
+      toast({ title: language === 'nl' ? 'Voer een geldig e-mailadres in' : 'Please enter a valid email address', variant: 'destructive' });
+      return;
+    }
+
     setIsLoading(true);
 
     // Track signup attempt
@@ -57,7 +67,7 @@ const Waitlist = () => {
     const { error } = await supabase
       .from('waitlist_signups')
       .insert({ 
-        email: email.trim().toLowerCase(),
+        email: trimmedEmail,
         format: format || null
       });
 
