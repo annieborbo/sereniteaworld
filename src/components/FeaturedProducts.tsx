@@ -81,16 +81,22 @@ export const FeaturedProducts = () => {
 
   return (
     <section ref={sectionRef} id="featured" className="relative py-20 md:py-28 overflow-hidden">
-      {/* Background Image - similar to hero */}
+      {/* Background Image with smooth gradient overlay */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${heroBg})` }}
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-background/60 to-background/40" />
+        <div className="absolute inset-0 bg-background/70 backdrop-blur-[2px]" />
       </div>
 
+      {/* Top fade for smooth transition */}
+      <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-background to-transparent z-[1]" />
+      
+      {/* Bottom fade for smooth transition */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent z-[1]" />
+
       <div className="container mx-auto px-4 relative z-10">
-        <div id="waitlist" className="max-w-2xl animate-fade-up">
+        <div id="waitlist" className="max-w-2xl mx-auto text-center animate-fade-up">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-semibold text-foreground leading-tight mb-6">
             {c.headline}
           </h2>
@@ -99,8 +105,8 @@ export const FeaturedProducts = () => {
             {c.subheadline}
           </p>
 
-          {/* Bullet Points */}
-          <ul className="space-y-3 mb-8">
+          {/* Bullet Points - centered */}
+          <ul className="inline-flex flex-col items-start space-y-3 mb-8 text-left">
             {c.bullets.map((bullet, index) => (
               <li key={index} className="flex items-center gap-3 text-foreground">
                 <span className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center">
@@ -112,7 +118,7 @@ export const FeaturedProducts = () => {
           </ul>
 
           {/* Email Form */}
-          <form onSubmit={handleEmailSubmit} className="mb-4">
+          <form onSubmit={handleEmailSubmit} className="mb-4 max-w-lg mx-auto">
             <div className="flex flex-col sm:flex-row gap-3">
               <Input
                 type="email"
