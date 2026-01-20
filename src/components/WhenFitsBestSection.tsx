@@ -90,7 +90,7 @@ export const WhenFitsBestSection = () => {
     <section 
       ref={sectionRef} 
       id="when-fits-best" 
-      className="py-24 bg-gradient-to-b from-muted/30 via-background to-muted/20 relative overflow-hidden"
+      className="py-14 md:py-16 bg-gradient-to-b from-muted/30 via-background to-muted/20 relative overflow-hidden"
     >
       {/* Ambient background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -100,7 +100,7 @@ export const WhenFitsBestSection = () => {
 
       <div className="container mx-auto px-4 max-w-6xl relative z-10">
         {/* Header */}
-        <div className="text-center mb-16 animate-fade-up">
+        <div className="text-center mb-10 animate-fade-up">
           <h2 className="text-4xl md:text-5xl font-serif font-semibold text-foreground">
             {language === 'nl' ? 'Wanneer mensen voor Serenitea kiezen' : 'When people choose Serenitea'}
           </h2>

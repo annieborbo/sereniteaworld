@@ -41,7 +41,7 @@ export const AboutSection = () => {
   const t = content[language];
 
   return (
-    <section ref={sectionRef} id="about" className="py-24 relative overflow-hidden">
+    <section ref={sectionRef} id="about" className="py-14 md:py-16 relative overflow-hidden">
       {/* Background with subtle gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-secondary/30 via-secondary/20 to-background" />
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />

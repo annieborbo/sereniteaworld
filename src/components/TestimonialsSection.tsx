@@ -15,10 +15,10 @@ export const TestimonialsSection = () => {
   }));
 
   return (
-    <section ref={sectionRef} id="testimonials" className="py-24 bg-background">
+    <section ref={sectionRef} id="testimonials" className="py-14 md:py-16 bg-background">
       <div className="container mx-auto px-4">
         {/* Section Header */}
-        <div className="text-center mb-16 animate-fade-up">
+        <div className="text-center mb-10 animate-fade-up">
           <span className="text-primary font-medium tracking-widest uppercase text-sm">{t.testimonials.subtitle}</span>
           <h2 className="text-4xl md:text-5xl font-serif font-semibold text-foreground mt-3">
             {t.testimonials.title}
