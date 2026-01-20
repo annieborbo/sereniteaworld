@@ -36,7 +36,7 @@ export const FeaturedProducts = () => {
           "Exclusive launch discount",
           "Maximum 1–2 emails per month"
         ],
-        cta: "Sign me up",
+        cta: "Sign up for early access",
         privacy: "No spam. Unsubscribe anytime."
       }
     },
@@ -60,7 +60,7 @@ export const FeaturedProducts = () => {
           "Exclusieve lanceringskorting",
           "Maximaal 1–2 e-mails per maand"
         ],
-        cta: "Schrijf me in",
+        cta: "Meld je aan voor vroege toegang",
         privacy: "Geen spam. Afmelden kan altijd."
       }
     }
@@ -163,6 +163,7 @@ export const FeaturedProducts = () => {
                 <p className="text-sm text-muted-foreground mb-4">{product.description}</p>
                 <div className="flex items-center gap-3">
                   <span className="text-2xl font-semibold text-foreground">
+                    <span className="text-base font-normal text-muted-foreground mr-1">{language === 'nl' ? 'vanaf' : 'from'}</span>
                     €{product.price.toFixed(2)}
                   </span>
                 </div>

@@ -25,8 +25,8 @@ export const AboutSection = () => {
     },
     nl: {
       title: "Wat is Boekweitthee?",
-      description1: "Boekweit thee is een cafeïnevrije drank gemaakt van geroosterde boekweitzaden. De smaak is zacht, nootachtig en licht zoet, vaak vergeleken met koekjes of granen.",
-      description2: "Omdat het geen cafeïne bevat, is het geschikt om ook 's avonds te drinken. Gewoon een warm of koud moment, zonder prikkels.",
+      description1: "Boekweit thee is een cafeïnevrije drank gemaakt van geroosterde boekweitzaden. De smaak is zacht, nootachtig en licht zoet, vaak vergeleken met granen of koekjes.",
+      description2: "Omdat het geen cafeïne bevat, kun je het ook 's avonds drinken. Gewoon een warm of koud moment, zonder prikkels.",
       benefits: [
         { icon: Leaf, label: "100% Natuurlijk" },
         { icon: Coffee, label: "Cafeïnevrij" },
