@@ -1,16 +1,12 @@
 import heroBg from '@/assets/hero-bg.jpg';
-import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { trackEvent } from '@/lib/analytics';
 import { useSectionTracking } from '@/hooks/useSectionTracking';
+import { InlineEmailCapture } from '@/components/InlineEmailCapture';
 
 export const HeroSection = () => {
   const { t } = useLanguage();
   const sectionRef = useSectionTracking('hero');
-
-  const handleJoinWaitlistClick = () => {
-    trackEvent('cta_click_join_waitlist');
-  };
 
   return (
     <section ref={sectionRef} className="relative min-h-screen flex items-center overflow-hidden">
@@ -38,16 +34,16 @@ export const HeroSection = () => {
               {t.hero.description}
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <a href="#featured" onClick={handleJoinWaitlistClick}>
-                <Button className="btn-hero text-primary-foreground">
-                  {t.hero.joinWaitlist}
-                </Button>
-              </a>
+            <div className="pt-4">
+              <InlineEmailCapture 
+                buttonText={t.hero.joinWaitlist}
+                source="hero"
+                variant="hero"
+              />
             </div>
 
             {/* Micro-copy under CTA */}
-            <p className="text-sm text-muted-foreground/80 -mt-2">
+            <p className="text-sm text-muted-foreground/80">
               {t.hero.microCopy}
             </p>
 
