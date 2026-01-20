@@ -141,8 +141,7 @@ export const WhenFitsBestSection = () => {
                                  drop-shadow-lg">
                     {language === 'nl' ? moment.titleNl : moment.titleEn}
                   </h3>
-                  <p className="text-white/80 text-sm md:text-base font-light
-                                opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                  <p className="text-white/70 text-sm md:text-base font-light drop-shadow-md">
                     {language === 'nl' ? moment.subtitleNl : moment.subtitleEn}
                   </p>
                 </div>
