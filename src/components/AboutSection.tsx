@@ -11,9 +11,9 @@ export const AboutSection = () => {
 
   const content = {
     en: {
-      title: "What is Tartary Buckwheat Tea?",
-      description1: "Tartary buckwheat tea is a caffeine-free drink made from roasted buckwheat seeds. Despite the name, it contains no wheat and is naturally gluten-free.",
-      description2: "The taste is soft, nutty and slightly sweet, perfect as an alternative to coffee, tea or an evening glass of wine.",
+      title: "What is Buckwheat Tea?",
+      description1: "Buckwheat tea is a caffeine-free drink made from roasted buckwheat seeds. The taste is soft, nutty and slightly sweet, often compared to cookies or grains.",
+      description2: "Because it contains no caffeine, it's suitable for drinking in the evening too. Just a warm or cold moment, without stimulants.",
       benefits: [
         { icon: Leaf, label: "100% Natural" },
         { icon: Coffee, label: "Caffeine Free" },
@@ -24,9 +24,9 @@ export const AboutSection = () => {
       joinWaitlist: "Join the waitlist"
     },
     nl: {
-      title: "Wat is Tataarse Boekweitthee?",
-      description1: "Tataarse boekweit thee is een cafeïnevrije drank gemaakt van geroosterde boekweitzaden. Ondanks de naam bevat het geen tarwe en is het van nature glutenvrij.",
-      description2: "De smaak is zacht, nootachtig en licht zoet, perfect als alternatief voor koffie, thee of een avondglas wijn.",
+      title: "Wat is Boekweitthee?",
+      description1: "Boekweit thee is een cafeïnevrije drank gemaakt van geroosterde boekweitzaden. De smaak is zacht, nootachtig en licht zoet, vaak vergeleken met koekjes of granen.",
+      description2: "Omdat het geen cafeïne bevat, is het geschikt om ook 's avonds te drinken. Gewoon een warm of koud moment, zonder prikkels.",
       benefits: [
         { icon: Leaf, label: "100% Natuurlijk" },
         { icon: Coffee, label: "Cafeïnevrij" },
@@ -76,14 +76,6 @@ export const AboutSection = () => {
             ))}
           </div>
 
-          {/* Join Waitlist Button */}
-          <div className="pt-8">
-            <Link to="/waitlist" onClick={() => trackEvent('cta_click_join_waitlist')}>
-              <Button className="btn-hero text-primary-foreground">
-                {t.joinWaitlist}
-              </Button>
-            </Link>
-          </div>
         </div>
       </div>
     </section>
