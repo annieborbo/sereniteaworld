@@ -5,6 +5,10 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
   :root {
     /* Serenitea Color Palette - Soft sage & blush */
     --background: 40 33% 97%;
