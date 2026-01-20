@@ -59,7 +59,7 @@ export const FeaturedProducts = () => {
         bullets: [
           "Vroege toegang tot de lancering",
           "Exclusieve lanceringskorting",
-          "Maximaal 1–2 e-mails per maand"
+          "Alleen wanneer het echt de moeite waard is."
         ],
         cta: "Meld je aan voor vroege toegang",
         privacy: "Geen spam. Afmelden kan altijd.",
