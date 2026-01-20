@@ -1,6 +1,6 @@
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Button } from '@/components/ui/button';
 import { useSectionTracking } from '@/hooks/useSectionTracking';
+import { InlineEmailCapture } from '@/components/InlineEmailCapture';
 
 // Import lifestyle images
 import momentEveningCalm from '@/assets/moment-evening-calm.jpg';
@@ -155,13 +155,12 @@ export const WhenFitsBestSection = () => {
         </div>
 
         {/* CTA */}
-        <div className="text-center mt-14 animate-fade-up" style={{ animationDelay: '500ms' }}>
-          <a href="#featured">
-            <Button className="btn-primary h-12 px-8 text-base rounded-full shadow-lg shadow-primary/20
-                               hover:shadow-xl hover:shadow-primary/30 transition-shadow duration-300">
-              {language === 'nl' ? 'Ontvang als eerste bericht bij lancering' : 'Be the first to know at launch'}
-            </Button>
-          </a>
+        <div className="flex justify-center mt-14 animate-fade-up" style={{ animationDelay: '500ms' }}>
+          <InlineEmailCapture 
+            buttonText={language === 'nl' ? 'Ontvang als eerste bericht bij lancering' : 'Be the first to know at launch'}
+            source="when-fits-best"
+            variant="subtle"
+          />
         </div>
       </div>
     </section>
