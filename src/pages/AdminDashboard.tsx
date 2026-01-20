@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
 import { BarChart, Bar, XAxis, YAxis, PieChart, Pie, Cell, LineChart, Line } from 'recharts';
-import { ArrowLeft, MousePointer, UserPlus, TrendingUp, Clock, ScrollText, Eye, Pointer } from 'lucide-react';
+import { ArrowLeft, MousePointer, UserPlus, TrendingUp, Clock, ScrollText, Eye, Pointer, LogIn } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-
+import { toast } from 'sonner';
 interface SectionAverage {
   section: string;
   averageTime: number;
@@ -61,25 +62,49 @@ const SECTION_LABELS: Record<string, string> = {
 };
 
 const AdminDashboard = () => {
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
   const [eventCounts, setEventCounts] = useState<Record<string, number>>({});
   const [trends, setTrends] = useState<TrendData[]>([]);
   const [sectionData, setSectionData] = useState<SectionAverage[]>([]);
   const [scrollDepth, setScrollDepth] = useState<ScrollDepthData | null>(null);
   const [waitlistCounts, setWaitlistCounts] = useState({ theezakjes: 0, losse_thee: 0, total: 0 });
 
+  // Check authentication on mount
   useEffect(() => {
-    fetchWaitlistData();
-    fetchSectionAnalytics();
+    const checkAuth = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      setIsAuthenticated(!!session);
+      
+      if (session) {
+        fetchWaitlistData();
+        fetchSectionAnalytics(session.access_token);
+      } else {
+        setLoading(false);
+      }
+    };
+
+    checkAuth();
+
+    // Listen for auth state changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+      setIsAuthenticated(!!session);
+      if (session) {
+        fetchSectionAnalytics(session.access_token);
+      }
+    });
+
+    return () => subscription.unsubscribe();
   }, []);
 
-  const fetchSectionAnalytics = async () => {
+  const fetchSectionAnalytics = async (accessToken: string) => {
     try {
       const response = await fetch(
         `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/get-section-analytics`,
         {
           headers: {
-            'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
+            'Authorization': `Bearer ${accessToken}`,
           },
         }
       );
@@ -90,9 +115,13 @@ const AdminDashboard = () => {
         setScrollDepth(data.scrollDepth || null);
         setEventCounts(data.eventCounts || {});
         setTrends(data.trends || []);
+      } else if (response.status === 401) {
+        toast.error('Session expired. Please sign in again.');
+        setIsAuthenticated(false);
       }
     } catch (error) {
       console.error('Error fetching section analytics:', error);
+      toast.error('Failed to load analytics data');
     } finally {
       setLoading(false);
     }
@@ -130,6 +159,33 @@ const AdminDashboard = () => {
   const totalClicks = (eventCounts.cta_click_shop_now || 0) + (eventCounts.cta_click_join_waitlist || 0) + 
                       (eventCounts.click_buy_theezakjes || 0) + (eventCounts.click_buy_losse_thee || 0);
 
+  // Show authentication required message
+  if (isAuthenticated === false) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <Card className="max-w-md w-full mx-4">
+          <CardHeader className="text-center">
+            <div className="mx-auto w-12 h-12 rounded-full bg-muted flex items-center justify-center mb-4">
+              <LogIn className="h-6 w-6 text-muted-foreground" />
+            </div>
+            <CardTitle>Authentication Required</CardTitle>
+            <CardDescription>
+              Please sign in to access the analytics dashboard.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="flex flex-col gap-4">
+            <Link to="/" className="w-full">
+              <Button variant="outline" className="w-full">
+                <ArrowLeft className="h-4 w-4 mr-2" />
+                Back to Home
+              </Button>
+            </Link>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-background">
       <header className="border-b border-border bg-card">
@@ -147,7 +203,7 @@ const AdminDashboard = () => {
       </header>
 
       <main className="container mx-auto px-4 py-8">
-        {loading ? (
+        {loading || isAuthenticated === null ? (
           <div className="flex items-center justify-center h-64">
             <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
           </div>
