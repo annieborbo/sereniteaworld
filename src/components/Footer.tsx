@@ -79,7 +79,7 @@ const PaymentIcons = {
 };
 
 export const Footer = () => {
-  const { language, setLanguage } = useLanguage();
+  const { language, setLanguage, t } = useLanguage();
 
   const policyLinks = [
     { label: 'Refund policy', href: '#' },
@@ -137,6 +137,11 @@ export const Footer = () => {
               );
             })}
           </div>
+        </div>
+
+        {/* Brand Line */}
+        <div className="text-center mb-6">
+          <p className="text-sm text-foreground/60 italic">{t.footer.brand}</p>
         </div>
 
         {/* Bottom Section: Copyright & Policy Links */}
