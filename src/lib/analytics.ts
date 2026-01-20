@@ -6,6 +6,7 @@ type AnalyticsEvent =
   | 'page_exit'
   | 'section_time_tracking'
   | 'cta_click_join_waitlist'
+  | 'waitlist_signup_attempt'
   | 'waitlist_signup_complete'
   | 'waitlist_signup_success'
   | 'click_buy_theezakjes'
