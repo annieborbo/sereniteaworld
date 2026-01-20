@@ -156,7 +156,7 @@ export const WhenFitsBestSection = () => {
 
         {/* CTA */}
         <div className="text-center mt-14 animate-fade-up" style={{ animationDelay: '500ms' }}>
-          <a href="#waitlist">
+          <a href="#featured">
             <Button className="btn-primary h-12 px-8 text-base rounded-full shadow-lg shadow-primary/20
                                hover:shadow-xl hover:shadow-primary/30 transition-shadow duration-300">
               {language === 'nl' ? 'Ontvang als eerste bericht bij lancering' : 'Be the first to know at launch'}
