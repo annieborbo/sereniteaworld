@@ -168,6 +168,31 @@
     background: hsl(0 0% 100% / 0.85);
     box-shadow: var(--shadow-card);
   }
+
+  .moment-card {
+    @apply relative overflow-hidden rounded-3xl;
+    background: linear-gradient(145deg, hsl(30 20% 95% / 0.95) 0%, hsl(40 25% 92% / 0.9) 100%);
+    box-shadow: 0 15px 40px -10px hsl(25 30% 20% / 0.12);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .moment-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, hsl(35 50% 70% / 0.15) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+
+  .moment-card:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 25px 60px -15px hsl(25 30% 20% / 0.18), 0 0 40px -10px hsl(35 50% 60% / 0.1);
+  }
+
+  .moment-card:hover::before {
+    opacity: 1;
+  }
 }
 
 @layer utilities {

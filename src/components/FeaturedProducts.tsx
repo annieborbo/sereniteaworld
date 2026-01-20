@@ -29,15 +29,11 @@ export const FeaturedProducts = () => {
       },
       availableNote: "Available at our official launch",
       emailCapture: {
-        headline: "We're launching soon",
-        subheadline: "Want to be the first to order?",
-        bullets: [
-          "Early access to the launch",
-          "Exclusive launch discount",
-          "Maximum 1–2 emails per month"
-        ],
-        cta: "Sign up for early access",
-        privacy: "No spam. Unsubscribe anytime."
+        headline: "Be among the first",
+        subheadline: "A small first batch. Limited spots.",
+        note: "We'll only reach out when there's something worth sharing.",
+        cta: "Save my spot",
+        privacy: "No spam. Just tea."
       }
     },
     nl: {
@@ -53,15 +49,11 @@ export const FeaturedProducts = () => {
       },
       availableNote: "Beschikbaar bij onze officiële lancering",
       emailCapture: {
-        headline: "We lanceren binnenkort",
-        subheadline: "Wil je als eerste bestellen?",
-        bullets: [
-          "Vroege toegang tot de lancering",
-          "Exclusieve lanceringskorting",
-          "Maximaal 1–2 e-mails per maand"
-        ],
-        cta: "Meld je aan voor vroege toegang",
-        privacy: "Geen spam. Afmelden kan altijd."
+        headline: "Wees erbij",
+        subheadline: "Een kleine eerste batch. Beperkt aantal plekken.",
+        note: "We mailen alleen als er iets te delen is.",
+        cta: "Reserveer mijn plek",
+        privacy: "Geen spam. Alleen thee."
       }
     }
   };
@@ -173,53 +165,104 @@ export const FeaturedProducts = () => {
         </div>
 
 
-        {/* Email Capture Section */}
-        <div id="waitlist" className="max-w-xl mx-auto bg-card border border-border rounded-2xl p-8 md:p-10 shadow-lg animate-fade-up mt-16">
-          <div className="text-center space-y-4">
-            <h3 className="text-2xl md:text-3xl font-serif font-semibold text-foreground">
+        {/* Email Capture Section - Evening Invitation */}
+        <div 
+          id="waitlist" 
+          className="mt-24 md:mt-32 py-20 md:py-28 -mx-4 px-4 relative overflow-hidden"
+          style={{
+            background: 'linear-gradient(180deg, hsl(25 30% 16%) 0%, hsl(280 20% 14%) 60%, hsl(220 25% 13%) 100%)'
+          }}
+        >
+          {/* Warm glow effect */}
+          <div 
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background: 'radial-gradient(ellipse 80% 60% at 50% 40%, hsl(35 55% 40% / 0.25) 0%, transparent 60%)'
+            }}
+          />
+          
+          {/* Vignette */}
+          <div 
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background: 'radial-gradient(ellipse at center, transparent 40%, hsl(220 30% 8% / 0.4) 100%)'
+            }}
+          />
+
+          <div className="relative z-10 max-w-lg mx-auto text-center">
+            {/* Headline */}
+            <h3 
+              className="text-3xl md:text-4xl lg:text-5xl font-serif font-semibold mb-4 animate-fade-up"
+              style={{ color: 'hsl(40 40% 92%)' }}
+            >
               {c.emailCapture.headline}
             </h3>
-            <p className="text-lg text-muted-foreground">
+            
+            {/* Subheadline */}
+            <p 
+              className="text-lg md:text-xl font-light mb-3 animate-fade-up"
+              style={{ color: 'hsl(35 30% 75%)', animationDelay: '100ms' }}
+            >
               {c.emailCapture.subheadline}
             </p>
-          </div>
-
-          {/* Bullet Points */}
-          <ul className="mt-6 space-y-3">
-            {c.emailCapture.bullets.map((bullet, index) => (
-              <li key={index} className="flex items-center gap-3 text-muted-foreground">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
-                {bullet}
-              </li>
-            ))}
-          </ul>
-
-          {/* Email Form */}
-          <form onSubmit={handleEmailSubmit} className="mt-8 space-y-4">
-            <Input
-              type="email"
-              placeholder={language === 'nl' ? 'Je e-mailadres' : 'Your email address'}
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="h-12 text-base"
-              required
-            />
-            <Button 
-              type="submit" 
-              className="w-full btn-primary h-12 text-base"
-              disabled={isSubmitting}
+            
+            {/* Note */}
+            <p 
+              className="text-sm mb-10 animate-fade-up"
+              style={{ color: 'hsl(35 20% 55%)', animationDelay: '150ms' }}
             >
-              {isSubmitting 
-                ? (language === 'nl' ? 'Bezig...' : 'Loading...') 
-                : c.emailCapture.cta
-              }
-            </Button>
-          </form>
+              {c.emailCapture.note}
+            </p>
 
-          {/* Privacy Micro-copy */}
-          <p className="text-center text-sm text-muted-foreground mt-4">
-            {c.emailCapture.privacy}
-          </p>
+            {/* Form Card */}
+            <div 
+              className="backdrop-blur-sm rounded-2xl p-8 md:p-10 animate-fade-up"
+              style={{ 
+                background: 'hsl(30 20% 98% / 0.06)',
+                border: '1px solid hsl(35 30% 50% / 0.15)',
+                boxShadow: '0 20px 50px -15px hsl(0 0% 0% / 0.3), inset 0 1px 0 0 hsl(35 40% 60% / 0.1)',
+                animationDelay: '200ms'
+              }}
+            >
+              <form onSubmit={handleEmailSubmit} className="space-y-5">
+                <Input
+                  type="email"
+                  placeholder={language === 'nl' ? 'Je e-mailadres' : 'Your email address'}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="h-14 text-base rounded-xl border-0 text-foreground placeholder:text-muted-foreground/60"
+                  style={{ 
+                    background: 'hsl(40 30% 97%)',
+                    boxShadow: 'inset 0 2px 4px hsl(0 0% 0% / 0.05)'
+                  }}
+                  required
+                />
+                <Button 
+                  type="submit" 
+                  className="w-full h-14 text-base font-medium rounded-xl transition-all duration-300"
+                  style={{
+                    background: 'linear-gradient(135deg, hsl(165 25% 50%) 0%, hsl(165 30% 42%) 100%)',
+                    color: 'hsl(40 33% 97%)',
+                    boxShadow: '0 4px 15px -3px hsl(165 30% 40% / 0.4)'
+                  }}
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting 
+                    ? (language === 'nl' ? 'Bezig...' : 'Saving...') 
+                    : c.emailCapture.cta
+                  }
+                </Button>
+              </form>
+            </div>
+
+            {/* Privacy */}
+            <p 
+              className="text-sm mt-6 animate-fade-up"
+              style={{ color: 'hsl(35 15% 45%)', animationDelay: '300ms' }}
+            >
+              {c.emailCapture.privacy}
+            </p>
+          </div>
         </div>
       </div>
     </section>
