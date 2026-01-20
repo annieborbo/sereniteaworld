@@ -1,1 +1,4 @@
 project_id = "pzjksquiazfdexedwbdh"
+
+[functions.get-section-analytics]
+verify_jwt = false
