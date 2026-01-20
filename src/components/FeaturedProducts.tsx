@@ -7,7 +7,7 @@ import { useSectionTracking } from '@/hooks/useSectionTracking';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
 import { Check } from 'lucide-react';
-import productsHero from '@/assets/products-hero.jpg';
+import heroBg from '@/assets/hero-bg.jpg';
 
 export const FeaturedProducts = () => {
   const { language } = useLanguage();
@@ -80,78 +80,65 @@ export const FeaturedProducts = () => {
   };
 
   return (
-    <section ref={sectionRef} id="featured" className="py-16 md:py-20 bg-muted/30">
-      <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center max-w-6xl mx-auto">
+    <section ref={sectionRef} id="featured" className="relative py-20 md:py-28 overflow-hidden">
+      {/* Background Image - similar to hero */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${heroBg})` }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-background/60 to-background/40" />
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
+        <div id="waitlist" className="max-w-2xl animate-fade-up">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-semibold text-foreground leading-tight mb-6">
+            {c.headline}
+          </h2>
           
-          {/* Left: Image */}
-          <div className="relative animate-fade-up order-2 lg:order-1">
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-primary/10">
-              <img
-                src={productsHero}
-                alt="Serenitea buckwheat tea"
-                className="w-full h-auto object-cover"
+          <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-8">
+            {c.subheadline}
+          </p>
+
+          {/* Bullet Points */}
+          <ul className="space-y-3 mb-8">
+            {c.bullets.map((bullet, index) => (
+              <li key={index} className="flex items-center gap-3 text-foreground">
+                <span className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center">
+                  <Check className="w-3.5 h-3.5 text-primary" />
+                </span>
+                <span className="text-base md:text-lg">{bullet}</span>
+              </li>
+            ))}
+          </ul>
+
+          {/* Email Form */}
+          <form onSubmit={handleEmailSubmit} className="mb-4">
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Input
+                type="email"
+                placeholder={c.placeholder}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="h-14 text-base flex-1 rounded-full px-6 bg-background/80 backdrop-blur-sm border-border/60 focus:border-primary"
+                required
               />
-              {/* Subtle overlay gradient */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent" />
+              <Button 
+                type="submit" 
+                className="btn-primary h-14 px-10 text-base rounded-full whitespace-nowrap shadow-lg shadow-primary/20"
+                disabled={isSubmitting}
+              >
+                {isSubmitting 
+                  ? (language === 'nl' ? 'Bezig...' : 'Loading...') 
+                  : c.cta
+                }
+              </Button>
             </div>
-            
-            {/* Decorative elements */}
-            <div className="absolute -top-4 -right-4 w-24 h-24 bg-primary/10 rounded-full blur-2xl" />
-            <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-secondary/20 rounded-full blur-3xl" />
-          </div>
+          </form>
 
-          {/* Right: Content */}
-          <div id="waitlist" className="space-y-6 order-1 lg:order-2 animate-fade-up" style={{ animationDelay: '100ms' }}>
-            <h2 className="text-4xl md:text-5xl font-serif font-semibold text-foreground leading-tight">
-              {c.headline}
-            </h2>
-            
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              {c.subheadline}
-            </p>
-
-            {/* Bullet Points */}
-            <ul className="space-y-3 pt-2">
-              {c.bullets.map((bullet, index) => (
-                <li key={index} className="flex items-center gap-3 text-foreground/80">
-                  <span className="flex-shrink-0 w-5 h-5 rounded-full bg-primary/15 flex items-center justify-center">
-                    <Check className="w-3 h-3 text-primary" />
-                  </span>
-                  {bullet}
-                </li>
-              ))}
-            </ul>
-
-            {/* Email Form */}
-            <form onSubmit={handleEmailSubmit} className="pt-4">
-              <div className="flex flex-col sm:flex-row gap-3">
-                <Input
-                  type="email"
-                  placeholder={c.placeholder}
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="h-12 text-base flex-1 rounded-full px-5 border-border/60 focus:border-primary"
-                  required
-                />
-                <Button 
-                  type="submit" 
-                  className="btn-primary h-12 px-8 text-base rounded-full whitespace-nowrap"
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting 
-                    ? (language === 'nl' ? 'Bezig...' : 'Loading...') 
-                    : c.cta
-                  }
-                </Button>
-              </div>
-            </form>
-
-            {/* Privacy Micro-copy */}
-            <p className="text-sm text-muted-foreground">
-              {c.privacy}
-            </p>
-          </div>
+          {/* Privacy Micro-copy */}
+          <p className="text-sm text-muted-foreground">
+            {c.privacy}
+          </p>
         </div>
       </div>
     </section>
