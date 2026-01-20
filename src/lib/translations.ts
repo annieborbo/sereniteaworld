@@ -19,7 +19,7 @@ export const translations = {
       title2: "without",
       title3: "caffeine.",
       description:
-        "Gently roasted buckwheat tea with a nutty, slightly sweet taste. For the evening. For yourself. For any moment you don't want caffeine.",
+        "Gently roasted buckwheat tea with a nutty, slightly sweet taste. For the moments when you still want something warm but no caffeine, alcohol or sugar.",
       joinWaitlist: "Join the waitlist",
       microCopy: "Get early access + an exclusive launch discount",
       learnMore: "Learn More",
@@ -241,7 +241,7 @@ export const translations = {
       title2: "zonder",
       title3: "cafeïne.",
       description:
-        "Zacht geroosterde boekweit thee met een nootachtige, licht zoete smaak. Voor de avond. Voor jezelf. Voor elk moment dat je geen cafeïne wilt.",
+        "Zacht geroosterde boekweit thee met een nootachtige, licht zoete smaak. Voor de momenten waarop je nog iets warms wilt maar geen cafeïne, alcohol of suiker.",
       joinWaitlist: "Schrijf je in op de wachtlijst",
       microCopy: "Ontvang vroege toegang + een exclusieve lanceringskorting",
       learnMore: "Meer Leren",
