@@ -32,11 +32,6 @@ export const Header = () => {
           : 'bg-transparent py-5'
       }`}
     >
-      {/* Announcement Bar */}
-      <div className={`bg-primary text-primary-foreground text-center py-2 text-sm font-medium transition-all duration-300 ${isScrolled ? 'h-0 py-0 overflow-hidden opacity-0' : 'opacity-100'}`}>
-        {t.header.announcement}
-      </div>
-
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
