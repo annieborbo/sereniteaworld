@@ -1,7 +1,6 @@
 import teaBox from '@/assets/tea-box.png';
 import teaPouch from '@/assets/tea-pouch.png';
 import { Button } from '@/components/ui/button';
-import { ShoppingCart } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { trackEvent } from '@/lib/analytics';
 import { useSectionTracking } from '@/hooks/useSectionTracking';
@@ -68,7 +67,6 @@ export const FeaturedProducts = () => {
                     }}
                   >
                     <Button className="w-full btn-primary rounded-xl py-3 flex items-center justify-center gap-2">
-                      <ShoppingCart className="w-4 h-4" />
                       {t.products.addToCart}
                     </Button>
                   </a>
@@ -90,6 +88,11 @@ export const FeaturedProducts = () => {
             </div>
           ))}
         </div>
+
+        {/* Available Note */}
+        <p className="text-center text-sm text-muted-foreground mt-8">
+          {t.products.availableNote}
+        </p>
       </div>
     </section>
   );

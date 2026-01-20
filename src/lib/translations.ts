@@ -19,7 +19,7 @@ export const translations = {
       title2: "without",
       title3: "caffeine.",
       description:
-        "Soft, nutty and slightly sweet in taste. A warm drink for any moment of the day, especially when you want to unwind.",
+        "Gently roasted buckwheat tea with a nutty, slightly sweet taste. For the evening. For yourself. For any moment you don't want caffeine.",
       joinWaitlist: "Join the waitlist",
       microCopy: "Get early access + an exclusive launch discount",
       learnMore: "Learn More",
@@ -33,19 +33,20 @@ export const translations = {
     // Featured Products
     products: {
       subtitle: "Our Collection",
-      title: "Featured Products",
+      title: "Coming Soon",
       description:
         "Discover our carefully curated selection of premium Tartary Buckwheat teas, crafted for moments of pure tranquility.",
-      addToCart: "Add to Cart",
+      addToCart: "Join the waitlist",
       viewAll: "View All Products",
+      availableNote: "Available at our official launch",
       items: {
         box: {
-          name: "Tartary Buckwheat Tea Box",
-          description: "15 individually wrapped tea bags. Convenient, mess-free",
+          name: "Tartary Buckwheat Tea – Tea Bags",
+          description: "Convenient, quick and mess-free.",
         },
         pouch: {
-          name: "Tartary Buckwheat Tea Pouch",
-          description: "100g of loose buckwheat seeds. Less packaging waste, more control over brewing",
+          name: "Tartary Buckwheat Tea – Loose Tea",
+          description: "For those who like to brew themselves and want control over strength and taste.",
         },
         set: {
           name: "Tea Discovery Set",
@@ -198,7 +199,7 @@ export const translations = {
     },
     // Footer
     footer: {
-      brand: "Bringing you the finest Tartary Buckwheat tea for moments of pure serenity and wellness.",
+      brand: "Serenitea – for moments without caffeine",
       quickLinks: "Quick Links",
       links: {
         shopAll: "Shop All",
@@ -240,7 +241,7 @@ export const translations = {
       title2: "zonder",
       title3: "cafeïne.",
       description:
-        "Zacht, nootachtig en licht zoet van smaak. Een warme drank voor elk moment van de dag, vooral wanneer je tot rust wilt komen.",
+        "Zacht geroosterde boekweit thee met een nootachtige, licht zoete smaak. Voor de avond. Voor jezelf. Voor elk moment dat je geen cafeïne wilt.",
       joinWaitlist: "Schrijf je in op de wachtlijst",
       microCopy: "Ontvang vroege toegang + een exclusieve lanceringskorting",
       learnMore: "Meer Leren",
@@ -254,19 +255,20 @@ export const translations = {
     // Featured Products
     products: {
       subtitle: "Onze Collectie",
-      title: "Uitgelichte Producten",
+      title: "Binnenkort verkrijgbaar",
       description:
         "Ontdek onze zorgvuldig samengestelde selectie van premium Tartaarse Boekweitthee, gemaakt voor momenten van pure rust.",
-      addToCart: "In Winkelwagen",
+      addToCart: "Meld je aan voor de wachtlijst",
       viewAll: "Bekijk Alle Producten",
+      availableNote: "Beschikbaar bij onze officiële lancering",
       items: {
         box: {
-          name: "Tartaarse Boekweitthee Doos",
-          description: "15 individueel verpakte theezakjes. Handig, geen rommel",
+          name: "Tataarse boekweit thee – theezakjes",
+          description: "Handig, snel en zonder rommel.",
         },
         pouch: {
-          name: "Tartaarse Boekweitthee Zak",
-          description: "100g losse boekweitzaden. Minder verpakkingsafval, meer controle over het zetten",
+          name: "Tataarse boekweit thee – losse thee",
+          description: "Voor wie graag zelf zet en controle wil over sterkte en smaak.",
         },
         set: {
           name: "Thee Ontdekkingsset",
@@ -419,7 +421,7 @@ export const translations = {
     },
     // Footer
     footer: {
-      brand: "Wij brengen u de beste Tartaarse Boekweitthee voor momenten van pure sereniteit en welzijn.",
+      brand: "Serenitea – voor momenten zonder cafeïne",
       quickLinks: "Snelle Links",
       links: {
         shopAll: "Alle Producten",
