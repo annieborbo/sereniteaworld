@@ -108,6 +108,17 @@ export const translations = {
         customers: "Happy Customers",
       },
     },
+    // When Serenitea Fits Best
+    whenFitsBest: {
+      title: "For moments that call for calm",
+      items: [
+        "In the evening, after a long day",
+        "After putting the kids to bed",
+        "When you want something warm without caffeine",
+        "As an alternative to coffee, soda or alcohol",
+        "When you consciously choose rest",
+      ],
+    },
     // Testimonials
     testimonials: {
       subtitle: "Experiences",
@@ -148,16 +159,6 @@ export const translations = {
           question: "When is the best time to drink buckwheat tea – morning, afternoon, or evening?",
           answer:
             "Our buckwheat teas can be consumed at any time because they are caffeine-free, so you can even drink them in the evening without disturbing your sleep. They're perfect as a refreshing drink in the morning or as a light beverage during the day.",
-        },
-        {
-          question: "How much tea is recommended per day?",
-          answer:
-            "There is no specific limit, but 2-3 cups per day is ideal. However, be mindful of excessive fluid intake to avoid overloading the kidneys.",
-        },
-        {
-          question: "Can it be consumed on an empty stomach?",
-          answer:
-            "Yes, our buckwheat teas can be consumed on an empty stomach as they are gentle on the digestive system. If you have a sensitive stomach, try it out to see if you tolerate it well.",
         },
         {
           question: "Can people with allergies (e.g., gluten intolerance) drink Serenitea?",
@@ -330,6 +331,17 @@ export const translations = {
         customers: "Tevreden Klanten",
       },
     },
+    // When Serenitea Fits Best
+    whenFitsBest: {
+      title: "Voor momenten die om rust vragen",
+      items: [
+        "In de avond, na een lange dag",
+        "Na het naar bed brengen van de kinderen",
+        "Als je iets warms wilt zonder cafeïne",
+        "Als alternatief voor koffie, iets fris of alcohol",
+        "Wanneer je bewust kiest voor rust",
+      ],
+    },
     // Testimonials
     testimonials: {
       subtitle: "Ervaringen",
@@ -370,16 +382,6 @@ export const translations = {
           question: "Wat is het beste moment om boekweitthee te drinken – 's ochtends, 's middags of 's avonds?",
           answer:
             "Onze boekweitthee kan op elk moment worden gedronken omdat deze cafeïnevrij is, dus u kunt deze zelfs 's avonds drinken zonder uw slaap te verstoren. Perfect als verfrissend drankje in de ochtend of als licht drankje overdag.",
-        },
-        {
-          question: "Hoeveel thee wordt aanbevolen per dag?",
-          answer:
-            "Er is geen specifieke limiet, maar 2-3 kopjes per dag is ideaal. Let wel op overmatige vochtinname om de nieren niet te overbelasten.",
-        },
-        {
-          question: "Kan het op een lege maag worden gedronken?",
-          answer:
-            "Ja, onze boekweitthee kan op een lege maag worden gedronken omdat deze zacht is voor het spijsverteringsstelsel. Als u een gevoelige maag heeft, probeer het uit om te zien of u het goed verdraagt.",
         },
         {
           question: "Kunnen mensen met allergieën (bijv. glutenintolerantie) Serenitea drinken?",

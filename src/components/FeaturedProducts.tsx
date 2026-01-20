@@ -171,10 +171,6 @@ export const FeaturedProducts = () => {
           ))}
         </div>
 
-        {/* Available Note */}
-        <p className="text-center text-sm text-muted-foreground mt-8 mb-16">
-          {c.availableNote}
-        </p>
 
         {/* Email Capture Section */}
         <div className="max-w-xl mx-auto bg-card border border-border rounded-2xl p-8 md:p-10 shadow-lg animate-fade-up">
