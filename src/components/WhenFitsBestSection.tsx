@@ -1,9 +1,10 @@
 import { useLanguage } from '@/contexts/LanguageContext';
+import { Button } from '@/components/ui/button';
 import { useSectionTracking } from '@/hooks/useSectionTracking';
 import { Moon, Heart, Coffee, Wine, Sparkles } from 'lucide-react';
 
 export const WhenFitsBestSection = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const sectionRef = useSectionTracking('when-fits-best');
 
   const icons = [Moon, Heart, Coffee, Wine, Sparkles];
@@ -17,12 +18,9 @@ export const WhenFitsBestSection = () => {
       </div>
 
       <div className="container mx-auto px-4 max-w-4xl relative z-10">
-        <div className="text-center mb-14 animate-fade-up">
-          <span className="inline-block px-4 py-1.5 bg-primary/10 text-primary text-sm font-medium rounded-full mb-4">
-            ✨ Serenitea
-          </span>
-          <h2 className="font-serif text-3xl md:text-5xl text-foreground leading-tight">
-            {t.whenFitsBest.title}
+      <div className="text-center mb-14 animate-fade-up">
+          <h2 className="text-4xl md:text-5xl font-serif font-semibold text-foreground">
+            {language === 'nl' ? 'Wanneer mensen voor Serenitea kiezen' : 'When people choose Serenitea'}
           </h2>
         </div>
 
@@ -49,6 +47,15 @@ export const WhenFitsBestSection = () => {
               </div>
             );
           })}
+        </div>
+
+        {/* CTA */}
+        <div className="text-center mt-12 animate-fade-up">
+          <a href="#waitlist">
+            <Button className="btn-primary h-12 px-8 text-base">
+              {language === 'nl' ? 'Ontvang als eerste bericht bij lancering' : 'Be the first to know at launch'}
+            </Button>
+          </a>
         </div>
       </div>
     </section>
