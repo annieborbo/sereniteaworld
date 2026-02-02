@@ -152,7 +152,7 @@ export const FeaturedProducts = () => {
               style={{ animationDelay: `${index * 150}ms` }}
             >
               {/* Image Container */}
-              <div className="relative aspect-square bg-gradient-to-br from-secondary/30 to-muted/50 p-8 overflow-hidden">
+              <div className="relative aspect-[4/5] bg-gradient-to-br from-secondary/30 to-muted/50 p-4 overflow-hidden">
                 <img
                   src={product.image}
                   alt={product.name}
