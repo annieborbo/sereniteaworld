@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import teaBox from '@/assets/tea-box.png';
-import teaPouch from '@/assets/tea-pouch.png';
+import teaBox from '@/assets/tea-box.jpg';
+import teaPouch from '@/assets/tea-pouch.jpg';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useLanguage } from '@/contexts/LanguageContext';
