@@ -22,11 +22,11 @@ export const FeaturedProducts = () => {
       title: "Coming Soon",
       subtitle: "We're starting with a small first batch. Sign up to be the first to order.",
       pouch: {
-        name: "Tartary Buckwheat Tea – Loose Tea",
+        name: "Buckwheat Tea – Loose Tea",
         description: "For those who like to brew themselves and want control over strength and taste."
       },
       box: {
-        name: "Tartary Buckwheat Tea – Tea Bags",
+        name: "Buckwheat Tea – Tea Bags",
         description: "Convenient, quick and mess-free."
       },
       emailCapture: {
@@ -46,11 +46,11 @@ export const FeaturedProducts = () => {
       title: "Binnenkort verkrijgbaar",
       subtitle: "We starten met een kleine eerste batch. Schrijf je in om als eerste te bestellen.",
       pouch: {
-        name: "Tataarse boekweit thee – losse thee",
+        name: "Boekweit thee – losse thee",
         description: "Voor wie graag zelf zet en controle wil over sterkte en smaak."
       },
       box: {
-        name: "Tataarse boekweit thee – theezakjes",
+        name: "Boekweit thee – theezakjes",
         description: "Handig, snel en zonder rommel."
       },
       emailCapture: {
