@@ -36,17 +36,17 @@ export const translations = {
       subtitle: "Our Collection",
       title: "Coming Soon",
       description:
-        "Discover our carefully curated selection of premium Tartary Buckwheat teas, crafted for moments of pure tranquility.",
+        "Discover our carefully curated selection of premium Buckwheat teas, crafted for moments of pure tranquility.",
       addToCart: "Join the waitlist",
       viewAll: "View All Products",
       availableNote: "Available at our official launch",
       items: {
         box: {
-          name: "Tartary Buckwheat Tea – Tea Bags",
+          name: "Buckwheat Tea – Tea Bags",
           description: "Convenient, quick and mess-free.",
         },
         pouch: {
-          name: "Tartary Buckwheat Tea – Loose Tea",
+          name: "Buckwheat Tea – Loose Tea",
           description: "For those who like to brew themselves and want control over strength and taste.",
         },
         set: {
@@ -66,7 +66,7 @@ export const translations = {
       subtitle: "Why Choose Us",
       title: "Health Benefits",
       description:
-        "Tartary Buckwheat has been treasured for centuries in Asian cultures for its remarkable health-promoting properties.",
+        "Buckwheat has been treasured for centuries in Asian cultures for its remarkable health-promoting properties.",
       items: {
         caffeineFree: {
           title: "Caffeine Free",
@@ -96,10 +96,10 @@ export const translations = {
     },
     // About
     about: {
-      subtitle: "What is Tartary Buckwheat Tea?",
-      title1: "What is Tartary",
+      subtitle: "What is Buckwheat Tea?",
+      title1: "What is",
       title2: "Buckwheat Tea?",
-      p1: "Tartary buckwheat tea is a caffeine-free drink made from roasted buckwheat seeds. Despite the name, it contains no wheat and is naturally gluten-free.",
+      p1: "Buckwheat tea is a caffeine-free drink made from roasted buckwheat seeds. Despite the name, it contains no wheat and is naturally gluten-free.",
       p2: "The taste is soft, nutty and slightly sweet, perfect as an alternative to coffee, tea or an evening glass of wine.",
       p3: "",
       joinWaitlist: "Join the waitlist",
@@ -260,17 +260,17 @@ export const translations = {
       subtitle: "Onze Collectie",
       title: "Binnenkort verkrijgbaar",
       description:
-        "Ontdek onze zorgvuldig samengestelde selectie van premium Tartaarse Boekweitthee, gemaakt voor momenten van pure rust.",
+        "Ontdek onze zorgvuldig samengestelde selectie van premium Boekweitthee, gemaakt voor momenten van pure rust.",
       addToCart: "Meld je aan voor de wachtlijst",
       viewAll: "Bekijk Alle Producten",
       availableNote: "Beschikbaar bij onze officiële lancering",
       items: {
         box: {
-          name: "Tataarse boekweit thee – theezakjes",
+          name: "Boekweit thee – theezakjes",
           description: "Handig, snel en zonder rommel.",
         },
         pouch: {
-          name: "Tataarse boekweit thee – losse thee",
+          name: "Boekweit thee – losse thee",
           description: "Voor wie graag zelf zet en controle wil over sterkte en smaak.",
         },
         set: {
@@ -290,7 +290,7 @@ export const translations = {
       subtitle: "Waarom Wij",
       title: "Gezondheidsvoordelen",
       description:
-        "Tartaarse Boekweit wordt al eeuwenlang gekoesterd in Aziatische culturen vanwege zijn opmerkelijke gezondheidsbevorderende eigenschappen.",
+        "Boekweit wordt al eeuwenlang gekoesterd in Aziatische culturen vanwege zijn opmerkelijke gezondheidsbevorderende eigenschappen.",
       items: {
         caffeineFree: {
           title: "Cafeïnevrij",
@@ -320,10 +320,10 @@ export const translations = {
     },
     // About
     about: {
-      subtitle: "Wat is Tataarse Boekweitthee?",
-      title1: "Wat is Tataarse",
+      subtitle: "Wat is Boekweitthee?",
+      title1: "Wat is",
       title2: "Boekweitthee?",
-      p1: "Tataarse boekweit thee is een cafeïnevrije drank gemaakt van geroosterde boekweitzaden. Ondanks de naam bevat het geen tarwe en is het van nature glutenvrij.",
+      p1: "Boekweit thee is een cafeïnevrije drank gemaakt van geroosterde boekweitzaden. Ondanks de naam bevat het geen tarwe en is het van nature glutenvrij.",
       p2: "De smaak is zacht, nootachtig en licht zoet, perfect als alternatief voor koffie, thee of een avondglas wijn.",
       p3: "",
       joinWaitlist: "Schrijf je in op de wachtlijst",
