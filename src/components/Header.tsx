@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
-import { ShoppingCart, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { LanguageToggle } from '@/components/LanguageToggle';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { CartDrawer } from '@/components/CartDrawer';
 
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -59,12 +60,7 @@ export const Header = () => {
             <div className="hidden md:flex">
               <LanguageToggle />
             </div>
-            <a href="/cart" className="relative p-2 hover:bg-muted rounded-full transition-colors">
-              <ShoppingCart className="w-5 h-5 text-foreground/70" />
-              <span className="absolute -top-1 -right-1 bg-accent text-accent-foreground text-xs w-5 h-5 rounded-full flex items-center justify-center font-semibold">
-                0
-              </span>
-            </a>
+            <CartDrawer />
             
             {/* Mobile Menu Button */}
             <button
