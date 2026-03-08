@@ -1,0 +1,12 @@
+{
+  "general": {
+    "add_to_cart": "In winkelwagen",
+    "sold_out": "Uitverkocht",
+    "continue_shopping": "Verder winkelen"
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "In winkelwagen"
+    }
+  }
+}
