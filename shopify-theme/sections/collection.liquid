@@ -1,0 +1,63 @@
+{%- comment -%}
+  Collection section
+{%- endcomment -%}
+
+<section class="collection-section">
+  <div class="container">
+    <div class="text-center" style="margin-bottom: 3rem;">
+      <h1 class="section-title">{{ collection.title }}</h1>
+      {% if collection.description != blank %}
+        <p class="section-subtitle">{{ collection.description }}</p>
+      {% endif %}
+    </div>
+
+    {% if collection.products.size > 0 %}
+      <div class="products-grid">
+        {% for product in collection.products %}
+          <div class="card-product animate-fade-up" style="animation-delay: {{ forloop.index0 | times: 100 }}ms">
+            <a href="{{ product.url }}">
+              <div class="product-image-wrapper">
+                {% if product.featured_image %}
+                  <img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.featured_image.alt | escape }}" class="product-image" loading="lazy">
+                {% else %}
+                  <div class="product-image-placeholder">No image</div>
+                {% endif %}
+              </div>
+            </a>
+            <div class="product-card-body">
+              <a href="{{ product.url }}">
+                <h3 class="product-card-title">{{ product.title }}</h3>
+              </a>
+              <p class="product-card-desc">{{ product.description | strip_html | truncatewords: 20 }}</p>
+              <div class="product-card-footer">
+                <span class="product-card-price">{{ product.price | money }}</span>
+                <form method="post" action="/cart/add">
+                  <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+                  <input type="hidden" name="quantity" value="1">
+                  <button type="submit" class="btn-sm btn-primary">Add to Cart</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      {% if collection.products.size > 12 %}
+        <div class="text-center" style="margin-top: 2rem;">
+          {% render 'pagination', paginate: paginate %}
+        </div>
+      {% endif %}
+    {% else %}
+      <div class="empty-products">
+        <p>No products in this collection yet.</p>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collection",
+  "settings": []
+}
+{% endschema %}

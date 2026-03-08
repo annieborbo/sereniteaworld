@@ -1,0 +1,65 @@
+{%- comment -%}
+  Cart section
+{%- endcomment -%}
+
+<section class="cart-section">
+  <div class="container cart-container">
+    <h1 class="section-title text-center">Shopping Cart</h1>
+
+    {% if cart.item_count == 0 %}
+      <div class="empty-cart">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-muted-fg"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+        <p>Your cart is empty</p>
+        <a href="/" class="btn-primary btn-pill">Continue Shopping</a>
+      </div>
+    {% else %}
+      <form action="/cart" method="post">
+        <div class="cart-items">
+          {% for item in cart.items %}
+            <div class="cart-item">
+              <div class="cart-item-image">
+                {% if item.image %}
+                  <img src="{{ item.image | image_url: width: 120 }}" alt="{{ item.title | escape }}" width="120" height="120">
+                {% endif %}
+              </div>
+              <div class="cart-item-info">
+                <h4><a href="{{ item.url }}">{{ item.product.title }}</a></h4>
+                {% unless item.variant.title == 'Default Title' %}
+                  <p class="text-muted-fg text-sm">{{ item.variant.title }}</p>
+                {% endunless %}
+                <p class="cart-item-price">{{ item.final_price | money }}</p>
+              </div>
+              <div class="cart-item-actions">
+                <a href="/cart/change?id={{ item.key }}&quantity=0" class="cart-remove" aria-label="Remove">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg>
+                </a>
+                <div class="cart-qty">
+                  <a href="/cart/change?id={{ item.key }}&quantity={{ item.quantity | minus: 1 }}" class="qty-btn">−</a>
+                  <span>{{ item.quantity }}</span>
+                  <a href="/cart/change?id={{ item.key }}&quantity={{ item.quantity | plus: 1 }}" class="qty-btn">+</a>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+
+        <div class="cart-footer">
+          <div class="cart-total">
+            <span>Total</span>
+            <span class="cart-total-price">{{ cart.total_price | money }}</span>
+          </div>
+          <button type="submit" name="checkout" class="btn-primary btn-full">
+            Checkout
+          </button>
+        </div>
+      </form>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Cart",
+  "settings": []
+}
+{% endschema %}

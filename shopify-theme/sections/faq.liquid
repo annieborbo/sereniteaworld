@@ -1,0 +1,69 @@
+{%- comment -%}
+  FAQ section with accordion
+{%- endcomment -%}
+
+<section class="faq-section" id="faq">
+  <div class="container faq-container">
+    <div class="text-center">
+      <h2 class="section-title">{{ section.settings.title | default: 'Frequently Asked Questions' }}</h2>
+    </div>
+
+    <div class="faq-list">
+      {% for block in section.blocks %}
+        <details class="faq-item" {{ block.shopify_attributes }}>
+          <summary class="faq-question">
+            <span>{{ block.settings.question }}</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-chevron"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="faq-answer">
+            <p>{{ block.settings.answer }}</p>
+          </div>
+        </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "FAQ",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Frequently Asked Questions"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "question",
+      "name": "Question",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Answer"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ",
+      "blocks": [
+        { "type": "question", "settings": { "question": "Is it safe to drink Serenitea during pregnancy or breastfeeding?", "answer": "Our buckwheat teas are caffeine-free and generally considered safe during pregnancy and breastfeeding since they are made from 100% natural ingredients and contain no artificial additives. However, we always recommend consulting with your healthcare provider." } },
+        { "type": "question", "settings": { "question": "Can children drink Serenitea?", "answer": "Yes, children can drink our caffeine-free buckwheat teas as they are natural beverages with no added sugars or artificial ingredients." } },
+        { "type": "question", "settings": { "question": "When is the best time to drink buckwheat tea?", "answer": "Our buckwheat teas can be consumed at any time because they are caffeine-free, so you can even drink them in the evening without disturbing your sleep." } },
+        { "type": "question", "settings": { "question": "Can people with gluten intolerance drink Serenitea?", "answer": "Our buckwheat teas are naturally gluten-free and suitable for people with gluten intolerance." } },
+        { "type": "question", "settings": { "question": "Can Serenitea be consumed cold?", "answer": "Yes, our teas are also very delicious cold! Simply let your brewed tea cool, then place it in the fridge or add ice for a refreshing iced tea experience." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

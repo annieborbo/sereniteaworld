@@ -1,0 +1,108 @@
+{%- comment -%}
+  When Fits Best section – Bento grid with lifestyle moments
+{%- endcomment -%}
+
+<section class="when-fits-best-section" id="when-fits-best">
+  <div class="ambient-blob ambient-blob-left"></div>
+  <div class="ambient-blob ambient-blob-right"></div>
+
+  <div class="container when-fits-best-inner">
+    <div class="text-center animate-fade-up">
+      <h2 class="section-title">{{ section.settings.title | default: 'When people choose Serenitea' }}</h2>
+    </div>
+
+    <div class="bento-grid">
+      {% for block in section.blocks %}
+        <div class="bento-card bento-{{ block.settings.size }} animate-fade-up" style="animation-delay: {{ forloop.index0 | times: 100 }}ms" {{ block.shopify_attributes }}>
+          {% if block.settings.image %}
+            <img src="{{ block.settings.image | image_url: width: 800 }}" alt="{{ block.settings.title | escape }}" class="bento-image" loading="lazy">
+          {% endif %}
+          <div class="bento-gradient"></div>
+          <div class="bento-glow"></div>
+          <div class="bento-content">
+            <div class="bento-text">
+              <h3 class="bento-title">{{ block.settings.title }}</h3>
+              <p class="bento-subtitle">{{ block.settings.subtitle }}</p>
+            </div>
+          </div>
+          <div class="bento-ring"></div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="text-center" style="margin-top: 3.5rem;">
+      <a href="#waitlist" class="btn-primary btn-pill animate-fade-up" style="animation-delay: 500ms">
+        {{ section.settings.cta_text | default: 'Be the first to know at launch' }}
+      </a>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "When Fits Best",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "When people choose Serenitea"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA text",
+      "default": "Be the first to know at launch"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "moment",
+      "name": "Moment",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "After a long day"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle",
+          "default": "Finally, a quiet moment"
+        },
+        {
+          "type": "select",
+          "id": "size",
+          "label": "Card size",
+          "options": [
+            { "value": "large", "label": "Large (2x2)" },
+            { "value": "medium", "label": "Medium (1x1)" },
+            { "value": "tall", "label": "Tall (1x2)" },
+            { "value": "small", "label": "Small (1x1)" }
+          ],
+          "default": "medium"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "When Fits Best",
+      "blocks": [
+        { "type": "moment", "settings": { "title": "After a long day", "subtitle": "Finally, a quiet moment", "size": "large" } },
+        { "type": "moment", "settings": { "title": "Kids are asleep", "subtitle": "Time for yourself", "size": "medium" } },
+        { "type": "moment", "settings": { "title": "Something warm, no caffeine", "subtitle": "Warmth without the buzz", "size": "tall" } },
+        { "type": "moment", "settings": { "title": "Instead of coffee or wine", "subtitle": "A mindful alternative", "size": "medium" } },
+        { "type": "moment", "settings": { "title": "Choosing rest", "subtitle": "A moment of stillness", "size": "small" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

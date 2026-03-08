@@ -1,0 +1,126 @@
+{%- comment -%}
+  Email Capture / Waitlist section
+{%- endcomment -%}
+
+<section class="email-capture-section" id="waitlist">
+  {% if section.settings.background_image %}
+    <div class="email-capture-bg">
+      <img src="{{ section.settings.background_image | image_url: width: 1920 }}" alt="" class="email-capture-bg-img" loading="lazy">
+      <div class="email-capture-overlay"></div>
+    </div>
+  {% endif %}
+  <div class="email-capture-fade-top"></div>
+  <div class="email-capture-fade-bottom"></div>
+
+  <div class="container email-capture-inner animate-fade-up">
+    <h3 class="email-capture-title">{{ section.settings.title | default: "We're launching soon" }}</h3>
+    <p class="email-capture-desc">{{ section.settings.description | default: "Be the first to experience Serenitea. Sign up for early access and an exclusive launch discount." }}</p>
+
+    <ul class="email-capture-bullets">
+      {% for block in section.blocks %}
+        <li {{ block.shopify_attributes }}>
+          <span class="bullet-check">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </span>
+          <span>{{ block.settings.text }}</span>
+        </li>
+      {% endfor %}
+    </ul>
+
+    {%- comment -%} Shopify Customer form for email capture {%- endcomment -%}
+    {% form 'customer', id: 'waitlist-form' %}
+      {% if form.posted_successfully? %}
+        <p class="form-success">{{ section.settings.success_message | default: "You're signed up!" }}</p>
+      {% endif %}
+      {{ form.errors | default_errors }}
+      <input type="hidden" name="contact[tags]" value="waitlist">
+      <div class="email-capture-form">
+        <input
+          type="email"
+          name="contact[email]"
+          placeholder="{{ section.settings.placeholder | default: 'Enter your email' }}"
+          class="email-input"
+          required
+          autocomplete="email"
+        >
+        <button type="submit" class="btn-primary btn-pill email-submit-btn">
+          {{ section.settings.cta_text | default: 'Sign up for early access' }}
+        </button>
+      </div>
+    {% endform %}
+
+    <p class="email-capture-privacy">{{ section.settings.privacy_text | default: 'No spam. Unsubscribe anytime.' }}</p>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Email Capture",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "We're launching soon"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Be the first to experience Serenitea. Sign up for early access and an exclusive launch discount."
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Button text",
+      "default": "Sign up for early access"
+    },
+    {
+      "type": "text",
+      "id": "placeholder",
+      "label": "Email placeholder",
+      "default": "Enter your email"
+    },
+    {
+      "type": "text",
+      "id": "privacy_text",
+      "label": "Privacy text",
+      "default": "No spam. Unsubscribe anytime."
+    },
+    {
+      "type": "text",
+      "id": "success_message",
+      "label": "Success message",
+      "default": "You're signed up!"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "bullet",
+      "name": "Bullet point",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Bullet text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Email Capture",
+      "blocks": [
+        { "type": "bullet", "settings": { "text": "Early access to the launch" } },
+        { "type": "bullet", "settings": { "text": "Exclusive launch discount" } },
+        { "type": "bullet", "settings": { "text": "Maximum 1–2 emails per month" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

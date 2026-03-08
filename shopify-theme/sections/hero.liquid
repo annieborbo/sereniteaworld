@@ -1,0 +1,90 @@
+{%- comment -%}
+  Hero section with background image and waitlist CTA
+{%- endcomment -%}
+
+<section class="hero-section" id="hero">
+  <div class="hero-bg">
+    {% if section.settings.background_image %}
+      <img src="{{ section.settings.background_image | image_url: width: 1920 }}" alt="" class="hero-bg-img" loading="eager">
+    {% endif %}
+    <div class="hero-overlay"></div>
+  </div>
+
+  <div class="container hero-content">
+    <div class="hero-text animate-fade-up">
+      <h1 class="hero-title">
+        {{ section.settings.title_line1 | default: 'A calm moment,' }}<br>
+        <span class="text-primary">{{ section.settings.title_line2 | default: 'without' }}</span><br>
+        {{ section.settings.title_line3 | default: 'caffeine.' }}
+      </h1>
+
+      <p class="hero-description">
+        {{ section.settings.description | default: 'Gently roasted buckwheat tea with a nutty, slightly sweet taste. For the moments when you still want something warm but no caffeine, alcohol or sugar.' }}
+      </p>
+
+      <div class="hero-cta">
+        <a href="#waitlist" class="btn-hero">
+          {{ section.settings.cta_text | default: 'Join the waitlist' }}
+        </a>
+      </div>
+
+      <p class="hero-microcopy">
+        {{ section.settings.microcopy | default: 'Get early access + an exclusive launch discount' }}
+      </p>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image"
+    },
+    {
+      "type": "text",
+      "id": "title_line1",
+      "label": "Title line 1",
+      "default": "A calm moment,"
+    },
+    {
+      "type": "text",
+      "id": "title_line2",
+      "label": "Title line 2 (colored)",
+      "default": "without"
+    },
+    {
+      "type": "text",
+      "id": "title_line3",
+      "label": "Title line 3",
+      "default": "caffeine."
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Gently roasted buckwheat tea with a nutty, slightly sweet taste. For the moments when you still want something warm but no caffeine, alcohol or sugar."
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA button text",
+      "default": "Join the waitlist"
+    },
+    {
+      "type": "text",
+      "id": "microcopy",
+      "label": "Micro-copy under CTA",
+      "default": "Get early access + an exclusive launch discount"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero"
+    }
+  ]
+}
+{% endschema %}
