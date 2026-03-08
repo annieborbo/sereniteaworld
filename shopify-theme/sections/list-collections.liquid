@@ -1,0 +1,29 @@
+<section class="collection-section">
+  <div class="container">
+    <h1 class="section-title text-center">Collections</h1>
+    <div class="products-grid" style="margin-top: 2rem;">
+      {% for collection in collections %}
+        {% if collection.products.size > 0 %}
+          <div class="card-product animate-fade-up">
+            <a href="{{ collection.url }}">
+              {% if collection.image %}
+                <img src="{{ collection.image | image_url: width: 600 }}" alt="{{ collection.title | escape }}" class="product-image" loading="lazy">
+              {% endif %}
+              <div class="product-card-body">
+                <h3 class="product-card-title">{{ collection.title }}</h3>
+                <p class="product-card-desc">{{ collection.description | strip_html | truncatewords: 20 }}</p>
+              </div>
+            </a>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collection List",
+  "settings": []
+}
+{% endschema %}
