@@ -1,0 +1,43 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {}
+    },
+    "about": {
+      "type": "about",
+      "settings": {}
+    },
+    "featured-products": {
+      "type": "featured-products",
+      "settings": {
+        "products_to_show": 6
+      }
+    },
+    "when-fits-best": {
+      "type": "when-fits-best",
+      "settings": {}
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "settings": {}
+    },
+    "faq": {
+      "type": "faq",
+      "settings": {}
+    },
+    "email-capture": {
+      "type": "email-capture",
+      "settings": {}
+    }
+  },
+  "order": [
+    "hero",
+    "about",
+    "featured-products",
+    "when-fits-best",
+    "testimonials",
+    "faq",
+    "email-capture"
+  ]
+}
