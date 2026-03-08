@@ -1,0 +1,95 @@
+{%- comment -%}
+  Product detail section
+{%- endcomment -%}
+
+{% assign current_variant = product.selected_or_first_available_variant %}
+
+<section class="product-detail-section">
+  <div class="container">
+    <div class="product-detail-grid">
+      {%- comment -%} Images {%- endcomment -%}
+      <div class="product-images">
+        {% for image in product.images %}
+          <div class="product-image-slide {% if forloop.first %}active{% endif %}">
+            <img
+              src="{{ image | image_url: width: 800 }}"
+              alt="{{ image.alt | escape | default: product.title }}"
+              loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
+              width="800"
+              height="800"
+            >
+          </div>
+        {% endfor %}
+        {% if product.images.size > 1 %}
+          <div class="product-thumbnails">
+            {% for image in product.images %}
+              <button class="product-thumb {% if forloop.first %}active{% endif %}" data-index="{{ forloop.index0 }}">
+                <img src="{{ image | image_url: width: 100 }}" alt="{{ image.alt | escape }}" width="100" height="100">
+              </button>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+
+      {%- comment -%} Info {%- endcomment -%}
+      <div class="product-info">
+        <h1 class="product-title">{{ product.title }}</h1>
+        <p class="product-price" id="product-price">{{ current_variant.price | money }}</p>
+
+        {% unless product.has_only_default_variant %}
+          {% for option in product.options_with_values %}
+            <div class="product-option">
+              <label class="option-label">{{ option.name }}</label>
+              <div class="option-values">
+                {% for value in option.values %}
+                  <button
+                    class="option-btn {% if option.selected_value == value %}active{% endif %}"
+                    data-option-index="{{ forloop.parentloop.index0 }}"
+                    data-value="{{ value }}"
+                  >
+                    {{ value }}
+                  </button>
+                {% endfor %}
+              </div>
+            </div>
+          {% endfor %}
+        {% endunless %}
+
+        <form method="post" action="/cart/add" id="product-form">
+          <input type="hidden" name="id" value="{{ current_variant.id }}" id="variant-id">
+          <div class="quantity-selector">
+            <button type="button" class="qty-btn" onclick="changeQty(-1)">−</button>
+            <input type="number" name="quantity" value="1" min="1" id="qty-input" class="qty-input" readonly>
+            <button type="button" class="qty-btn" onclick="changeQty(1)">+</button>
+          </div>
+          <button type="submit" class="btn-primary btn-full" {% unless current_variant.available %}disabled{% endunless %}>
+            {% if current_variant.available %}
+              Add to Cart – {{ current_variant.price | money }}
+            {% else %}
+              Sold Out
+            {% endif %}
+          </button>
+        </form>
+
+        <div class="product-description">
+          {{ product.description }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+function changeQty(delta) {
+  var input = document.getElementById('qty-input');
+  var val = parseInt(input.value) + delta;
+  if (val >= 1) input.value = val;
+}
+</script>
+
+{% schema %}
+{
+  "name": "Product Detail",
+  "settings": []
+}
+{% endschema %}

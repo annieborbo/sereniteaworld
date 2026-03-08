@@ -1,0 +1,72 @@
+{%- comment -%}
+  Footer section
+{%- endcomment -%}
+
+<footer class="site-footer">
+  <div class="container">
+    {%- comment -%} Top: Language & Payment {%- endcomment -%}
+    <div class="footer-top">
+      <div class="footer-top-left">
+        {% if shop.published_locales.size > 1 %}
+          <div class="footer-language">
+            <span class="footer-label">Language</span>
+            {% render 'language-selector' %}
+          </div>
+        {% endif %}
+        {% if section.settings.instagram_url != blank %}
+          <a href="{{ section.settings.instagram_url }}" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+          </a>
+        {% endif %}
+      </div>
+
+      <div class="footer-payment-icons">
+        {%- for type in shop.enabled_payment_types -%}
+          {{ type | payment_type_svg_tag }}
+        {%- endfor -%}
+      </div>
+    </div>
+
+    {%- comment -%} Brand {%- endcomment -%}
+    <div class="footer-brand">
+      <p>{{ section.settings.brand_line | default: 'Serenitea – for moments without caffeine' }}</p>
+    </div>
+
+    {%- comment -%} Bottom: Copyright & Links {%- endcomment -%}
+    <div class="footer-bottom">
+      <div class="footer-legal">
+        <span>© {{ 'now' | date: '%Y' }}, {{ shop.name }}</span>
+        {% for link in section.settings.policy_menu.links %}
+          <span class="footer-divider">·</span>
+          <a href="{{ link.url }}">{{ link.title }}</a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "text",
+      "id": "brand_line",
+      "label": "Brand tagline",
+      "default": "Serenitea – for moments without caffeine"
+    },
+    {
+      "type": "text",
+      "id": "instagram_url",
+      "label": "Instagram URL",
+      "default": "https://instagram.com"
+    },
+    {
+      "type": "link_list",
+      "id": "policy_menu",
+      "label": "Policy links menu",
+      "default": "footer"
+    }
+  ]
+}
+{% endschema %}

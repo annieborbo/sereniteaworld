@@ -1,0 +1,13 @@
+{
+  "current": {
+    "sections": {
+      "header": {
+        "menu": "main-menu"
+      },
+      "footer": {
+        "brand_line": "Serenitea – for moments without caffeine",
+        "instagram_url": "https://instagram.com"
+      }
+    }
+  }
+}

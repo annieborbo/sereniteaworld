@@ -1,0 +1,72 @@
+{%- comment -%}
+  Header section – fixed navigation with scroll effect
+{%- endcomment -%}
+
+<header id="site-header" class="site-header" data-section-id="{{ section.id }}">
+  <div class="container">
+    <div class="header-inner">
+      {%- comment -%} Logo {%- endcomment -%}
+      <a href="/" class="header-logo">
+        <h1 class="logo-text">{{ shop.name }}</h1>
+      </a>
+
+      {%- comment -%} Desktop Nav {%- endcomment -%}
+      <nav class="header-nav desktop-only">
+        {% for link in section.settings.menu.links %}
+          <a href="{{ link.url }}" class="nav-link">{{ link.title }}</a>
+        {% endfor %}
+      </nav>
+
+      {%- comment -%} Right Actions {%- endcomment -%}
+      <div class="header-actions">
+        {%- comment -%} Language Selector {%- endcomment -%}
+        {% if shop.published_locales.size > 1 %}
+        <div class="desktop-only">
+          {% render 'language-selector' %}
+        </div>
+        {% endif %}
+
+        {%- comment -%} Cart {%- endcomment -%}
+        <a href="/cart" class="cart-icon-link" aria-label="Cart">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+          {% if cart.item_count > 0 %}
+            <span class="cart-count">{{ cart.item_count }}</span>
+          {% endif %}
+        </a>
+
+        {%- comment -%} Mobile Menu Button {%- endcomment -%}
+        <button class="mobile-menu-toggle mobile-only" aria-label="Menu" onclick="document.getElementById('mobile-menu').classList.toggle('open')">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+
+    {%- comment -%} Mobile Menu {%- endcomment -%}
+    <div id="mobile-menu" class="mobile-menu mobile-only">
+      <nav class="mobile-nav">
+        {% if shop.published_locales.size > 1 %}
+          <div style="display: flex; justify-content: center; padding-bottom: 0.5rem;">
+            {% render 'language-selector' %}
+          </div>
+        {% endif %}
+        {% for link in section.settings.menu.links %}
+          <a href="{{ link.url }}" class="nav-link" onclick="document.getElementById('mobile-menu').classList.remove('open')">{{ link.title }}</a>
+        {% endfor %}
+      </nav>
+    </div>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Navigation menu",
+      "default": "main-menu"
+    }
+  ]
+}
+{% endschema %}

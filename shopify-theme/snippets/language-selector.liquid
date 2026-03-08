@@ -1,0 +1,16 @@
+{%- comment -%}
+  Language selector snippet
+{%- endcomment -%}
+
+{% form 'localization' %}
+  <div class="language-selector">
+    <select name="locale_code" onchange="this.form.submit()">
+      {% for locale in shop.published_locales %}
+        <option value="{{ locale.iso_code }}" {% if locale.iso_code == form.current_locale.iso_code %}selected{% endif %}>
+          {{ locale.endonym_name }}
+        </option>
+      {% endfor %}
+    </select>
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="select-arrow"><path d="m6 9 6 6 6-6"/></svg>
+  </div>
+{% endform %}
