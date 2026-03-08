@@ -6,7 +6,15 @@
     },
     "about": {
       "type": "about",
-      "settings": {}
+      "settings": {},
+      "blocks": {
+        "benefit_1": { "type": "benefit", "settings": { "icon": "leaf", "label": "100% Natural" } },
+        "benefit_2": { "type": "benefit", "settings": { "icon": "coffee", "label": "Caffeine Free" } },
+        "benefit_3": { "type": "benefit", "settings": { "icon": "cup", "label": "Sugar Free" } },
+        "benefit_4": { "type": "benefit", "settings": { "icon": "wheat", "label": "Gluten Free" } },
+        "benefit_5": { "type": "benefit", "settings": { "icon": "sprout", "label": "Vegan" } }
+      },
+      "block_order": ["benefit_1", "benefit_2", "benefit_3", "benefit_4", "benefit_5"]
     },
     "featured-products": {
       "type": "featured-products",
