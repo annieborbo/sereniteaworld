@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { useCartSync } from "@/hooks/useCartSync";
+import { ComingSoonGate } from "@/components/ComingSoonGate";
 import Index from "./pages/Index";
 import Cart from "./pages/Cart";
 import Waitlist from "./pages/Waitlist";
