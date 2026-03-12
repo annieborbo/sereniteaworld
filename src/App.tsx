@@ -36,7 +36,9 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <AppContent />
+          <ComingSoonGate>
+            <AppContent />
+          </ComingSoonGate>
         </BrowserRouter>
       </TooltipProvider>
     </LanguageProvider>
