@@ -12,6 +12,7 @@ import Waitlist from "./pages/Waitlist";
 import AdminDashboard from "./pages/AdminDashboard";
 import NotFound from "./pages/NotFound";
 import ProductDetail from "./pages/ProductDetail";
+import Contact from "./pages/Contact";
 
 const queryClient = new QueryClient();
 
@@ -24,6 +25,7 @@ const AppContent = () => {
       <Route path="/waitlist" element={<Waitlist />} />
       <Route path="/admin" element={<AdminDashboard />} />
       <Route path="/product/:handle" element={<ProductDetail />} />
+      <Route path="/contact" element={<Contact />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
