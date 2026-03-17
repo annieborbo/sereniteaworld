@@ -12,6 +12,7 @@ import Waitlist from "./pages/Waitlist";
 import AdminDashboard from "./pages/AdminDashboard";
 import NotFound from "./pages/NotFound";
 import ProductDetail from "./pages/ProductDetail";
+import Contact from "./pages/Contact";
 
 const queryClient = new QueryClient();
 
